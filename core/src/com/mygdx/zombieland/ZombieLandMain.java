@@ -6,8 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ZombieLandMain extends ApplicationAdapter {
+
 	SpriteBatch batch;
 	World world;
+
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
