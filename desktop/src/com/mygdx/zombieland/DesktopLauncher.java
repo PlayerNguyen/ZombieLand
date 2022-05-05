@@ -6,10 +6,14 @@ import com.mygdx.zombieland.ZombieLandMain;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
-	public static void main (String[] arg) {
-		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setForegroundFPS(60);
-		config.setTitle("ZombieLand");
-		new Lwjgl3Application(new ZombieLandMain(), config);
-	}
+    public static void main(String[] arg) {
+        Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        config.useVsync(true);
+        config.setResizable(false);
+        config.setForegroundFPS(60);
+        config.setTitle("ZombieLand");
+        config.setWindowedMode(800, 600);
+
+        new Lwjgl3Application(new ZombieLandMain(), config);
+    }
 }

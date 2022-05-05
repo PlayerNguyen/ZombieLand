@@ -2,17 +2,17 @@ package com.mygdx.zombieland.location;
 
 public class Location {
 
-    public double x;
-    public double y;
+    public float x;
+    public float y;
 
-    public Location(double x, double y) {
+    public Location(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
     public Location() {
-        this.x = 0D;
-        this.y = 0D;
+        this.x = 0F;
+        this.y = 0F;
     }
 
     /**
@@ -37,5 +37,26 @@ public class Location {
      */
     public boolean isCollided(Location location, double offset) {
         return distance(location) - offset < 0;
+    }
+
+    /**
+     * Sets new location.
+     *
+     * @param x a x coordinate
+     * @param y a y coordinate
+     */
+    public void set(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Sets new location by location.
+     *
+     * @param location a location to set x, y coordinates.
+     */
+    public void set(Location location) {
+        this.x = location.x;
+        this.y = location.y;
     }
 }
