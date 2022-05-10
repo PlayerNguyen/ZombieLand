@@ -29,7 +29,12 @@ public interface Entity extends Renderable {
      */
     Texture getTexture();
 
-
+    /**
+     * A drawing path for texture
+     * @return a sprite object
+     * @see Sprite
+     */
     Sprite getSprite();
 
+    Location lerp(Location moveTo, float speed);
 }
