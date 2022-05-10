@@ -1,8 +1,13 @@
 package com.mygdx.zombieland;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.entity.Player;
+import com.mygdx.zombieland.entity.Projectile;
 import com.mygdx.zombieland.location.Location;
+
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class World implements Renderable {
 
@@ -11,6 +16,8 @@ public class World implements Renderable {
 
     public SpriteBatch batch;
     private Player player;
+    private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
+    private final Set<Entity> entities = new CopyOnWriteArraySet<>();
 
     public World(SpriteBatch batch) {
         this.batch = batch;
@@ -24,6 +31,15 @@ public class World implements Renderable {
         this.player = new Player(this);
         this.player.create();
 
+        // Load entities
+        for (Entity entity : entities) {
+            entity.create();
+        }
+
+        // Load projectiles
+        for (Entity projectile : this.projectiles) {
+            projectile.create();
+        }
     }
 
     @Override
@@ -31,6 +47,16 @@ public class World implements Renderable {
 
         // Render player
         this.player.render();
+
+        // Render all projectiles
+        for (Entity projectile : this.projectiles) {
+            projectile.render();
+        }
+
+        // Render all entities
+        for (Entity entity : entities) {
+            entity.render();
+        }
     }
 
     @Override
@@ -47,5 +73,20 @@ public class World implements Renderable {
                 ((float) WINDOW_WIDTH / 2) - offset,
                 ((float) WINDOW_HEIGHT / 2) - offset
         );
+    }
+
+    public Projectile createProjectile(Projectile projectile) {
+        this.projectiles.add(projectile);
+        projectile.create();
+        return projectile;
+    }
+
+    public boolean removeProjectile(Projectile projectile) {
+        projectile.dispose();
+        return this.projectiles.remove(projectile);
+    }
+
+    public Set<Entity> getProjectiles() {
+        return projectiles;
     }
 }
