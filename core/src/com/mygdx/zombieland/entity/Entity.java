@@ -1,6 +1,7 @@
 package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.Renderable;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
@@ -27,5 +28,8 @@ public interface Entity extends Renderable {
      * @see Texture
      */
     Texture getTexture();
+
+
+    Sprite getSprite();
 
 }

@@ -15,5 +15,21 @@ public class Vector2D {
         this.y = 0;
     }
 
+    public Vector2D(Vector2D vector) {
+        this.x = vector.x;
+        this.y = vector.y;
+    }
 
+    public void set(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Vector2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

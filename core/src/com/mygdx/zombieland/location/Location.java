@@ -10,6 +10,11 @@ public class Location {
         this.y = y;
     }
 
+    public Location(Location location) {
+        this.x = location.x;
+        this.y = location.y;
+    }
+
     public Location() {
         this.x = 0F;
         this.y = 0F;
@@ -23,7 +28,7 @@ public class Location {
      * @return a distance as double to resolve
      */
     public double distance(Location l) {
-        return Math.sqrt(Math.pow(l.x, 2) * Math.pow(l.y, 2));
+        return Math.sqrt(Math.pow(this.x - l.x, 2) + Math.pow(this.y - l.y, 2));
     }
 
     /**
@@ -58,5 +63,13 @@ public class Location {
     public void set(Location location) {
         this.x = location.x;
         this.y = location.y;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
