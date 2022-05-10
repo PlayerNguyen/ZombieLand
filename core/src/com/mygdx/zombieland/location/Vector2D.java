@@ -30,6 +30,12 @@ public class Vector2D {
         this.y += y;
     }
 
+    public Vector2D scalar(double amount) {
+        this.x *= amount;
+        this.y *= amount;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Vector2D{" +

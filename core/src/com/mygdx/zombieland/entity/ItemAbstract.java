@@ -14,13 +14,15 @@ public abstract class ItemAbstract implements Item {
     private final Sprite sprite;
     private final World world;
 
+    private float health;
 
-    public ItemAbstract(Location location, Vector2D direction, World world, Texture texture, Sprite sprite) {
+    public ItemAbstract(Location location, Vector2D direction, World world, Texture texture, Sprite sprite, float health) {
         this.location = location;
         this.direction = direction;
         this.world = world;
         this.texture = texture;
         this.sprite = sprite;
+        this.health = health;
     }
 
     public World getWorld() {
@@ -45,5 +47,15 @@ public abstract class ItemAbstract implements Item {
     @Override
     public Texture getTexture() {
         return texture;
+    }
+
+    @Override
+    public float getHealth() {
+        return health;
+    }
+
+    @Override
+    public void setHealth(float health) {
+        this.health = health;
     }
 }

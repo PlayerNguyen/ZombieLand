@@ -9,6 +9,7 @@ import com.mygdx.zombieland.entity.Projectile;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.scheduler.Scheduler;
+import com.mygdx.zombieland.utils.MathHelper;
 
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -42,7 +43,10 @@ public class World implements Renderable {
             entity.create();
         }
 
-        createEntity(new Box(new Location(0, 0), this));
+        for (int i = 0; i < 20; i++) {
+            createEntity(new Box(new Location((float)MathHelper.nextDouble(10, 300), (float) MathHelper.nextDouble(10, 600)),
+                    this));
+        }
 
         // Load projectiles
         for (Entity projectile : this.projectiles) {

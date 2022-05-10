@@ -14,7 +14,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
-    private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("holding.png"));
+    private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
 
     private final Location location;
@@ -127,12 +127,22 @@ public class Player implements ProjectableEntity, LivingEntity {
     }
 
     @Override
-    public void damage(float amount) {
+    public Location lerp(Location moveTo, float speed) {
+        throw new UnsupportedOperationException("Player cannot be moved");
+    }
+
+    @Override
+    public void damage(DamageSource source, float amount) {
         this.health -= amount;
     }
 
     @Override
-    public Location lerp(Location moveTo, float speed) {
-        throw new UnsupportedOperationException("Player cannot be moved");
+    public float getHealth() {
+        return this.health;
+    }
+
+    @Override
+    public void setHealth(float health) {
+        this.health = health;
     }
 }

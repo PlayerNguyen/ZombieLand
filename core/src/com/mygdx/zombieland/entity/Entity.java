@@ -24,6 +24,7 @@ public interface Entity extends Renderable {
 
     /**
      * Texture which represents an image (sprite) of the entity.
+     *
      * @return a texture object.
      * @see Texture
      */
@@ -31,6 +32,7 @@ public interface Entity extends Renderable {
 
     /**
      * A drawing path for texture
+     *
      * @return a sprite object
      * @see Sprite
      */
