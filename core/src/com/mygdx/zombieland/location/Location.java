@@ -65,6 +65,23 @@ public class Location {
         this.y = location.y;
     }
 
+    public void add(Location location) {
+        this.x += location.x;
+        this.y += location.y;
+    }
+
+    public Location add(double x, double y) {
+        this.x += x;
+        this.y += y;
+        return this;
+    }
+
+    public Location scalar(float scalar) {
+        this.x *= scalar;
+        this.y *= scalar;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Location{" +

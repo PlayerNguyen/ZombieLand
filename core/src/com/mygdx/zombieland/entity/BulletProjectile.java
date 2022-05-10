@@ -22,11 +22,11 @@ public class BulletProjectile implements Projectile {
 
     private final Location sourceLocation;
 
-    private static final float BULLET_VELOCITY = 20f;
+    private static final float BULLET_VELOCITY = 40f;
     // Max distances that bullet can fly
     private static final double BULLET_MAXIMUM_DISTANCE = 1999;
     // Bullet eccentricity
-    private static final double BULLET_ECCENTRICITY = .1f;
+    private static final double BULLET_ECCENTRICITY = .01f;
 
     public BulletProjectile(ProjectableEntity source, World world) {
         this.source = source;
@@ -53,7 +53,7 @@ public class BulletProjectile implements Projectile {
     @Override
     public void render() {
         // Remove the projectile if is out of distance
-        if (this.sourceLocation.distance(this.location) > BULLET_MAXIMUM_DISTANCE) {
+        if (this.sourceLocation.distance(this.location) > BULLET_MAXIMUM_DISTANCE || isHit() ) {
             if (world.removeProjectile(this)) {
                 Gdx.app.log("Projectile", "Removed projectile @" + System.identityHashCode(this));
             }
@@ -61,9 +61,25 @@ public class BulletProjectile implements Projectile {
         }
 
         // Check collision
-//        if (this.location) {
-//
-//        }
+        for (final Entity entity : world.getEntities()) {
+            if (entity.getLocation().distance(this.location) <= 32) {
+
+                Gdx.app.log("Triggered", "Hit to entity ...");
+                // Set triggered
+                setIsHit(true);
+                // Damage entity
+                if (entity instanceof LivingEntity) {
+                    ((LivingEntity) entity).damage(12);
+                }
+
+                if (entity instanceof Box) {
+                    // Crack
+                    ((Box) entity).lerp(new Location(entity.getLocation().x + 32, entity.getLocation().y + 32),
+                            0.2222f);
+                }
+                this.direction.set(0, 0);
+            }
+        }
 
         // Render projectile location
         this.sprite.setPosition(this.location.x, this.location.y);
@@ -103,6 +119,11 @@ public class BulletProjectile implements Projectile {
     @Override
     public Sprite getSprite() {
         return this.sprite;
+    }
+
+    @Override
+    public Location lerp(Location moveTo, float speed) {
+        throw new UnsupportedOperationException("Projectile cannot be lerped");
     }
 
     @Override

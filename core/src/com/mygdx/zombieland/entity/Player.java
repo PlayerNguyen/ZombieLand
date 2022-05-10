@@ -8,8 +8,9 @@ import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
+import com.mygdx.zombieland.utils.VisualizeHelper;
 
-public class Player implements ProjectableEntity {
+public class Player implements ProjectableEntity, LivingEntity {
 
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
@@ -22,6 +23,8 @@ public class Player implements ProjectableEntity {
     private final World world;
     private Sprite sprite;
     private boolean canShoot;
+
+    private float health = 100;
 
     public Player(World world) {
         this.world = world;
@@ -121,5 +124,15 @@ public class Player implements ProjectableEntity {
     @Override
     public Sprite getSprite() {
         return sprite;
+    }
+
+    @Override
+    public void damage(float amount) {
+        this.health -= amount;
+    }
+
+    @Override
+    public Location lerp(Location moveTo, float speed) {
+        throw new UnsupportedOperationException("Player cannot be moved");
     }
 }
