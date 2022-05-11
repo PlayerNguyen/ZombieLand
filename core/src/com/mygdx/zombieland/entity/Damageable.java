@@ -8,4 +8,6 @@ public interface Damageable {
 
     void setHealth(float health);
 
+    void kill();
+
 }

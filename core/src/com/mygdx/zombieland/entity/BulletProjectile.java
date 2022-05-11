@@ -28,6 +28,7 @@ public class BulletProjectile implements Projectile, DamageSource {
     private boolean hit;
     private float damage;
     private float knockbackPower;
+    private float rotation;
 
     private final Location sourceLocation;
 
@@ -40,16 +41,18 @@ public class BulletProjectile implements Projectile, DamageSource {
         this.sprite = new Sprite(texture);
         this.sourceLocation = source.getLocation();
 
-        this.knockbackPower = (float) BULLET_DEFAULT_KNOCKBACK;
+        this.knockbackPower = BULLET_DEFAULT_KNOCKBACK;
         this.direction.x += MathHelper.nextDouble(-BULLET_ECCENTRICITY, BULLET_ECCENTRICITY);
         this.direction.y += MathHelper.nextDouble(-BULLET_ECCENTRICITY, BULLET_ECCENTRICITY);
+
+        this.rotation = source.getAngle();
     }
 
     @Override
     public void create() {
         this.sprite.setSize(32, 32);
         this.sprite.setOrigin(32, 32);
-        this.sprite.rotate(source.getAngle());
+        this.setRotation(source.getAngle());
 
         Gdx.app.log("Projectile", "Generated projectile @" + System.identityHashCode(this));
     }
@@ -74,11 +77,12 @@ public class BulletProjectile implements Projectile, DamageSource {
                 setIsHit(true);
                 // Damage things
                 if (entity instanceof Damageable) {
-                    ((Damageable) entity).damage(this, (float) BULLET_DAMAGE);
-
+                    ((Damageable) entity).damage(this, BULLET_DAMAGE);
                 }
             }
         }
+
+        this.sprite.setRotation(this.rotation);
 
         // Render projectile location
         this.sprite.setPosition(this.location.x, this.location.y);
@@ -87,7 +91,7 @@ public class BulletProjectile implements Projectile, DamageSource {
         this.location.x = (float) (this.location.x + (this.direction.x * BULLET_VELOCITY));
         this.location.y = (float) (this.location.y + (this.direction.y * BULLET_VELOCITY));
 
-        // From gun, not from hand =))
+        // From gun, not from aim
         if (this.sourceLocation.distance(this.location) > 80) {
             this.sprite.draw(this.world.getBatch());
         }
@@ -153,5 +157,20 @@ public class BulletProjectile implements Projectile, DamageSource {
     @Override
     public void setKnockbackPower(float knockbackPower) {
         this.knockbackPower = knockbackPower;
+    }
+
+    @Override
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
+    }
+
+    @Override
+    public float getRotation() {
+        return rotation;
+    }
+
+    @Override
+    public World getWorld() {
+        return world;
     }
 }

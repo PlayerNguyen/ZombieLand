@@ -2,7 +2,9 @@ package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
@@ -25,6 +27,8 @@ public class Player implements ProjectableEntity, LivingEntity {
     private boolean canShoot;
 
     private float health = 100;
+    private float rotation = 0;
+    private BitmapFont fontDrawer = new BitmapFont();
 
     public Player(World world) {
         this.world = world;
@@ -48,10 +52,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public void render() {
-        // Draw/Render the player
-        sprite.setX(this.location.x);
-        sprite.setY(this.location.y);
-        sprite.draw(this.world.getBatch());
+
         this.rotateFollowsCursor();
 
         // Shoot function
@@ -60,6 +61,22 @@ public class Player implements ProjectableEntity, LivingEntity {
         ) {
             shoot();
         }
+
+        // Draw UI
+        this.updateUI();
+
+        // Draw/Render the player
+        sprite.setX(this.location.x);
+        sprite.setY(this.location.y);
+        sprite.setRotation(this.rotation);
+        sprite.draw(this.world.getBatch());
+    }
+
+    private void updateUI() {
+        // Top-left
+        this.fontDrawer.setColor(Color.VIOLET);
+        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600-32);
+        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600-(32 * 2));
     }
 
     @Override
@@ -87,7 +104,7 @@ public class Player implements ProjectableEntity, LivingEntity {
                 Math.atan2(-(this.location.y - Gdx.input.getY()),// Minus because y-down
                         this.location.x - Gdx.input.getX()) + (Math.PI)
         );
-        sprite.setRotation((float) Math.toDegrees(radRotation));
+        this.setRotation((float) Math.toDegrees(radRotation));
 
         // Set the direction by using basic geometry
         this.direction.x = Math.cos(radRotation);
@@ -144,5 +161,25 @@ public class Player implements ProjectableEntity, LivingEntity {
     @Override
     public void setHealth(float health) {
         this.health = health;
+    }
+
+    @Override
+    public void kill() {
+        // TODO: end game
+    }
+
+    @Override
+    public float getRotation() {
+        return rotation;
+    }
+
+    @Override
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
+    }
+
+    @Override
+    public World getWorld() {
+        return world;
     }
 }

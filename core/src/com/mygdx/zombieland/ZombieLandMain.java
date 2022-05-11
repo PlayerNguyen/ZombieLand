@@ -21,7 +21,7 @@ public class ZombieLandMain extends ApplicationAdapter {
 
     @Override
     public void render() {
-        ScreenUtils.clear(1f, 1f, 1f, 1);
+        ScreenUtils.clear(0.96078431372f, 0.96078431372f, 0.96078431372f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         this.batch.begin();

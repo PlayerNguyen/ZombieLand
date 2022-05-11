@@ -3,6 +3,7 @@ package com.mygdx.zombieland.entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
@@ -10,11 +11,12 @@ import com.mygdx.zombieland.location.Vector2D;
 
 public class Box extends ItemAbstract {
 
-    private Location destination;
-    private float velocity = 0;
-
-
     private static final Texture BOX_TEXTURE = new Texture(Gdx.files.internal("box.png"));
+
+    private BitmapFont font = new BitmapFont();
+    private Location destination;
+    private float fraction = 1;
+    private float velocity;
 
     public Box(Location location, Vector2D direction, World world) {
         super(location, direction, world, BOX_TEXTURE, new Sprite(BOX_TEXTURE), 10);
@@ -34,13 +36,12 @@ public class Box extends ItemAbstract {
 
     @Override
     public void render() {
+        super.render();
 
-        if (this.getLocation().x != this.destination.x) {
-            this.getLocation().x += (this.destination.x - this.getLocation().x) * velocity;
-        }
-
-        if (this.getLocation().y != this.destination.y) {
-            this.getLocation().y += (this.destination.y - this.getLocation().y) * velocity;
+        if (fraction < 1) {
+            fraction += Gdx.graphics.getDeltaTime() * velocity;
+            this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
+            this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
         }
 
         this.getLocation().add(
@@ -49,7 +50,7 @@ public class Box extends ItemAbstract {
         );
 
         this.getSprite().setPosition(this.getLocation().x, this.getLocation().y);
-        this.getSprite().draw(this.getWorld().getBatch());
+//        this.getSprite().draw(this.getWorld().getBatch());
 
     }
 
@@ -60,29 +61,9 @@ public class Box extends ItemAbstract {
 
     public Location lerp(Location b, float t) {
         this.destination = new Location(b.x, b.y);
+        this.fraction = 0 ;
         this.velocity = t;
         return this.destination;
     }
 
-    @Override
-    public void damage(DamageSource source, float amount) {
-        this.setHealth(amount);
-        // Kill this if it is necessary
-
-        // Knock back
-        Vector2D displacement = new Vector2D(source.getDirection())
-                .scalar(source.getKnockbackPower()); // Scalar is power
-        Location destination =  new Location(
-                this.getLocation().x,
-                this.getLocation().y
-        ).add(displacement);
-        this.lerp(destination, .2f);
-        this.getSprite().setColor(Color.RED);
-        this.getWorld().getScheduler().runTaskAfter(new Runnable() {
-            @Override
-            public void run() {
-                getSprite().setColor(Color.WHITE);
-            }
-        }, 300);
-    }
 }

@@ -2,10 +2,7 @@ package com.mygdx.zombieland;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.zombieland.entity.Box;
-import com.mygdx.zombieland.entity.Entity;
-import com.mygdx.zombieland.entity.Player;
-import com.mygdx.zombieland.entity.Projectile;
+import com.mygdx.zombieland.entity.*;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.scheduler.Scheduler;
@@ -44,9 +41,11 @@ public class World implements Renderable {
         }
 
         for (int i = 0; i < 20; i++) {
-            createEntity(new Box(new Location((float)MathHelper.nextDouble(10, 300), (float) MathHelper.nextDouble(10, 600)),
+            createEntity(new Box(new Location((float)MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
                     this));
         }
+
+        createEntity(new Zombie(this, new Location(15, 15), this.player));
 
         // Load projectiles
         for (Entity projectile : this.projectiles) {
@@ -98,6 +97,11 @@ public class World implements Renderable {
         return this.projectiles.remove(projectile);
     }
 
+    public boolean removeEntity(Entity entity) {
+//        entity.dispose();
+        return this.entities.remove(entity);
+    }
+
     public Entity createEntity(Entity entity) {
         this.entities.add(entity);
         entity.create();
@@ -114,5 +118,9 @@ public class World implements Renderable {
 
     public Scheduler getScheduler() {
         return scheduler;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }
