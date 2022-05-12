@@ -70,9 +70,21 @@ public class Location {
         this.y += location.y;
     }
 
+    public Location add(double amount) {
+        this.x += amount;
+        this.y += amount;
+        return this;
+    }
+
     public Location add(double x, double y) {
         this.x += x;
         this.y += y;
+        return this;
+    }
+
+    public Location add(Vector2D vector) {
+        this.x += vector.x;
+        this.y += vector.y;
         return this;
     }
 

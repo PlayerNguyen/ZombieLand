@@ -1,7 +1,5 @@
 package com.mygdx.zombieland.entity;
 
-import java.util.Set;
-
 public interface Projectile extends Entity {
 
     /**

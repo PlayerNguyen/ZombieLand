@@ -3,6 +3,7 @@ package com.mygdx.zombieland.entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.Renderable;
+import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 
@@ -24,6 +25,7 @@ public interface Entity extends Renderable {
 
     /**
      * Texture which represents an image (sprite) of the entity.
+     *
      * @return a texture object.
      * @see Texture
      */
@@ -31,10 +33,17 @@ public interface Entity extends Renderable {
 
     /**
      * A drawing path for texture
+     *
      * @return a sprite object
      * @see Sprite
      */
     Sprite getSprite();
 
     Location lerp(Location moveTo, float speed);
+
+    float getRotation();
+
+    void setRotation(float rotation);
+
+    World getWorld();
 }

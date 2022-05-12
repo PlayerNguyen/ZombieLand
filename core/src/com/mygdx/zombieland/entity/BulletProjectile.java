@@ -8,7 +8,15 @@ import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.utils.MathHelper;
 
-public class BulletProjectile implements Projectile {
+public class BulletProjectile implements Projectile, DamageSource {
+
+    private static final float BULLET_VELOCITY = 40f;
+    // Max distances that bullet can fly
+    private static final double BULLET_MAXIMUM_DISTANCE = 1999;
+    // Bullet eccentricity
+    private static final double BULLET_ECCENTRICITY = .01f;
+    private static final float BULLET_DAMAGE = 10;
+    private static final float BULLET_DEFAULT_KNOCKBACK = 10;
 
     private final Texture texture;
     private final Sprite sprite;
@@ -19,14 +27,10 @@ public class BulletProjectile implements Projectile {
 
     private boolean hit;
     private float damage;
+    private float knockbackPower;
+    private float rotation;
 
     private final Location sourceLocation;
-
-    private static final float BULLET_VELOCITY = 40f;
-    // Max distances that bullet can fly
-    private static final double BULLET_MAXIMUM_DISTANCE = 1999;
-    // Bullet eccentricity
-    private static final double BULLET_ECCENTRICITY = .01f;
 
     public BulletProjectile(ProjectableEntity source, World world) {
         this.source = source;
@@ -37,15 +41,18 @@ public class BulletProjectile implements Projectile {
         this.sprite = new Sprite(texture);
         this.sourceLocation = source.getLocation();
 
+        this.knockbackPower = BULLET_DEFAULT_KNOCKBACK;
         this.direction.x += MathHelper.nextDouble(-BULLET_ECCENTRICITY, BULLET_ECCENTRICITY);
         this.direction.y += MathHelper.nextDouble(-BULLET_ECCENTRICITY, BULLET_ECCENTRICITY);
+
+        this.rotation = source.getAngle();
     }
 
     @Override
     public void create() {
         this.sprite.setSize(32, 32);
         this.sprite.setOrigin(32, 32);
-        this.sprite.rotate(source.getAngle());
+        this.setRotation(source.getAngle());
 
         Gdx.app.log("Projectile", "Generated projectile @" + System.identityHashCode(this));
     }
@@ -62,24 +69,20 @@ public class BulletProjectile implements Projectile {
 
         // Check collision
         for (final Entity entity : world.getEntities()) {
-            if (entity.getLocation().distance(this.location) <= 32) {
+            Location entityLocation = new Location(entity.getLocation());
+            if (entityLocation.add(-32).distance(this.location) <= 32) {
 
                 Gdx.app.log("Triggered", "Hit to entity ...");
                 // Set triggered
                 setIsHit(true);
-                // Damage entity
-                if (entity instanceof LivingEntity) {
-                    ((LivingEntity) entity).damage(12);
+                // Damage things
+                if (entity instanceof Damageable) {
+                    ((Damageable) entity).damage(this, BULLET_DAMAGE);
                 }
-
-                if (entity instanceof Box) {
-                    // Crack
-                    ((Box) entity).lerp(new Location(entity.getLocation().x + 32, entity.getLocation().y + 32),
-                            0.2222f);
-                }
-                this.direction.set(0, 0);
             }
         }
+
+        this.sprite.setRotation(this.rotation);
 
         // Render projectile location
         this.sprite.setPosition(this.location.x, this.location.y);
@@ -88,7 +91,7 @@ public class BulletProjectile implements Projectile {
         this.location.x = (float) (this.location.x + (this.direction.x * BULLET_VELOCITY));
         this.location.y = (float) (this.location.y + (this.direction.y * BULLET_VELOCITY));
 
-        // From gun, not from hand =))
+        // From gun, not from aim
         if (this.sourceLocation.distance(this.location) > 80) {
             this.sprite.draw(this.world.getBatch());
         }
@@ -144,5 +147,30 @@ public class BulletProjectile implements Projectile {
     @Override
     public void setIsHit(boolean isHit) {
         this.hit = isHit;
+    }
+
+    @Override
+    public float getKnockbackPower() {
+        return knockbackPower;
+    }
+
+    @Override
+    public void setKnockbackPower(float knockbackPower) {
+        this.knockbackPower = knockbackPower;
+    }
+
+    @Override
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
+    }
+
+    @Override
+    public float getRotation() {
+        return rotation;
+    }
+
+    @Override
+    public World getWorld() {
+        return world;
     }
 }
