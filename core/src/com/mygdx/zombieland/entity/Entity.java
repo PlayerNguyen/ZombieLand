@@ -39,11 +39,33 @@ public interface Entity extends Renderable {
      */
     Sprite getSprite();
 
+    /**
+     *A method to allow or disallow moving.
+     * @param moveTo a new location.
+     * @param speed of movement.
+     * @return destination.
+     */
     Location lerp(Location moveTo, float speed);
 
+    /**
+     * Changing object direction.
+     *
+     * @return rotation of object.
+     */
     float getRotation();
 
+    /**
+     *Sets object is rotated.
+     *
+     * @param rotation the object with an angle.
+     */
     void setRotation(float rotation);
 
+    /**
+     * Represents getting object to world.
+     *
+     * @see World
+     * @return world.
+     */
     World getWorld();
 }

@@ -64,7 +64,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
         // Draw UI
         this.updateUI();
-
+        this.
         // Draw/Render the player
         sprite.setX(this.location.x);
         sprite.setY(this.location.y);
@@ -99,6 +99,12 @@ public class Player implements ProjectableEntity, LivingEntity {
         return direction;
     }
 
+    /**
+     * Rotate the player direction using mouse movement.
+     *
+     * Method setRotation from radiant to degrees.
+     * The direction is set by radRotation.
+     */
     private void rotateFollowsCursor() {
         float radRotation = (float) ((float)
                 Math.atan2(-(this.location.y - Gdx.input.getY()),// Minus because y-down
@@ -111,6 +117,14 @@ public class Player implements ProjectableEntity, LivingEntity {
         this.direction.y = Math.sin(radRotation);
     }
 
+    /**
+     * Create and run threads along with interface Runnable, for Multithreading.
+     * Feature shooting with ShootingRunnable.
+     *
+     * @see Runnable
+     * @see ShootingRunnable
+     * @see Thread
+     */
     public void shoot() {
         new Thread(new ShootingRunnable(this,
                 this.world,
