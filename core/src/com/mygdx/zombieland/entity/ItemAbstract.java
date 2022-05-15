@@ -76,4 +76,10 @@ public abstract class ItemAbstract extends DamageableAbstract implements Item {
     public void setRotation(float rotation) {
         this.rotation = rotation;
     }
+
+    @Override
+    public Location getCenterLocation() {
+        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
+                , this.getLocation().y - ((float) this.getSize() / 2));
+    }
 }

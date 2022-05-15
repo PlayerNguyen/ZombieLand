@@ -14,10 +14,11 @@ import com.mygdx.zombieland.utils.VisualizeHelper;
 
 public class Player implements ProjectableEntity, LivingEntity {
 
-
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
+
+    public static final int PLAYER_SIZE = 64;
 
     private final Location location;
     private final Vector2D direction;
@@ -28,7 +29,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     private float health = 100;
     private float rotation = 0;
-    private BitmapFont fontDrawer = new BitmapFont();
+    private final BitmapFont fontDrawer = new BitmapFont();
 
     public Player(World world) {
         this.world = world;
@@ -75,8 +76,8 @@ public class Player implements ProjectableEntity, LivingEntity {
     private void updateUI() {
         // Top-left
         this.fontDrawer.setColor(Color.VIOLET);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600-32);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600-(32 * 2));
+        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600 - 32);
+        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600 - (32 * 2));
     }
 
     @Override
@@ -181,5 +182,16 @@ public class Player implements ProjectableEntity, LivingEntity {
     @Override
     public World getWorld() {
         return world;
+    }
+
+    @Override
+    public int getSize() {
+        return PLAYER_SIZE;
+    }
+
+    @Override
+    public Location getCenterLocation() {
+        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
+                , this.getLocation().y - ((float) this.getSize() / 2));
     }
 }

@@ -46,4 +46,8 @@ public interface Entity extends Renderable {
     void setRotation(float rotation);
 
     World getWorld();
+
+    int getSize();
+
+    Location getCenterLocation();
 }
