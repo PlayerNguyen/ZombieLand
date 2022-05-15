@@ -11,7 +11,6 @@ public abstract class DamageableAbstract
     public void damage(DamageSource source, float amount) {
         this.setHealth(this.getHealth() - amount);
 
-
         // Knock back
         Vector2D displacement = new Vector2D(source.getDirection())
                 .scalar(source.getKnockbackPower()); // Scalar is power
@@ -32,10 +31,24 @@ public abstract class DamageableAbstract
                 if (getHealth() <= 0) kill();
             }
         }, 300);
+
+        Location indicatorTextLocation = new Location(this.getCenterLocation());
+        this.getWorld().getTextIndicator().createText(indicatorTextLocation,
+                new Vector2D(0, 16F),
+                String.format("%.0f", amount),
+                1000,
+                .3F
+        );
     }
 
     @Override
     public void kill() {
         this.getWorld().removeEntity(this);
+    }
+
+    @Override
+    public Location getCenterLocation() {
+        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
+                , this.getLocation().y - ((float) this.getSize() / 2));
     }
 }

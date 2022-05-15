@@ -1,7 +1,11 @@
 package com.mygdx.zombieland;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
@@ -17,14 +21,23 @@ public class World implements Renderable {
     private static final int WINDOW_HEIGHT = 600;
 
     public SpriteBatch batch;
+    public BitmapFont font;
     private Player player;
+    private final OrthographicCamera camera;
+    private ShapeRenderer shapeRenderer;
+
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
     private final Scheduler scheduler;
+    private final TextIndicator textIndicator;
 
     public World(SpriteBatch batch) {
         this.batch = batch;
         this.scheduler = new Scheduler();
+        this.font = new BitmapFont();
+        this.textIndicator = new TextIndicator(this);
+        this.camera = new OrthographicCamera(800, 600);
+        this.shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -41,7 +54,7 @@ public class World implements Renderable {
         }
 
         for (int i = 0; i < 20; i++) {
-            createEntity(new Box(new Location((float)MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
+            createEntity(new Box(new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
                     this));
         }
 
@@ -55,6 +68,12 @@ public class World implements Renderable {
 
     @Override
     public void render() {
+        // Update camera
+        this.camera.update();
+
+        this.batch.setProjectionMatrix(this.camera.combined);
+        this.camera.position.x = (float) 800 / 2;
+        this.camera.position.y = (float) 600 / 2;
 
         // Render player
         this.player.render();
@@ -68,6 +87,20 @@ public class World implements Renderable {
         for (Entity entity : entities) {
             entity.render();
         }
+
+        // Text indicator render
+        this.getTextIndicator().render();
+
+//        shapeRenderer.setProjectionMatrix(this.camera.combined);
+
+//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+//        shapeRenderer.setColor(0, 0, 0, 1);
+//        for (int i = 0; i <800; i+=32) {
+//            for (int j = 0; j < 600; j+=32) {
+//                shapeRenderer.rect(i, j, 32, 32);
+//            }
+//        }
+//        shapeRenderer.end();
     }
 
     @Override
@@ -122,5 +155,13 @@ public class World implements Renderable {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public BitmapFont getFont() {
+        return font;
+    }
+
+    public TextIndicator getTextIndicator() {
+        return textIndicator;
     }
 }

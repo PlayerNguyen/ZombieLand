@@ -1,7 +1,6 @@
 package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
@@ -11,6 +10,7 @@ import com.mygdx.zombieland.location.Vector2D;
 public class Zombie extends EnemyAbstract {
 
     private static final Texture ZOMBIE_TEXTURE = new Texture(Gdx.files.internal("idle.png"));
+    public static final int ZOMBIE_SIZE = 64;
 
     private final World world;
     private final Entity target;
@@ -28,8 +28,8 @@ public class Zombie extends EnemyAbstract {
     @Override
     public void create() {
         this.getSprite().setTexture(ZOMBIE_TEXTURE);
-        this.getSprite().setSize(64, 64);
-        this.getSprite().setOrigin(32, 32);
+        this.getSprite().setSize(ZOMBIE_SIZE, ZOMBIE_SIZE);
+        this.getSprite().setOrigin((float)ZOMBIE_SIZE / 2, (float) ZOMBIE_SIZE / 2);
 
         this.updateMove();
     }
@@ -39,7 +39,6 @@ public class Zombie extends EnemyAbstract {
 
         this.updateMove();
 
-        System.out.println(fraction);
         // Update lerp
         if (fraction < 1) {
             fraction += Gdx.graphics.getDeltaTime() * speed;
@@ -54,7 +53,7 @@ public class Zombie extends EnemyAbstract {
 
         // Export (render) image
         this.getSprite().setRotation(this.getRotation());
-        this.getSprite().setPosition(this.getLocation().x, this.getLocation().y);
+        this.getSprite().setPosition(this.getLocation().x - 32, this.getLocation().y - 32);
         this.getSprite().draw(world.getBatch());
 
     }
@@ -95,4 +94,10 @@ public class Zombie extends EnemyAbstract {
     public World getWorld() {
         return world;
     }
+
+    @Override
+    public int getSize() {
+        return ZOMBIE_SIZE;
+    }
+
 }

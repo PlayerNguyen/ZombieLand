@@ -12,6 +12,7 @@ import com.mygdx.zombieland.location.Vector2D;
 public class Box extends ItemAbstract {
 
     private static final Texture BOX_TEXTURE = new Texture(Gdx.files.internal("box.png"));
+    public static final int BOX_SIZE = 32;
 
     private BitmapFont font = new BitmapFont();
     private Location destination;
@@ -30,13 +31,19 @@ public class Box extends ItemAbstract {
 
     @Override
     public void create() {
-        this.getSprite().setSize(32, 32);
-        this.getSprite().setOrigin(16, 16);
+        this.getSprite().setSize(BOX_SIZE, BOX_SIZE);
+        this.getSprite().setOrigin(BOX_SIZE / 2, BOX_SIZE / 2);
     }
 
     @Override
     public void render() {
         super.render();
+
+        this.font.setColor(Color.GRAY);
+        this.font.draw(this.getWorld().getBatch(),
+                String.format("%.0f %.0f", this.getLocation().x, this.getLocation().y),
+                this.getLocation().x + 16,
+                this.getLocation().y + 16);
 
         if (fraction < 1) {
             fraction += Gdx.graphics.getDeltaTime() * velocity;
@@ -49,7 +56,7 @@ public class Box extends ItemAbstract {
                 this.getDirection().y
         );
 
-        this.getSprite().setPosition(this.getLocation().x, this.getLocation().y);
+        this.getSprite().setPosition(this.getLocation().x - 16, this.getLocation().y - 16);
 //        this.getSprite().draw(this.getWorld().getBatch());
 
     }
@@ -61,9 +68,14 @@ public class Box extends ItemAbstract {
 
     public Location lerp(Location b, float t) {
         this.destination = new Location(b.x, b.y);
-        this.fraction = 0 ;
+        this.fraction = 0;
         this.velocity = t;
         return this.destination;
+    }
+
+    @Override
+    public int getSize() {
+        return BOX_SIZE;
     }
 
 }

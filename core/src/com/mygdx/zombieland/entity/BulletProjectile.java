@@ -17,6 +17,7 @@ public class BulletProjectile implements Projectile, DamageSource {
     private static final double BULLET_ECCENTRICITY = .01f;
     private static final float BULLET_DAMAGE = 10;
     private static final float BULLET_DEFAULT_KNOCKBACK = 10;
+    private static final float BULLET_SIZE = 32;
 
     private final Texture texture;
     private final Sprite sprite;
@@ -50,8 +51,8 @@ public class BulletProjectile implements Projectile, DamageSource {
 
     @Override
     public void create() {
-        this.sprite.setSize(32, 32);
-        this.sprite.setOrigin(32, 32);
+        this.sprite.setSize(BULLET_SIZE, BULLET_SIZE);
+        this.sprite.setOrigin(BULLET_SIZE, BULLET_SIZE);
         this.setRotation(source.getAngle());
 
         Gdx.app.log("Projectile", "Generated projectile @" + System.identityHashCode(this));
@@ -172,5 +173,15 @@ public class BulletProjectile implements Projectile, DamageSource {
     @Override
     public World getWorld() {
         return world;
+    }
+
+    @Override
+    public int getSize() {
+        return (int) BULLET_SIZE;
+    }
+
+    public Location getCenterLocation() {
+        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
+                , this.getLocation().y - ((float) this.getSize() / 2));
     }
 }
