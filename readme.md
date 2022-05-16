@@ -69,13 +69,71 @@ Project is **in progress**.
 - Rename team, retask members, setting the task board on Github, suggest new game idea, vote and roughly analyze what should be maintained in the new game.
     - [x] Team name still be Phour team.
     - [x] Leader: Nguyen.
-    - [x] Game name: Zombieland
+    - [x] Game name: Zombieland.
     - [x] Recreate Github repository: https://github.com/PlayerNguyen/ZombieLand
     - Class analyzed:
         - [x] Player-Shooting and Rotating method.
         - [x] Zombies approach center.
-- **Location:** Room 1 - Lib 2nd floor
-- **Date/Time:**
-- **Appearance:** All members.
-- [x] Assigning tasks, reorganising idea and game rule.
-    - Assigned tasks for the next two weeks
+    - **Location:** Room 1 - Lib 2nd floor.
+    - **Date/Time:** 27/04/2022.
+    - **Appearance:** All members.
+- Assigning tasks, reorganising idea and game rule.
+    - [x] Assigned tasks for the next two weeks.
+    - [x] Suggest Knock-back feature, killable feature.
+    - **Meeting:** On MSTeams.
+    - **Date/Time:** 05/05/2022.
+    - **Appearance:** All members.
+- Adding basic classes/interfaces:
+    - [x] Create World.java is the game world.
+    - [x] Create Renderable interface for general used methods.
+    - [x] Create ZombieLandMain, DesktopLaunch files.
+    - [x] Create utils package, location package, Entity interface and Player class.
+    - **Responsible:** Nguyen.
+    - **Deadline:** 08/05/2022.
+    - **Date finished:** 05/05/2022.
+- Adding assets, recreate script:
+    - [x] Draw and commit push Player, projectile images.
+      - **Responsible:** Nghiep.
+    - [x] Write game script:
+      - **Responsible:** Duong.
+    - **Deadline:** 09/05/2022.
+    - **Date finished:** 08/05/2022.
+- Editing registration, adding features:
+  - [x] Rewrite, fix registration content on blackboard.
+    - **Responsible:** Duong.
+    - **Deadline:** 14/05/2022.
+  - [x] Add projectile mechanism.
+    - **Responsible:** Nguyen.
+  - **Date finished:** 10/05/2022.
+- Adding zombie class, test box, drawing zombie:
+  - [x] Add zombie class, zombie AI.
+  - [x] Add box interface, box physic.
+    - **Responsible:** Nguyen.
+  - [x] Draw and commit push Zombies.
+    - **Responsible:** Nghiep.
+  - [x] Comment interfaces.
+    - **Responsible:** Duong.
+  - **Date finished:** 12/05/2022.
+- Adding readme file, relocate readme file:
+  - [x] Rewrite the readme file, relocate branch.
+    - **Responsible:** Duong.
+    - **Date finished:** 16/05/2022.
+- Drawing background, health bar:
+  - [x] Draw and commit push health bar on Github.
+  - [x] Draw and commit push background on Github.
+    - **Responsible:** Nghiep.
+    - **Deadline:** 22/05/2022
+    - **Date finished:**
+- Adding audio:
+  - [x] Background audio
+  - [x] Effects audio
+    - **Responsible:** Duong.
+    - **Deadline:** 01/06/2022.
+- Updating readme:
+  - [x] Fix timeline.
+  - [x] Add Screenshots to readme.
+    - **Responsible:** Duong.
+    - **Deadline:** 03/06/2022
+- Presenting project:
+  - **Responsible:** All member.
+  - **Date:** 11/6/2022.
