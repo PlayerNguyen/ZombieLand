@@ -3,33 +3,36 @@
 Casual 2D-action game developed by Phour Team only available on PC.
 
 ##Table of Contents
-- [About](##About)
-- [Technologies](##Technologies)
-- [Feature](##Feature)
-- [Screenshot / Gameplay](##Screenshot/Gameplay)
-- [Setup](##Setup)
-- [Project Status](##Project-status)
-- [Acknowledgements](##Acknowledgements)
+* [About](#about)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Screenshot / Gameplay](#screenshot/Gameplay)
+* [Setup](#setup)
+* [Project Status](#project-status)
+* [Acknowledgements](#acknowledgements)
 
 
-##About
+## About
 
 ###General Information
 
--_Game name:_ **Zombieland**
+- _Game name:_ **Zombieland**
 
--_Category:_ **2D, Action, Shooting, Single player**
+- _Category:_ **2D, Action, Shooting, Single player**
 
--_Lore:_ Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could.
-
+- _Lore:_
+  ```
+  Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could.
+  ```
 ###Rule:
+```
 - Use your mouse to rotate Mr.Man in the direction as you wish. Click left mouse to shoot.
 - Zombies will get more crowded, stronger and closer to Mr.Man as you play. Kill them and keep Mr.Man safe.
-
+```
 ###Our Motivation:
-
+```
 Our main motivation by choosing this game is to hope that we could finalize our first project game and extends our knowledge while learning through trial and error coding. We claimed that Zombieland is not a rip-off of any other shooting game. Due to the lack of human resource and time we had, we tried our best to improvise the basic, easy-to-make-and-learn game. However, we still applied the game with our own features to make it challenging and entertaining, though keep it simple enough. Beside of that, this is a great chance for us to know how to team-work and lay the foundation for our future, regardless of any risks and circumstances, step by step from junior developer, grinding and become senior leadership someday. Moreover, Zombieland is a very popular phrase, a catchy name of a film and simple to understand what you will deal with while playing the game. Our final purpose is to let you play a fast-to-play-and-learn game, but still effectively funny and amused.
-
+```
 ###Us
 
 ####Team Leader:
@@ -39,7 +42,7 @@ Our main motivation by choosing this game is to hope that we could finalize our 
 - **Vo Trung Duong** - ITITIU20193
 - **Tran Tuan Nghiep** - ITITIU20259
 
-##Technologies
+## Technologies
 
 Project is created with:
 - Java language.
@@ -47,9 +50,11 @@ Project is created with:
 - [libGDX](https://libgdx.com/) version 1.10.0.
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) version 2021.3.3.
 
-##Features
+## Features
 
-##Screenshot/Gameplay
+###Todo:
+
+## Screenshot/Gameplay
 - **Assets:**
   ![Assets]()
 - __Background:__
@@ -59,9 +64,13 @@ Project is created with:
 
 Please [click here](https://drive.google.com/drive/folders/1hQIyvF_TvZX1Ip45ahoCsF6WobBCb5ii) for more picture and video about our game.
 
-##Setup
+## Setup
+To run this project, [IntelliJ IDE](https://www.jetbrains.com/idea/download/#section=windows) is required. Install the game from [here](https://github.com/PlayerNguyen/ZombieLand). 
 
-##Project Status
+### Launch
+After opening project, find and open package desktop. Access package src, open and run file DesktopLauncher.
+
+## Project Status 
 
 Project is **in progress**.
 
@@ -70,7 +79,7 @@ Project is **in progress**.
     - [x] Team name still be Phour team.
     - [x] Leader: Nguyen.
     - [x] Game name: Zombieland.
-    - [x] Recreate Github repository: https://github.com/PlayerNguyen/ZombieLand
+    - [x] Recreate [Github repository](https://github.com/PlayerNguyen/ZombieLand):
     - Class analyzed:
         - [x] Player-Shooting and Rotating method.
         - [x] Zombies approach center.
@@ -119,21 +128,34 @@ Project is **in progress**.
     - **Responsible:** Duong.
     - **Date finished:** 16/05/2022.
 - Drawing background, health bar:
-  - [x] Draw and commit push health bar on Github.
-  - [x] Draw and commit push background on Github.
+  - [ ] Draw and commit push health bar on Github.
+  - [ ] Draw and commit push background on Github.
     - **Responsible:** Nghiep.
     - **Deadline:** 22/05/2022
     - **Date finished:**
 - Adding audio:
-  - [x] Background audio
-  - [x] Effects audio
+  - [ ] Background audio
+  - [ ] Effects audio
     - **Responsible:** Duong.
     - **Deadline:** 01/06/2022.
 - Updating readme:
-  - [x] Fix timeline.
-  - [x] Add Screenshots to readme.
+  - [ ] Fix timeline.
+  - [ ] Add Screenshots to readme.
     - **Responsible:** Duong.
     - **Deadline:** 03/06/2022
+- Drawing UML, writing presentation script:
+  - [ ] Draw UML image using Lucidchart.
+    - **Deadline:** 07/06/2022
+  - [ ] Script for presentation.
+    - **Deadline:** 09/06/2022
+  - **Responsible:** Duong.
 - Presenting project:
   - **Responsible:** All member.
   - **Date:** 11/6/2022.
+
+##Acknowledgements
+- This project was inspired by **Shooter Heroes** from **Levent Yavuz Company**.
+- This readme file was based on [this tutorial](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project).
+- Many thanks to **Tom Huynh** for guiding us.
+
+  ![thankumeme](https://user-images.githubusercontent.com/99232451/163300884-74f400b5-63ac-4997-b138-8d822bf38fdb.jpg)
