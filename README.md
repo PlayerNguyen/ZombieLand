@@ -1,5 +1,12 @@
 #Zombieland
 
+
+![Issues](https://img.shields.io/github/issues/PlayerNguyen/ZombieLand?logo=Github)
+![Repo-size](https://img.shields.io/github/repo-size/PlayerNguyen/ZombieLand?logo=Github)
+![Contributor](https://img.shields.io/github/contributors/PlayerNguyen/ZombieLand?logo=Github)
+![Commit-activity](https://img.shields.io/github/commit-activity/w/PlayerNguyen/ZombieLand?logo=Github)
+![Licence](https://img.shields.io/badge/license-GPL--3.0-orange)
+
 Casual 2D-action game developed by Phour Team only available on PC.
 
 ##Table of Contents
@@ -9,7 +16,6 @@ Casual 2D-action game developed by Phour Team only available on PC.
 * [Setup](#setup)
 * [Project Status](#project-status)
 * [Acknowledgements](#acknowledgements)
-
 
 ## About
 
@@ -49,10 +55,10 @@ Our main motivation by choosing this game is to hope that we could finalize our 
 ## Technologies
 
 Project is created with:
-- ![Java language]().
-- [![Oracle JDK 17]()](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
-- [![libGDX]()](https://libgdx.com/) version 1.10.0.
-- [![IntelliJ IDEA]()](https://www.jetbrains.com/idea/download/#section=windows) version 2021.3.3.
+- ![java_24x24](https://user-images.githubusercontent.com/99407775/169029133-7f054149-020d-4853-91dd-942b9d4045c0.png) Java Language.
+- [Oracle JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
+- [libGDX](https://libgdx.com/) ![](https://img.shields.io/badge/version-1.10.0.-yellowgreen).
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) ![](https://img.shields.io/badge/version-2021.3.3-ff69b4).
 
 ## Features
 
@@ -72,12 +78,12 @@ Please [click here](https://drive.google.com/drive/folders/1hQIyvF_TvZX1Ip45ahoC
 To run this project, [IntelliJ IDE](https://www.jetbrains.com/idea/download/#section=windows) is required. Install the game from [here](https://github.com/PlayerNguyen/ZombieLand). 
 
 ### Launch
-After opening project, find and open package desktop. Access package src, open and run file DesktopLauncher.
+After opening project, find and open package `desktop`. Access package `src`, open and run file `DesktopLauncher`.
 
 ## Project Status 
 
-Project is [**in progress**](). 
-
+Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/TIMELINE.md).
+🤔
 
 ##Acknowledgements
 - This project was inspired by **Shooter Heroes** from **Levent Yavuz Company**.
@@ -85,6 +91,6 @@ Project is [**in progress**]().
   - [Rita Łyczywek's tutorial](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project).
   - [Hillary Nyakundi's tutorial](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
   - [Sana Ebadi's video](https://www.youtube.com/watch?v=vB_Z3JjkVwU)
-- Many thanks to **Tom Huynh** for guiding us.
+- Many thanks to **Tom Huynh** for guiding us.🤗
 
   ![thankumeme](https://user-images.githubusercontent.com/99232451/163300884-74f400b5-63ac-4997-b138-8d822bf38fdb.jpg)
