@@ -6,38 +6,45 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
-import com.mygdx.zombieland.utils.MathHelper;
-import com.mygdx.zombieland.utils.Pair;
-
-import java.util.Arrays;
-import java.util.List;
+import com.mygdx.zombieland.utils.VisualizeHelper;
 
 public class Zombie extends EnemyAbstract {
 
     public static final int ZOMBIE_SIZE = 64;
-    public static final float ZOMBIE_MOVEMENT_SPEED = 30f;
+//    public static final float ZOMBIE_MOVEMENT_SPEED = 30f; // Each type has different speed
     public static final long ZOMBIE_HIT_DURATION = 2000;
 
     private final World world;
     private final Entity target;
-    private ZombieType type;
+    private final ZombieType type;
+
     private Location destination;
     private float fraction = 1;
-    private float speed = ZOMBIE_MOVEMENT_SPEED; // Zombie movement speed
+    private float speed; // Zombie movement speed
 
     private long lastHit = 0;
 
     public Zombie(World world, Location startLocation, Entity target, ZombieType type) {
-        super(startLocation, new Vector2D(), null, null, 20F);
-
-
-        Texture texture = this.getType().getTexture();
-        this.setSprite(new Sprite(texture));
-        this.setTexture(texture);
+        super(startLocation, new Vector2D(), null, null, type.getHealth());
 
         this.world = world;
         this.destination = new Location(this.getLocation());
         this.target = target;
+        this.type = type;
+
+        // Set texture later
+        Texture texture = this.getType().getTexture();
+        this.setSprite(new Sprite(texture));
+        this.setTexture(texture);
+
+        // Set zombie speed
+        this.speed = this.type.getSpeed();
+
+        // Set angle
+        this.rotateToTarget();
+        // Set direction to the target
+        this.getDirection().x = Math.sin(this.getRotation());
+        this.getDirection().y = -Math.cos(this.getRotation());
     }
 
     @Override
@@ -71,6 +78,11 @@ public class Zombie extends EnemyAbstract {
         this.getSprite().setPosition(this.getLocation().x - 32, this.getLocation().y - 32);
         this.getSprite().draw(world.getBatch());
 
+        // Debug
+        if (this.getWorld().isDebug()) {
+            VisualizeHelper.simulateBox(this.getWorld(), this);
+            VisualizeHelper.simulateDirection(this.getWorld(), this);
+        }
     }
 
     private void rotateToTarget() {
@@ -100,6 +112,7 @@ public class Zombie extends EnemyAbstract {
     private void updateMove() {
         // Update rotation to target
         this.rotateToTarget();
+
         // Set direction to the target
         this.getDirection().x = Math.sin(this.getRotation());
         this.getDirection().y = -Math.cos(this.getRotation());
@@ -107,7 +120,7 @@ public class Zombie extends EnemyAbstract {
         // Update speed
         this.speed = this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2
                 ? 0
-                : ZOMBIE_MOVEMENT_SPEED;
+                : this.getType().getSpeed();
 
         // Hit player when get close
         if (this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2) {

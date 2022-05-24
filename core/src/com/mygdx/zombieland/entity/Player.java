@@ -71,6 +71,12 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
 
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
+
+
+        if (this.world.isDebug()) {
+            VisualizeHelper.simulateBox(this.getWorld(), this);
+            VisualizeHelper.simulateDirection(this.getWorld(), this);
+        }
     }
 
     private void updateUI() {

@@ -1,23 +1,27 @@
 package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.utils.MathHelper;
+import com.mygdx.zombieland.utils.VisualizeHelper;
 
 public class BulletProjectile implements Projectile, DamageSource {
 
-    private static final float BULLET_VELOCITY = 40f;
+    private static final float BULLET_VELOCITY = 40.f;
     // Max distances that bullet can fly
     private static final double BULLET_MAXIMUM_DISTANCE = 1999;
     // Bullet eccentricity
     private static final double BULLET_ECCENTRICITY = .01f;
     private static final float BULLET_DAMAGE = 10;
     private static final float BULLET_DEFAULT_KNOCKBACK = 10;
-    private static final float BULLET_SIZE = 32;
+    private static final float BULLET_SIZE = 16;
+    private static final String BULLET_TEXTURE_NAME = "projectile.png";
 
     private final Texture texture;
     private final Sprite sprite;
@@ -37,8 +41,8 @@ public class BulletProjectile implements Projectile, DamageSource {
         this.source = source;
         this.world = world;
         this.direction = new Vector2D(source.getDirection());
-        this.location = new Location(source.getCenterLocation());
-        this.texture = new Texture(Gdx.files.internal("projectile.png"));
+        this.location = new Location(source.getLocation());
+        this.texture = new Texture(Gdx.files.internal(BULLET_TEXTURE_NAME));
         this.sprite = new Sprite(texture);
         this.sourceLocation = source.getLocation();
 
@@ -51,8 +55,9 @@ public class BulletProjectile implements Projectile, DamageSource {
 
     @Override
     public void create() {
-        this.sprite.setSize(BULLET_SIZE, BULLET_SIZE);
-        this.sprite.setOrigin(BULLET_SIZE, BULLET_SIZE);
+        this.sprite.setSize(8, 5);
+        this.sprite.setOrigin(4, 2.5f);
+        this.sprite.scale(3);
         this.setRotation(source.getAngle());
 
         Gdx.app.log("Projectile", "Generated projectile @" + System.identityHashCode(this));
@@ -60,27 +65,13 @@ public class BulletProjectile implements Projectile, DamageSource {
 
     @Override
     public void render() {
+
         // Remove the projectile if is out of distance
-        if (this.sourceLocation.distance(this.location) > BULLET_MAXIMUM_DISTANCE || isHit() ) {
+        if (this.sourceLocation.distance(this.location) > BULLET_MAXIMUM_DISTANCE || isHit()) {
             if (world.removeProjectile(this)) {
                 Gdx.app.log("Projectile", "Removed projectile @" + System.identityHashCode(this));
             }
             return;
-        }
-
-        // Check collision
-        for (final Entity entity : world.getEntities()) {
-            Location entityLocation = new Location(entity.getLocation());
-            if (entityLocation.add(-32).distance(this.location) <= 32) {
-
-                Gdx.app.log("Triggered", "Hit to entity ...");
-                // Set triggered
-                setIsHit(true);
-                // Damage things
-                if (entity instanceof Damageable) {
-                    ((Damageable) entity).damage(this, BULLET_DAMAGE);
-                }
-            }
         }
 
         this.sprite.setRotation(this.rotation);
@@ -93,8 +84,36 @@ public class BulletProjectile implements Projectile, DamageSource {
         this.location.y = (float) (this.location.y + (this.direction.y * BULLET_VELOCITY));
 
         // From gun, not from aim
-        if (this.sourceLocation.distance(this.location) > 80) {
+        if (this.sourceLocation.distance(this.location) >
+                this.getWorld().getPlayer().getSize() - 16) {
             this.sprite.draw(this.world.getBatch());
+        }
+
+        // Check collision
+        for (final Entity entity : world.getEntities()) {
+            Location entityLocation = new Location(entity.getLocation());
+            // Visual trace to entity
+            if (this.getWorld().isDebug()) {
+                VisualizeHelper.simulateLine(this.getWorld(), entityLocation, this.location, Color.BLUE);
+            }
+
+            // Hit the entity
+            if (entityLocation.distance(this.location) <= (float) entity.getSize() / 3) {
+
+                Gdx.app.log("Triggered", "Hit to entity ...");
+                // Set triggered
+                setIsHit(true);
+                // Damage things
+                if (entity instanceof Damageable) {
+                    ((Damageable) entity).damage(this, BULLET_DAMAGE);
+                }
+            }
+        }
+
+        // For debug, draw box and line
+        if (this.getWorld().isDebug()) {
+            VisualizeHelper.simulateDirection(this.getWorld(), this);
+            VisualizeHelper.simulateBox(this.getWorld(), this);
         }
 
     }

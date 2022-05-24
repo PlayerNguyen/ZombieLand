@@ -23,14 +23,16 @@ public class TextIndicator implements Effect, Renderable {
         private final String text;
         private float fraction = 0;
         private float speed = 3F;
+        private final Color color;
 
-        public TextItem(Location location, Vector2D offset, long duration, String text, float speed) {
+        public TextItem(Location location, Vector2D offset, long duration, String text, float speed, Color color) {
             this.location = location;
             this.destination = new Location(this.location).add(offset);
             this.duration = duration;
             this.created = System.currentTimeMillis();
             this.text = text;
             this.speed = speed;
+            this.color = color;
         }
 
         public Location getLocation() {
@@ -52,14 +54,21 @@ public class TextIndicator implements Effect, Renderable {
         public float getSpeed() {
             return speed;
         }
+
+        public Color getColor() {
+            return color;
+        }
     }
 
     public List<TextItem> getItems() {
         return items;
     }
 
+    public void createText(Location location, Vector2D offset, String text, long duration, float speed, Color color) {
+        this.items.add(new TextItem(location, offset, duration, text, speed, color));
+    }
     public void createText(Location location, Vector2D offset, String text, long duration, float speed) {
-        this.items.add(new TextItem(location, offset, duration, text, speed));
+        this.items.add(new TextItem(location, offset, duration, text, speed, Color.RED));
     }
 
     public TextIndicator(World world) {
@@ -80,7 +89,10 @@ public class TextIndicator implements Effect, Renderable {
                     textItem.location.x += (textItem.destination.x - textItem.location.x) * textItem.fraction;
                     textItem.location.y += (textItem.destination.y - textItem.location.y) * textItem.fraction;
                 }
-                this.world.getFont().setColor(new Color(1, .1f,0,.6f));
+                this.world.getFont().setColor((textItem.color == null)
+                        ? new Color(1, .1f,0,.6f)
+                        : textItem.color);
+
                 this.world.getFont().draw(this.world.getBatch(),
                         textItem.text,
                         textItem.location.x,

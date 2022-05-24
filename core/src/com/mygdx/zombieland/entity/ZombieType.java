@@ -5,19 +5,21 @@ import com.badlogic.gdx.graphics.Texture;
 
 public enum ZombieType {
 
-    ZOMBIE(2.3F, 3F, "zombie1"),
-    DOCTOR_ZOMBIE(3.5F, 3F, "zombie2"),
-    MUTANT_ZOMBIE(7.2F, 1F, "zombie3"),
-    STARVE_ZOMBIE(2.0F, 1F, "zombie4");
+    ZOMBIE(2.3F, 5F, 23.5999F, "zombie1"),
+    DOCTOR_ZOMBIE(3.5F, 3F, 30F, "zombie2"),
+    MUTANT_ZOMBIE(7.2F, 1F, 50F, "zombie3"),
+    STARVE_ZOMBIE(2.0F, 7F, 15F, "zombie4");
 
     private final float damage;
     private final float speed;
+    private final float health;
     private final String spriteName;
     private final Texture texture;
     private final Texture attackTexture;
 
-    ZombieType(float damage, float speed, String spriteName) {
+    ZombieType(float damage, float speed, float health, String spriteName) {
         this.damage = damage;
+        this.health = health;
         this.speed = speed;
         this.spriteName = spriteName;
         this.texture = new Texture(Gdx.files.internal(this.spriteName + ".png"));
@@ -30,6 +32,10 @@ public enum ZombieType {
 
     public Texture getTexture() {
         return texture;
+    }
+
+    public float getHealth() {
+        return health;
     }
 
     public float getDamage() {

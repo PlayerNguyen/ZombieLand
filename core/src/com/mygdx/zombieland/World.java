@@ -1,6 +1,8 @@
 package com.mygdx.zombieland;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -31,10 +33,11 @@ public class World implements Renderable {
     public BitmapFont font;
     private Player player;
     private final OrthographicCamera camera;
-//    private ShapeRenderer shapeRenderer;
+    private final ShapeRenderer shapeRenderer;
     private Texture background;
     private GameState gameState;
-
+    private boolean debug;
+    private long lastDebugSet;
 
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
@@ -47,14 +50,14 @@ public class World implements Renderable {
         this.batch = batch;
         this.scheduler = new Scheduler();
 
-        this.font = new BitmapFont(Gdx.files.internal("fonts/*.fnt"),
-                new TextureRegion(new Texture(Gdx.files.internal("fonts/*.png"))));
+        this.font = new BitmapFont(Gdx.files.internal("fonts/default.fnt"),
+                new TextureRegion(new Texture(Gdx.files.internal("fonts/default.png"))));
         this.textIndicator = new TextIndicator(this);
         this.camera = new OrthographicCamera(800, 600);
-//        this.shapeRenderer = new ShapeRenderer();
+        this.shapeRenderer = new ShapeRenderer();
         this.gameState = GameState.PLAYING;
         this.hud = new HUD(this);
-//        this.spawner = new Spawner(this);
+        this.debug = true;
     }
 
     @Override
@@ -103,6 +106,19 @@ public class World implements Renderable {
         // Update background
         this.updateBackground();
 
+        // Debug shortcut
+        if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
+            if (System.currentTimeMillis() - 300 >= lastDebugSet) {
+                this.getTextIndicator().createText(new Location(this.getPlayer().getLocation()).add(-64, 64),
+                        new Vector2D(0, 3F),
+                        String.format("Debug is %s", (!isDebug() ? "on" : "off")),
+                        1000,
+                        .003F, (!isDebug() ? Color.GREEN : Color.RED));
+                this.setDebug(!this.isDebug());
+                lastDebugSet = System.currentTimeMillis();
+            }
+        }
+
         // Render HUD
         switch (this.gameState) {
             case STARTING: {
@@ -141,7 +157,7 @@ public class World implements Renderable {
                 break;
             }
             case ENDING: {
-                 break;
+                break;
             }
             default: {
                 throw new UnsupportedOperationException();
@@ -225,5 +241,17 @@ public class World implements Renderable {
 
     public void pausingRender() {
 
+    }
+
+    public ShapeRenderer getShapeRenderer() {
+        return shapeRenderer;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
     }
 }

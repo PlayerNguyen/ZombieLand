@@ -36,7 +36,7 @@ public class Spawner {
         if (System.currentTimeMillis() - this.duration >= this.lastSpawn) {
             Location spawnLocation = new Location(this.location.x + (float) MathHelper.nextDouble(-offset, offset),
                     this.location.y + (float) MathHelper.nextDouble(-offset, offset));
-            ZombieType type = ZombieType.values()[(int) (Math.random() * ZombieType.values().length)];
+            ZombieType type = ZombieType.values()[(int) (Math.random() * (ZombieType.values().length))];
             // Spawn here
             Entity zombie = this.world.createEntity(
                     new Zombie(
