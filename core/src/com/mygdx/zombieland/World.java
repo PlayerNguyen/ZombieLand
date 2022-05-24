@@ -2,6 +2,7 @@ package com.mygdx.zombieland;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -20,12 +21,14 @@ public class World implements Renderable {
 
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
+    private static final String BACKGROUND_TEXTURE = "background.png";
 
     public SpriteBatch batch;
     public BitmapFont font;
     private Player player;
     private final OrthographicCamera camera;
     private ShapeRenderer shapeRenderer;
+    private Texture background;
 
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
@@ -46,6 +49,7 @@ public class World implements Renderable {
     @Override
     public void create() {
         // Load assets and materials
+        this.loadBackground();
 
         // Load player and inject world into player
         this.player = new Player(this);
@@ -82,6 +86,9 @@ public class World implements Renderable {
         this.batch.setProjectionMatrix(this.camera.combined);
         this.camera.position.x = (float) 800 / 2;
         this.camera.position.y = (float) 600 / 2;
+
+        // Update background
+        this.updateBackground();
 
         // Render player
         this.player.render();
@@ -174,5 +181,13 @@ public class World implements Renderable {
 
     public TextIndicator getTextIndicator() {
         return textIndicator;
+    }
+
+    public void loadBackground() {
+        this.background = new Texture(Gdx.files.internal(BACKGROUND_TEXTURE));
+    }
+
+    public void updateBackground() {
+        this.batch.draw(this.background, 0, 0);
     }
 }
