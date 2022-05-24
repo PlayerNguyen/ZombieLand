@@ -43,7 +43,7 @@ public class Player implements ProjectableEntity, LivingEntity {
     public void create() {
 
         this.sprite = new Sprite(texture);
-        this.sprite.setSize(64, 64);
+        this.sprite.setSize(PLAYER_SIZE, PLAYER_SIZE);
 
         this.sprite.setOrigin(this.sprite.getWidth() / 2, this.sprite.getHeight() / 2);
         this.location.set(this.world.getCenterLocation(32));
@@ -66,8 +66,8 @@ public class Player implements ProjectableEntity, LivingEntity {
         // Draw UI
         this.updateUI();
         this.
-        // Draw/Render the player
-        sprite.setX(this.getCenterLocation().x);
+                // Draw/Render the player
+                        sprite.setX(this.getCenterLocation().x);
         sprite.setY(this.getCenterLocation().y);
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
@@ -102,7 +102,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     /**
      * Rotate the player direction using mouse movement.
-     *
+     * <p>
      * Method setRotation from radiant to degrees.
      * The direction is set by radRotation.
      */
@@ -205,7 +205,6 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public Location getCenterLocation() {
-        return new Location(this.getLocation().x
-                , this.getLocation().y );
+        return new Location(this.getLocation().x, this.getLocation().y);
     }
 }
