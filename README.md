@@ -46,11 +46,11 @@ Our main motivation by choosing this game is to hope that we could finalize our 
 #### Team Leader: 
 - **Nguyen Huynh Nguyen** - ITITIU20261
 
-| No  | Name                    | ID          | Main Contributes                                        | Contacts                                                                                      |
-|-----|-------------------------|-------------|---------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| 1   | **Nguyen Huynh Nguyen** | ITITIU20261 | Team Leader, Game Developer, Github repository host.    | [Github](https://github.com/PlayerNguyen) [Facebook](https://www.facebook.com/Okura.Nguyen)   |
-| 2   | **Tran Tuan Nghiep**    | ITITIU20259 | Game artist, Idea contributor, Quality check.           | [Github](https://github.com/TuanNghiep) [Facebook](https://www.facebook.com/nghiep.tuan.58)   |
-| 3   | **Vo Trung Duong**      | ITITIU20193 | Game designer, Script Writer, Thoughts & Ideas Gatherer | [Github](https://github.com/Callmeserpent) [Facebook](https://www.facebook.com/callmeserpent) |
+| No  | Name                    | ID          | Main Contributes                                                                      | Contacts                                                                                      |
+|-----|-------------------------|-------------|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| 1   | **Nguyen Huynh Nguyen** | ITITIU20261 | Game designer, Game Developer, Github repository host, Tasks distributor.             | [Github](https://github.com/PlayerNguyen) [Facebook](https://www.facebook.com/Okura.Nguyen)   |
+| 2   | **Tran Tuan Nghiep**    | ITITIU20259 | Game artist, Idea contributor, Quality Checker, Tasks scheduler.                      | [Github](https://github.com/TuanNghiep) [Facebook](https://www.facebook.com/nghiep.tuan.58)   |
+| 3   | **Vo Trung Duong**      | ITITIU20193 | Script Writer, Thoughts & Ideas Gatherer, Game Sounds & Music composer, Tasks Tracker | [Github](https://github.com/Callmeserpent) [Facebook](https://www.facebook.com/callmeserpent) |
 
 ## Technologies
 
