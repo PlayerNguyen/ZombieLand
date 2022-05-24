@@ -12,13 +12,13 @@ import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.utils.VisualizeHelper;
 
-public class Player implements ProjectableEntity, LivingEntity {
+public class Player extends DamageableAbstract implements ProjectableEntity, LivingEntity {
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
 
-    public static final int PLAYER_SIZE = 64;
+    public static final int PLAYER_SIZE = 96;
 
     private final Location location;
     private final Vector2D direction;
@@ -27,6 +27,7 @@ public class Player implements ProjectableEntity, LivingEntity {
     private Sprite sprite;
     private boolean canShoot;
 
+    private float ammo;
     private float health = 100;
     private float rotation = 0;
     private final BitmapFont fontDrawer = new BitmapFont();
@@ -45,39 +46,38 @@ public class Player implements ProjectableEntity, LivingEntity {
         this.sprite = new Sprite(texture);
         this.sprite.setSize(PLAYER_SIZE, PLAYER_SIZE);
 
-        this.sprite.setOrigin(this.sprite.getWidth() / 2, this.sprite.getHeight() / 2);
-        this.location.set(this.world.getCenterLocation(32));
+        this.sprite.setOrigin((float) this.getSize() / 2, (float) this.getSize() / 2);
+        this.location.set(this.world.getCenterLocation(0));
 
         this.rotateFollowsCursor();
     }
 
     @Override
     public void render() {
-
+        // Make the player rotate follows cursor
         this.rotateFollowsCursor();
 
         // Shoot function
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)
-                || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)
-        ) {
-            shoot();
+                || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+            this.shoot();
         }
 
         // Draw UI
         this.updateUI();
-        this.
-                // Draw/Render the player
-                        sprite.setX(this.getCenterLocation().x);
-        sprite.setY(this.getCenterLocation().y);
+        // Draw/Render the player
+        this.sprite.setX(this.getCenterLocation().x);
+        this.sprite.setY(this.getCenterLocation().y);
+
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
     }
 
     private void updateUI() {
         // Top-left
-        this.fontDrawer.setColor(Color.VIOLET);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600 - 32);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600 - (32 * 2));
+//        this.fontDrawer.setColor(Color.VIOLET);
+//        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600 - 32);
+//        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600 - (32 * 2));
     }
 
     @Override
@@ -165,7 +165,27 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public void damage(DamageSource source, float amount) {
-        this.health -= amount;
+        this.setHealth(this.getHealth() - amount);
+
+        this.getSprite().setColor(Color.RED);
+        this.getWorld().getScheduler().runTaskAfter(new Runnable() {
+            @Override
+            public void run() {
+                // Reset color
+                getSprite().setColor(Color.WHITE);
+
+                // Remove if entity is out of health
+                if (getHealth() <= 0) kill();
+            }
+        }, 300);
+
+        Location indicatorTextLocation = new Location(this.getLocation());
+        this.getWorld().getTextIndicator().createText(indicatorTextLocation,
+                new Vector2D(0, 16F),
+                String.format("%.0f", amount),
+                1000,
+                .3F
+        );
     }
 
     @Override
@@ -181,6 +201,7 @@ public class Player implements ProjectableEntity, LivingEntity {
     @Override
     public void kill() {
         // TODO: end game
+        Gdx.app.log("Player", "Killing the player and trigger end the game");
     }
 
     @Override
@@ -205,6 +226,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public Location getCenterLocation() {
-        return new Location(this.getLocation().x, this.getLocation().y);
+//        return new Location(this.getLocation().x, this.getLocation().y);
+        return super.getCenterLocation();
     }
 }

@@ -5,13 +5,17 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
+import com.mygdx.zombieland.hud.HUD;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
+import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.MathHelper;
 
 import java.util.Set;
@@ -27,22 +31,29 @@ public class World implements Renderable {
     public BitmapFont font;
     private Player player;
     private final OrthographicCamera camera;
-    private ShapeRenderer shapeRenderer;
+//    private ShapeRenderer shapeRenderer;
     private Texture background;
+    private GameState gameState;
+
 
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
+    private final Set<Spawner> spawners = new CopyOnWriteArraySet<>();
     private final Scheduler scheduler;
     private final TextIndicator textIndicator;
+    private final HUD hud;
 
     public World(SpriteBatch batch) {
         this.batch = batch;
         this.scheduler = new Scheduler();
 
-        this.font = new BitmapFont();
+        this.font = new BitmapFont(Gdx.files.internal("fonts/*.fnt"),
+                new TextureRegion(new Texture(Gdx.files.internal("fonts/*.png"))));
         this.textIndicator = new TextIndicator(this);
         this.camera = new OrthographicCamera(800, 600);
-        this.shapeRenderer = new ShapeRenderer();
+//        this.shapeRenderer = new ShapeRenderer();
+        this.gameState = GameState.PLAYING;
+        this.hud = new HUD(this);
 //        this.spawner = new Spawner(this);
     }
 
@@ -59,15 +70,7 @@ public class World implements Renderable {
         for (Entity entity : entities) {
             entity.create();
         }
-//
-//        for (int i = 0; i < 20; i++) {
-//            createEntity(new Box(new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
-//                    this));
-//        }
-//
-//        for (int i = 0; i < 100; i++) {
-//            createEntity(new Zombie(this, new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)), this.player));
-//        }
+
 
         // Load projectiles
         for (Entity projectile : this.projectiles) {
@@ -75,7 +78,17 @@ public class World implements Renderable {
         }
 
         // Load spawners
-
+        this.spawners.add(new Spawner(this,
+                new Location(-30, 300), 50f, 5000));
+        this.spawners.add(new Spawner(this,
+                new Location(400, 630), 50f, 5000));
+        this.spawners.add(new Spawner(this,
+                new Location(830, 300), 50f, 5000));
+        this.spawners.add(new Spawner(this,
+                new Location(400, -30), 50f, 5000));
+        for (Spawner spawner : this.spawners) {
+            spawner.create();
+        }
     }
 
     @Override
@@ -90,35 +103,50 @@ public class World implements Renderable {
         // Update background
         this.updateBackground();
 
-        // Render player
-        this.player.render();
+        // Render HUD
+        switch (this.gameState) {
+            case STARTING: {
+                Gdx.app.log("Game status", "Starting status");
+//                font.getData().setScale(0.6f);
+//                this.font.draw(this.batch, "Press any key to start", 350, 400, 200, Align.center, true);
+                break;
+            }
+            case PAUSING: {
+                break;
+            }
+            case PLAYING: {
 
-        // Render all projectiles
-        for (Entity projectile : this.projectiles) {
-            projectile.render();
+                // Render player
+                this.player.render();
+
+                // Render all projectiles
+                for (Entity projectile : this.projectiles) {
+                    projectile.render();
+                }
+
+                // Render all entities
+                for (Entity entity : entities) {
+                    entity.render();
+                }
+
+                // Text indicator render
+                this.getTextIndicator().render();
+
+                // Spawner
+                for (Spawner spawner : spawners) {
+                    spawner.update();
+                }
+
+                this.hud.render();
+                break;
+            }
+            case ENDING: {
+                 break;
+            }
+            default: {
+                throw new UnsupportedOperationException();
+            }
         }
-
-        // Render all entities
-        for (Entity entity : entities) {
-            entity.render();
-        }
-
-        // Text indicator render
-        this.getTextIndicator().render();
-
-        // Spawner
-
-
-//        shapeRenderer.setProjectionMatrix(this.camera.combined);
-//
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        shapeRenderer.setColor(0, 0, 0, 1);
-//        for (int i = 0; i <800; i+=32) {
-//            for (int j = 0; j < 600; j+=32) {
-//                shapeRenderer.rect(i, j, 32, 32);
-//            }
-//        }
-//        shapeRenderer.end();
     }
 
     @Override
@@ -189,5 +217,13 @@ public class World implements Renderable {
 
     public void updateBackground() {
         this.batch.draw(this.background, 0, 0);
+    }
+
+    public void playingRender() {
+
+    }
+
+    public void pausingRender() {
+
     }
 }

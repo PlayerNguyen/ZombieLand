@@ -11,8 +11,8 @@ public abstract class EnemyAbstract extends DamageableAbstract implements Living
     private float health;
     private final Location location;
     private final Vector2D direction;
-    private final Sprite sprite;
-    private final Texture texture;
+    private Sprite sprite;
+    private Texture texture;
 
     private float rotation;
 
@@ -73,5 +73,13 @@ public abstract class EnemyAbstract extends DamageableAbstract implements Living
     @Override
     public float getRotation() {
         return rotation;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
     }
 }
