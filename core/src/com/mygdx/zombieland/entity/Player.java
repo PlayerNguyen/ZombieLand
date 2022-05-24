@@ -67,8 +67,8 @@ public class Player implements ProjectableEntity, LivingEntity {
         this.updateUI();
 
         // Draw/Render the player
-        sprite.setX(this.location.x);
-        sprite.setY(this.location.y);
+        sprite.setX(this.getCenterLocation().x);
+        sprite.setY(this.getCenterLocation().y);
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
     }
@@ -191,7 +191,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public Location getCenterLocation() {
-        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
-                , this.getLocation().y - ((float) this.getSize() / 2));
+        return new Location(this.getLocation().x
+                , this.getLocation().y );
     }
 }

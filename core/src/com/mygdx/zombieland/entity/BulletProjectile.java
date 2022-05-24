@@ -37,7 +37,7 @@ public class BulletProjectile implements Projectile, DamageSource {
         this.source = source;
         this.world = world;
         this.direction = new Vector2D(source.getDirection());
-        this.location = new Location(source.getLocation());
+        this.location = new Location(source.getCenterLocation());
         this.texture = new Texture(Gdx.files.internal("projectile.png"));
         this.sprite = new Sprite(texture);
         this.sourceLocation = source.getLocation();
