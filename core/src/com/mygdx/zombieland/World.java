@@ -9,6 +9,7 @@ import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.runnable.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
 import com.mygdx.zombieland.utils.MathHelper;
 
@@ -34,10 +35,12 @@ public class World implements Renderable {
     public World(SpriteBatch batch) {
         this.batch = batch;
         this.scheduler = new Scheduler();
+
         this.font = new BitmapFont();
         this.textIndicator = new TextIndicator(this);
         this.camera = new OrthographicCamera(800, 600);
         this.shapeRenderer = new ShapeRenderer();
+//        this.spawner = new Spawner(this);
     }
 
     @Override
@@ -52,18 +55,23 @@ public class World implements Renderable {
         for (Entity entity : entities) {
             entity.create();
         }
-
-        for (int i = 0; i < 20; i++) {
-            createEntity(new Box(new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
-                    this));
-        }
-
-        createEntity(new Zombie(this, new Location(15, 15), this.player));
+//
+//        for (int i = 0; i < 20; i++) {
+//            createEntity(new Box(new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)),
+//                    this));
+//        }
+//
+//        for (int i = 0; i < 100; i++) {
+//            createEntity(new Zombie(this, new Location((float) MathHelper.nextDouble(10, 800), (float) MathHelper.nextDouble(10, 600)), this.player));
+//        }
 
         // Load projectiles
         for (Entity projectile : this.projectiles) {
             projectile.create();
         }
+
+        // Load spawners
+
     }
 
     @Override
@@ -91,8 +99,11 @@ public class World implements Renderable {
         // Text indicator render
         this.getTextIndicator().render();
 
-//        shapeRenderer.setProjectionMatrix(this.camera.combined);
+        // Spawner
 
+
+//        shapeRenderer.setProjectionMatrix(this.camera.combined);
+//
 //        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 //        shapeRenderer.setColor(0, 0, 0, 1);
 //        for (int i = 0; i <800; i+=32) {

@@ -9,8 +9,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ZombieLandMain extends ApplicationAdapter {
 
-    SpriteBatch batch;
-    World world;
+    private SpriteBatch batch;
+    private World world;
 
     @Override
     public void create() {

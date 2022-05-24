@@ -16,7 +16,7 @@ public class Zombie extends EnemyAbstract {
     private final Entity target;
     private Location destination;
     private float fraction = 1;
-    private float speed = 20f; // Zombie movement speed
+    private float speed = 10f; // Zombie movement speed
 
     public Zombie(World world, Location startLocation, Entity target) {
         super(startLocation, new Vector2D(), new Sprite(ZOMBIE_TEXTURE), ZOMBIE_TEXTURE, 20F);
