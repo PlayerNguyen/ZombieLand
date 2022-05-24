@@ -9,14 +9,14 @@ import com.mygdx.zombieland.location.Vector2D;
 
 public class Zombie extends EnemyAbstract {
 
-    private static final Texture ZOMBIE_TEXTURE = new Texture(Gdx.files.internal("idle.png"));
+    private static final Texture ZOMBIE_TEXTURE = new Texture(Gdx.files.internal("zombie1.png"));
     public static final int ZOMBIE_SIZE = 64;
 
     private final World world;
     private final Entity target;
     private Location destination;
     private float fraction = 1;
-    private float speed = 12f; // Zombie movement speed
+    private float speed = 20f; // Zombie movement speed
 
     public Zombie(World world, Location startLocation, Entity target) {
         super(startLocation, new Vector2D(), new Sprite(ZOMBIE_TEXTURE), ZOMBIE_TEXTURE, 20F);
