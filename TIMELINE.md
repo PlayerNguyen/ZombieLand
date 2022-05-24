@@ -1,4 +1,20 @@
-#Timelines
+# 📅Timelines📅
+
+---
+## 📑Description:
+
+### Contributes:
+ - Nguyen Huynh Nguyen - Game Developer.
+ - Tran Tuan Nghiep - Game Artist.
+ - Vo Trung Duong - Game Designer.
+
+### Tasks distributor: 
+- Nguyen Huynh Nguyen.
+### Date started: 
+ - Wed 27/04/2022 
+### Date present:
+ - Sat 11/06/2022
+---
 - Rename team, retask members, setting the task board on Github, suggest new game idea, vote and roughly analyze what should be maintained in the new game.
     - [x] Team name still be `Phour Team`.
     - [x] Leader: `Nguyen`.
@@ -57,8 +73,8 @@
     - **Responsible:** `Duong`.
     - **Date finished:** 18/05/2022.
 - Drawing background, health bar:
-    - [ ] Draw and commit push `health bar` on Github.
-    - [ ] Draw and commit push `background` on Github.
+    - [x] Draw and commit push `health bar` on Github.
+    - [x] Draw and commit push `background` on Github.
         - **Responsible:** `Nghiep`.
         - **Deadline:** 22/05/2022
         - **Date finished:**
