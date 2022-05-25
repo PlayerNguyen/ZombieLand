@@ -13,7 +13,7 @@ Casual 2D-action game developed by Phour Team only available on PC.
 
 ---
 
-## 📋Table of Contents
+## 📋 Table of Contents
 * [About](#about)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -43,7 +43,7 @@ _Our main character is Mr.Man, after a long day's work, he had slept on his work
 ![Zombieland meme](https://user-images.githubusercontent.com/99407775/169956417-39f9e4bf-89b7-4cb3-ba6f-66bb85fd49b3.jpg)
 
 
-### 👨‍👦‍👦Us
+### 👨‍👦‍👦 Us
 
 #### Team Name: 
  - **Phour Team**
