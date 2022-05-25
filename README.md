@@ -13,7 +13,7 @@ Casual 2D-action game developed by Phour Team only available on PC.
 
 ---
 
-## 📋 Table of Contents
+# 📋 Table of Contents
 * [About](#about)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -23,22 +23,23 @@ Casual 2D-action game developed by Phour Team only available on PC.
 
 ---
 
-## About
+# About
 
-### 📌 General Information
+## 📌 General Information
 
-- _Game name:_ **Zombieland**
+- __Game name:__ **ZombieLand**
 
-- _Category:_ **2D, Action, Shooting, Single player**
+- __Category:__ **2D, Action, Shooting, Single player**
 
-- _Lore:_
-_Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could._
-### 🎮 Rule:
+- __Lore:__ _Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could._
+
+## 🎮 Rule
 - Use your mouse to rotate Mr.Man in the direction as you wish. Click left mouse to shoot.
 - Zombies will get more crowded, stronger and closer to Mr.Man as you play. Kill them and keep Mr.Man safe.
-### 🏆 Our Motivation:
+- 
+## 🏆 Our Motivation
 
-*Our main motivation by choosing this game is to hope that we could finalize our first project game and extends our knowledge while learning through trial and error coding. We claimed that Zombieland is not a rip-off of any other shooting game. Due to the lack of human resource and time we had, we tried our best to improvise the basic, easy-to-make-and-learn game. However, we still applied the game with our own features to make it challenging and entertaining, though keep it simple enough. Beside of that, this is a great chance for us to know how to team-work and lay the foundation for our future, regardless of any risks and circumstances, step by step from junior developer, grinding and become senior leadership someday. Moreover, Zombieland is a very popular phrase, a catchy name of a funny film about zombie apocalypse simple, so that you can infer a joyful asmosphere and easily understand what you will deal with while playing the game. Our final purpose is to let you play a fast-to-play-and-learn game, but still effectively funny and amused.*
+  Our main motivation by choosing this game is to hope that we could finalize our first project game and extends our knowledge while learning through trial and error coding. We claimed that Zombieland is not a rip-off of any other shooting game. Due to the lack of human resource and time we had, we tried our best to improvise the basic, easy-to-make-and-learn game. However, we still applied the game with our own features to make it challenging and entertaining, though keep it simple enough. Beside of that, this is a great chance for us to know how to team-work and lay the foundation for our future, regardless of any risks and circumstances, step by step from junior developer, grinding and become senior leadership someday. Moreover, Zombieland is a very popular phrase, a catchy name of a funny film about zombie apocalypse simple, so that you can infer a joyful asmosphere and easily understand what you will deal with while playing the game. Our final purpose is to let you play a fast-to-play-and-learn game, but still effectively funny and amused._
 
 ![Zombieland meme](https://user-images.githubusercontent.com/99407775/169956417-39f9e4bf-89b7-4cb3-ba6f-66bb85fd49b3.jpg)
 
@@ -98,10 +99,13 @@ Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme
 Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/TIMELINE.md).
 🤔
 
-###Challenging
-```
-Our team used to have 4 members, as well as we had planned to make a game based on slither.io. We started very early. However, in the middle of our schedule, due to accident we now only have 3 members - which means we are lacking human resource. Finally, we chose to make a new project, with new ideas and features that conclude an easily makeable game.
-```
+### Challenging
+Our team used to have 4 members, as well as we had planned to 
+make a game based on **Slither.io**. We started very early. However, 
+in the middle of our schedule, due to accident we now only have 3 members - 
+which means we are lacking human resource. Finally, we chose to make a new 
+project, with new ideas and features that conclude an easily make-able game.
+
 ---
 
 ## Acknowledgements
