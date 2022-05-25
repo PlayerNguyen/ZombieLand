@@ -4,15 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
+import com.mygdx.zombieland.entity.projectile.ProjectileSource;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.utils.VisualizeHelper;
+import com.mygdx.zombieland.weapon.Gun;
+import com.mygdx.zombieland.weapon.Pistol;
+import com.mygdx.zombieland.weapon.PistolType;
+import com.mygdx.zombieland.weapon.Weapon;
 
-public class Player extends DamageableAbstract implements ProjectableEntity, LivingEntity {
+public class Player extends DamageableAbstract implements ProjectileSource, LivingEntity {
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
@@ -27,10 +31,9 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
     private Sprite sprite;
     private boolean canShoot;
 
-    private float ammo;
     private float health = 100;
     private float rotation = 0;
-    private final BitmapFont fontDrawer = new BitmapFont();
+    private Weapon weapon;
 
     public Player(World world) {
         this.world = world;
@@ -38,6 +41,7 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
         this.direction = new Vector2D(0, 0);
         this.texture = TEXTURE_IDLING;
         this.canShoot = true;
+        this.weapon = new Pistol(PistolType.PISTOL);
     }
 
     @Override
@@ -63,8 +67,6 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
             this.shoot();
         }
 
-        // Draw UI
-        this.updateUI();
         // Draw/Render the player
         this.sprite.setX(this.getCenterLocation().x);
         this.sprite.setY(this.getCenterLocation().y);
@@ -72,19 +74,12 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
 
-
         if (this.world.isDebug()) {
             VisualizeHelper.simulateBox(this.getWorld(), this);
             VisualizeHelper.simulateDirection(this.getWorld(), this);
         }
     }
 
-    private void updateUI() {
-        // Top-left
-//        this.fontDrawer.setColor(Color.VIOLET);
-//        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600 - 32);
-//        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600 - (32 * 2));
-    }
 
     @Override
     public void dispose() {
@@ -234,5 +229,15 @@ public class Player extends DamageableAbstract implements ProjectableEntity, Liv
     public Location getCenterLocation() {
 //        return new Location(this.getLocation().x, this.getLocation().y);
         return super.getCenterLocation();
+    }
+
+    @Override
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    @Override
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 }

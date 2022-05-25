@@ -9,16 +9,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
+import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.hud.HUD;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
 import com.mygdx.zombieland.state.GameState;
-import com.mygdx.zombieland.utils.MathHelper;
 
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;

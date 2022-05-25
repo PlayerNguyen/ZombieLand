@@ -1,4 +1,4 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.enemy;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

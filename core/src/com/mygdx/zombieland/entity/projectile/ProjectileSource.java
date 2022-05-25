@@ -1,8 +1,11 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.projectile;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.zombieland.entity.DamageSource;
+import com.mygdx.zombieland.entity.Entity;
+import com.mygdx.zombieland.weapon.Weapon;
 
-public interface ProjectableEntity extends Entity {
+public interface ProjectileSource extends Entity {
     /**
      * Represent the change of direction.
      *
@@ -31,4 +34,8 @@ public interface ProjectableEntity extends Entity {
      * @param canShoot the value to set.
      */
     void setCanShoot(boolean canShoot);
+
+    Weapon getWeapon();
+
+    void setWeapon(Weapon weapon);
 }
