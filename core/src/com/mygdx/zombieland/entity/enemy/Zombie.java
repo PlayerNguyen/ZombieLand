@@ -1,9 +1,11 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.enemy;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
+import com.mygdx.zombieland.entity.Damageable;
+import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.utils.VisualizeHelper;

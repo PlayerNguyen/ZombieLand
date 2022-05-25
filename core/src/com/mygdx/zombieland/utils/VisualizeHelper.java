@@ -25,11 +25,15 @@ public class VisualizeHelper {
         simulateLine(world, location, location2, Color.BLACK);
     }
 
-    public static void simulateDirection(World world, Entity entity) {
+    public static void simulateDirection(World world, Entity entity, Color color) {
         Location offsetLocation = new Location(
                 entity.getLocation()
         ).add(new Vector2D(entity.getDirection()).scalar(100));
-        simulateLine(world, entity.getLocation(), offsetLocation, Color.RED);
+        simulateLine(world, entity.getLocation(), offsetLocation, color);
+    }
+
+    public static void simulateDirection(World world, Entity entity) {
+        simulateDirection(world, entity, Color.RED);
     }
 
     public static void simulateBox(World world, Location originLocation, float size, Color color) {
@@ -85,4 +89,14 @@ public class VisualizeHelper {
         world.getBatch().begin();
     }
 
+    public static void simulateCircle (World world, Location location, float radius) {
+        world.getBatch().end();
+        world.getShapeRenderer().begin(ShapeRenderer.ShapeType.Filled);
+        world.getShapeRenderer().circle(location.x,
+                location.y,
+                radius);
+        world.getShapeRenderer().end();
+
+        world.getBatch().begin();
+    }
 }

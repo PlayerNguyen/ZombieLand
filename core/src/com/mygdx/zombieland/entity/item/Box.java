@@ -1,4 +1,4 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.item;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,7 +29,7 @@ public class Box extends ItemAbstract {
     @Override
     public void create() {
         this.getSprite().setSize(BOX_SIZE, BOX_SIZE);
-        this.getSprite().setOrigin(BOX_SIZE / 2, BOX_SIZE / 2);
+        this.getSprite().setOrigin((float) BOX_SIZE / 2, (float) BOX_SIZE / 2);
     }
 
     @Override
