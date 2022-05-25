@@ -1,15 +1,17 @@
 package com.mygdx.zombieland.entity.projectile;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.Entity;
+import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.runnable.DamageEntityOnShootRunnable;
 import com.mygdx.zombieland.utils.MathHelper;
 import com.mygdx.zombieland.utils.RayHelper;
+import com.mygdx.zombieland.utils.VisualizeHelper;
 import com.mygdx.zombieland.weapon.Gun;
 
-import java.util.HashMap;
 import java.util.Set;
 
 public class PistolProjectile extends AbstractProjectile {
@@ -54,48 +56,42 @@ public class PistolProjectile extends AbstractProjectile {
             }
             return;
         }
-//
-//        this.sprite.setRotation(this.rotation);
-//
-//        // Render projectile location
-//        this.sprite.setPosition(this.location.x, this.location.y);
-//
+
+        // Render projectile location
+        this.getSprite().setPosition(this.getLocation().x, this.getLocation().y);
+        this.getSprite().setRotation(this.getRotation());
         // Update bullet location from direction
         this.getLocation().x = (float) (this.getLocation().x + (this.getDirection().x * 120));
         this.getLocation().y = (float) (this.getLocation().y + (this.getDirection().y * 120));
-//
-//        // From gun, not from aim
-//        if (this.sourceLocation.distance(this.location) >=
-//                this.getWorld().getPlayer().getSize()) {
-//            this.sprite.draw(this.world.getBatch());
-//        }
-//
-//        // Check collision
-////        for (final Entity entity : world.getEntities()) {
-////            Location entityLocation = new Location(entity.getLocation());
-////            // Visual trace to entity
-////            if (this.getWorld().isDebug()) {
-////                VisualizeHelper.simulateLine(this.getWorld(), entityLocation, this.location, Color.BLUE);
-////            }
-////
-////            // Hit the entity
-////            if (entityLocation.distance(this.location) <= (float) entity.getSize() / 3) {
-////
-////                Gdx.app.log("Triggered", "Hit to entity ...");
-////                // Set triggered
-////                setIsHit(true);
-////                // Damage things
-////                if (entity instanceof Damageable) {
-////                    ((Damageable) entity).damage(this, BULLET_DAMAGE);
-////                }
-////            }
-////        }
+
+        // Draw the texture when it's far away from the player
+        if (this.getLocation().distance(this.getProjectileSource().getLocation()) >=
+                this.getWorld().getPlayer().getSize() + 32) {
+            this.getSprite().draw(this.getWorld().getBatch());
+        }
+
+        // Check collision
+        for (final Entity entity : this.getWorld().getEntities()) {
+            Location entityLocation = new Location(entity.getLocation());
+            // Visual trace to entity
+            if (this.getWorld().isDebug()) {
+                VisualizeHelper.simulateLine(this.getWorld(), entityLocation, this.getLocation(), Color.BLUE);
+            }
+
+            // Hit the entity
+            if (entityLocation.distance(this.getLocation()) <= (float) entity.getSize() / 3) {
+
+                Gdx.app.log("Triggered", "Hit to entity ...");
+                // Set triggered
+                setHit(true);
+            }
+        }
     }
 
     @Override
     public void dispose() {
-        this.getDirection().set(0, 0);
-        this.getTexture().dispose();
+//        this.getDirection().set(0, 0);
+//        this.getTexture().dispose();
     }
 
     @Override
