@@ -1,9 +1,13 @@
 package com.mygdx.zombieland.runnable;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.mygdx.zombieland.World;
+import com.mygdx.zombieland.entity.Player;
 import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.entity.projectile.ProjectileSource;
+import com.mygdx.zombieland.inventory.InventoryGun;
+import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.weapon.Gun;
@@ -30,22 +34,62 @@ public class ShootingRunnable implements Runnable {
 
 
         // Otherwise, create bullet and runnable
-        if ((this.source.getWeapon()) instanceof Gun) {
-            Gun gunWeapon = (Gun) this.source.getWeapon();
+//        if ((this.source.getWeapon()) instanceof Gun) {
+//            this.source.getItem
+//
+//            // Abort the firing action because of the ammo
+//            if (gunWeapon.getCurrentAmmo() == 0) {
+//                this.world.getTextIndicator().createText(new Location(this.source.getLocation())
+//                                .add((float) -this.source.getSize() / 2,(float) this.source.getSize() / 2),
+//                        new Vector2D(0, 12),
+//                        "Out of ammo", 300, 1.5f
+//                );
+//                return;
+//            }
+//
 
-            // Abort the firing action because of the ammo
-            if (gunWeapon.getCurrentAmmo() == 0) {
-                this.world.getTextIndicator().createText(new Location(this.source.getLocation())
-                                .add((float) -this.source.getSize() / 2,(float) this.source.getSize() / 2),
-                        new Vector2D(0, 12),
-                        "Out of ammo", 300, 1.5f
-                );
-                return;
+//        }
+        // Shooter is player
+        if (this.source instanceof Player) {
+            Player player = (Player) this.source;
+            InventoryItem currentHandItem = player.getCurrentHandItem();
+
+            // If player is using gun
+            if (currentHandItem instanceof InventoryGun) {
+                InventoryGun currentHandGun = (com.mygdx.zombieland.inventory.InventoryGun) currentHandItem;
+
+                // If no more ammo in a mag
+                if (currentHandGun.getAmmo() == 0) {
+
+                    // Reload
+                    if (currentHandGun.getTotalAmmo() > 0) {
+                        player.reload();
+                        this.world.getTextIndicator().createText(new Location(this.source.getLocation())
+                                        .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),
+                                new Vector2D(0, 12),
+                                "Reloading", 300, 1.5f,
+                                Color.GREEN
+                        );
+                    } else {
+                        this.world.getTextIndicator().createText(new Location(this.source.getLocation())
+                                        .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),
+                                new Vector2D(0, 12),
+                                "Out of ammo", 300, 1.5f
+                        );
+                    }
+
+
+                    return;
+
+                }
+
+                // Create a projectile
+                this.source.getSprite().setTexture(this.source.getShootingTexture());
+                this.world.createProjectile(projectile);
+
+                // Decrease an ammo
+                currentHandGun.setAmmo(currentHandGun.getAmmo() - 1);
             }
-
-            this.source.getSprite().setTexture(this.source.getShootingTexture());
-            this.world.createProjectile(projectile);
-            gunWeapon.setCurrentAmmo(gunWeapon.getCurrentAmmo() - 1);
         }
 
 

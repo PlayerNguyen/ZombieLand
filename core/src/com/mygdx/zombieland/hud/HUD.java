@@ -26,6 +26,9 @@ public class HUD implements Renderable {
         this.world.font.setColor(Color.YELLOW);
         this.world.font.draw(this.world.getBatch(), "Amount", 32, 600-(32 * 2));
 
+        this.world.font.setColor(Color.YELLOW);
+        this.world.font.draw(this.world.getBatch(), String.format("%s", this.getWorld().getPlayer()
+                .getCurrentHandItem().getName()), 32, 600-(32 * 3));
     }
 
     @Override
