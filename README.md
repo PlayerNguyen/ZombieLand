@@ -23,7 +23,7 @@ Casual 2D-action game developed by Phour Team only available on PC.💻💻💻�
 
 ---
 
-# About
+## About
 
 
 ### 📌 General Information
