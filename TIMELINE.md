@@ -1,3 +1,4 @@
+![zombiecatgif](https://user-images.githubusercontent.com/99407775/170820470-d7093d3d-0d8d-41ac-b5d0-fecaa6f793df.gif)
 # 📅Timelines📅
 
 ---
@@ -76,11 +77,16 @@
     - [x] Draw and commit push `health bar` on Github.
     - [x] Draw and commit push `background` on Github.
         - **Responsible:** `Nghiep`.
-        - **Deadline:** 22/05/2022
-        - **Date finished:**
+        - **Deadline:** 22/05/2022.
+        - **Date finished:** 21/05/2022.
+- Adding weapons, adding background:
+  - [x] Classes, interface of different types of weapon.
+  - [x] Adding background to the game.
+    - **Responsible:** `Nguyen`.
+    - **Date finished:** 24/05/2022.
 - Adding audio:
-    - [ ] Background audio
-    - [ ] Effects audio
+    - [ ] Background audio.
+    - [ ] Effects audio.
         - **Responsible:** `Duong`.
         - **Deadline:** 01/06/2022.
 - Updating readme:
