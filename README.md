@@ -34,7 +34,8 @@ Casual 2D-action game developed by Phour Team only available on PC.💻💻💻�
 
 - __Lore:__
   _Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could._
-  ![zombiegif](https://user-images.githubusercontent.com/99407775/170820314-0b577ff7-70db-40a0-a3af-5dcc87aef667.gif)
+ 
+![zombiegif](https://user-images.githubusercontent.com/99407775/170820314-0b577ff7-70db-40a0-a3af-5dcc87aef667.gif)
 ### 🎮 Rule:
 - Use your mouse to rotate Mr.Man in the direction as you wish. Click left mouse to shoot.
 - Zombies will get more crowded, stronger and closer to Mr.Man as you play. Kill them and keep Mr.Man safe.
@@ -76,7 +77,7 @@ Project is created with:
 
 ## Setup
  - To run this project, [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) is required. 
- - Install the game by 
+ - Install the game by: 
    - Go to our [GitHub repository](https://github.com/PlayerNguyen/ZombieLand), click ``Code``, copy the ``HTTPS link``, or you can copy this URL link: https://github.com/PlayerNguyen/ZombieLand.git
    - Go back to your opened Intellij IDEA, click ``Git`` on menu bar, choose ``Clone...``.
    - Paste the URL link you've just copied and start to clone.

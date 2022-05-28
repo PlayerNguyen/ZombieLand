@@ -24,3 +24,5 @@ Please [click here](https://drive.google.com/drive/folders/1hQIyvF_TvZX1Ip45ahoC
 
 ---
 ## Discussion
+
+![Q&AGif](https://user-images.githubusercontent.com/99407775/170820782-cc2a33cd-1e92-4a1b-87cf-9049a74ef046.gif)
