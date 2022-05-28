@@ -1,6 +1,13 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.projectile;
 
-public interface Projectile extends Entity {
+import com.mygdx.zombieland.entity.DamageSource;
+import com.mygdx.zombieland.entity.Entity;
+
+public interface Projectile extends Entity, DamageSource {
+
+    ProjectileSource getProjectileSource();
+
+    void setProjectileSource(ProjectileSource source);
 
     /**
      * The level of damage when hits other entity
@@ -28,5 +35,9 @@ public interface Projectile extends Entity {
      *
      * @param isHit the value to set
      */
-    void setIsHit(boolean isHit);
+    void setHit(boolean isHit);
+
+    float getProjectileRange();
+
+    void setProjectileRange(float projectileRange);
 }

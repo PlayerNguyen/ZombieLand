@@ -4,21 +4,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
+import com.mygdx.zombieland.entity.projectile.ProjectileSource;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.utils.VisualizeHelper;
+import com.mygdx.zombieland.weapon.Gun;
+import com.mygdx.zombieland.weapon.Pistol;
+import com.mygdx.zombieland.weapon.PistolType;
+import com.mygdx.zombieland.weapon.Weapon;
 
-public class Player implements ProjectableEntity, LivingEntity {
+public class Player extends DamageableAbstract implements ProjectileSource, LivingEntity {
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
 
-    public static final int PLAYER_SIZE = 64;
+    public static final int PLAYER_SIZE = 96;
 
     private final Location location;
     private final Vector2D direction;
@@ -29,7 +33,7 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     private float health = 100;
     private float rotation = 0;
-    private final BitmapFont fontDrawer = new BitmapFont();
+    private Weapon weapon;
 
     public Player(World world) {
         this.world = world;
@@ -37,48 +41,45 @@ public class Player implements ProjectableEntity, LivingEntity {
         this.direction = new Vector2D(0, 0);
         this.texture = TEXTURE_IDLING;
         this.canShoot = true;
+        this.weapon = new Pistol(PistolType.PISTOL);
     }
 
     @Override
     public void create() {
 
         this.sprite = new Sprite(texture);
-        this.sprite.setSize(64, 64);
+        this.sprite.setSize(PLAYER_SIZE, PLAYER_SIZE);
 
-        this.sprite.setOrigin(this.sprite.getWidth() / 2, this.sprite.getHeight() / 2);
-        this.location.set(this.world.getCenterLocation(32));
+        this.sprite.setOrigin((float) this.getSize() / 2, (float) this.getSize() / 2);
+        this.location.set(this.world.getCenterLocation(0));
 
         this.rotateFollowsCursor();
     }
 
     @Override
     public void render() {
-
+        // Make the player rotate follows cursor
         this.rotateFollowsCursor();
 
         // Shoot function
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)
-                || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)
-        ) {
-            shoot();
+                || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+            this.shoot();
         }
 
-        // Draw UI
-        this.updateUI();
-
         // Draw/Render the player
-        sprite.setX(this.location.x);
-        sprite.setY(this.location.y);
+        this.sprite.setX(this.getCenterLocation().x);
+        this.sprite.setY(this.getCenterLocation().y);
+
         sprite.setRotation(this.rotation);
         sprite.draw(this.world.getBatch());
+
+        if (this.world.isDebug()) {
+            VisualizeHelper.simulateBox(this.getWorld(), this);
+            VisualizeHelper.simulateDirection(this.getWorld(), this);
+        }
     }
 
-    private void updateUI() {
-        // Top-left
-        this.fontDrawer.setColor(Color.VIOLET);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Ammo: ", 32, 600 - 32);
-        this.fontDrawer.draw(this.getWorld().getBatch(), "Health: ", 32, 600 - (32 * 2));
-    }
 
     @Override
     public void dispose() {
@@ -100,6 +101,12 @@ public class Player implements ProjectableEntity, LivingEntity {
         return direction;
     }
 
+    /**
+     * Rotate the player direction using mouse movement.
+     * <p>
+     * Method setRotation from radiant to degrees.
+     * The direction is set by radRotation.
+     */
     private void rotateFollowsCursor() {
         float radRotation = (float) ((float)
                 Math.atan2(-(this.location.y - Gdx.input.getY()),// Minus because y-down
@@ -112,6 +119,14 @@ public class Player implements ProjectableEntity, LivingEntity {
         this.direction.y = Math.sin(radRotation);
     }
 
+    /**
+     * Create and run threads along with interface Runnable, for Multithreading.
+     * Feature shooting with ShootingRunnable.
+     *
+     * @see Runnable
+     * @see ShootingRunnable
+     * @see Thread
+     */
     public void shoot() {
         new Thread(new ShootingRunnable(this,
                 this.world,
@@ -151,7 +166,27 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public void damage(DamageSource source, float amount) {
-        this.health -= amount;
+        this.setHealth(this.getHealth() - amount);
+
+        this.getSprite().setColor(Color.RED);
+        this.getWorld().getScheduler().runTaskAfter(new Runnable() {
+            @Override
+            public void run() {
+                // Reset color
+                getSprite().setColor(Color.WHITE);
+
+                // Remove if entity is out of health
+                if (getHealth() <= 0) kill();
+            }
+        }, 300);
+
+        Location indicatorTextLocation = new Location(this.getLocation());
+        this.getWorld().getTextIndicator().createText(indicatorTextLocation,
+                new Vector2D(0, 16F),
+                String.format("%.0f", amount),
+                1000,
+                .3F
+        );
     }
 
     @Override
@@ -167,6 +202,7 @@ public class Player implements ProjectableEntity, LivingEntity {
     @Override
     public void kill() {
         // TODO: end game
+        Gdx.app.log("Player", "Killing the player and trigger end the game");
     }
 
     @Override
@@ -191,7 +227,17 @@ public class Player implements ProjectableEntity, LivingEntity {
 
     @Override
     public Location getCenterLocation() {
-        return new Location(this.getLocation().x - ((float) this.getSize() / 2)
-                , this.getLocation().y - ((float) this.getSize() / 2));
+//        return new Location(this.getLocation().x, this.getLocation().y);
+        return super.getCenterLocation();
+    }
+
+    @Override
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    @Override
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 }

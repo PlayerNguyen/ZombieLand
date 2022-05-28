@@ -1,7 +1,10 @@
-package com.mygdx.zombieland.entity;
+package com.mygdx.zombieland.entity.enemy;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.zombieland.entity.DamageSource;
+import com.mygdx.zombieland.entity.DamageableAbstract;
+import com.mygdx.zombieland.entity.LivingEntity;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 
@@ -11,8 +14,8 @@ public abstract class EnemyAbstract extends DamageableAbstract implements Living
     private float health;
     private final Location location;
     private final Vector2D direction;
-    private final Sprite sprite;
-    private final Texture texture;
+    private Sprite sprite;
+    private Texture texture;
 
     private float rotation;
 
@@ -73,5 +76,13 @@ public abstract class EnemyAbstract extends DamageableAbstract implements Living
     @Override
     public float getRotation() {
         return rotation;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
     }
 }

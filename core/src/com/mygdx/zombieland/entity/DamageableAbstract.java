@@ -14,7 +14,7 @@ public abstract class DamageableAbstract
         // Knock back
         Vector2D displacement = new Vector2D(source.getDirection())
                 .scalar(source.getKnockbackPower()); // Scalar is power
-        Location destination =  new Location(
+        Location destination = new Location(
                 this.getLocation().x,
                 this.getLocation().y
         ).add(displacement);
@@ -32,12 +32,13 @@ public abstract class DamageableAbstract
             }
         }, 300);
 
-        Location indicatorTextLocation = new Location(this.getCenterLocation());
+        Location indicatorTextLocation = new Location(this.getCenterLocation())
+                .add((float) this.getSize() / 2F, this.getSize());
         this.getWorld().getTextIndicator().createText(indicatorTextLocation,
                 new Vector2D(0, 16F),
                 String.format("%.0f", amount),
                 1000,
-                .3F
+                .5F
         );
     }
 
