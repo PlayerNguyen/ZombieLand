@@ -34,11 +34,12 @@ Casual 2D-action game developed by Phour Team only available on PC.💻💻💻�
 
 - __Lore:__
   _Our main character is Mr.Man, after a long day's work, he had slept on his work chair and when he woke up, he was already trapped in a 2D world, sitting on a rolling chair, incapable of moving due to its satisfaction. However, he is not alone in this world. Zombies are finding their way to approach and eat Mr.Man's ! Gifted by the 2D god (or goddess?), Mr.Man now has equipped a gun, try to live as long as you could._
+  ![zombiegif](https://user-images.githubusercontent.com/99407775/170820314-0b577ff7-70db-40a0-a3af-5dcc87aef667.gif)
 ### 🎮 Rule:
 - Use your mouse to rotate Mr.Man in the direction as you wish. Click left mouse to shoot.
 - Zombies will get more crowded, stronger and closer to Mr.Man as you play. Kill them and keep Mr.Man safe.
 
-
+![Zombieland gif](https://user-images.githubusercontent.com/99407775/170820239-97022f96-d1de-4ee1-a844-7a60caad3ed8.gif)
 
 ### 🏆 Our Motivation:
 _Our main motivation by choosing this game is to hope that we could finalize our first project game and extends our knowledge while learning through trial and error coding. We claimed that Zombieland is not a rip-off of any other shooting game. Due to the lack of human resource and time we had, we tried our best to improvise the basic, easy-to-make-and-learn game. However, we still applied the game with our own features to make it challenging and entertaining, though keep it simple enough. Beside of that, this is a great chance for us to know how to team-work and lay the foundation for our future, regardless of any risks and circumstances, step by step from junior developer, grinding and become senior leadership someday. Moreover, Zombieland is a very popular phrase, a catchy name of a funny film about zombie apocalypse simple, so that you can infer a joyful asmosphere and easily understand what you will deal with while playing the game. Our final purpose is to let you play a fast-to-play-and-learn game, but still effectively funny and amused._
