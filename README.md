@@ -38,6 +38,8 @@ Casual 2D-action game developed by Phour Team only available on PC.💻💻💻�
 - Use your mouse to rotate Mr.Man in the direction as you wish. Click left mouse to shoot.
 - Zombies will get more crowded, stronger and closer to Mr.Man as you play. Kill them and keep Mr.Man safe.
 
+
+
 ### 🏆 Our Motivation:
 _Our main motivation by choosing this game is to hope that we could finalize our first project game and extends our knowledge while learning through trial and error coding. We claimed that Zombieland is not a rip-off of any other shooting game. Due to the lack of human resource and time we had, we tried our best to improvise the basic, easy-to-make-and-learn game. However, we still applied the game with our own features to make it challenging and entertaining, though keep it simple enough. Beside of that, this is a great chance for us to know how to team-work and lay the foundation for our future, regardless of any risks and circumstances, step by step from junior developer, grinding and become senior leadership someday. Moreover, Zombieland is a very popular phrase, a catchy name of a funny film about zombie apocalypse simple, so that you can infer a joyful asmosphere and easily understand what you will deal with while playing the game. Our final purpose is to let you play a fast-to-play-and-learn game, but still effectively funny and amused._
 
@@ -72,7 +74,11 @@ Project is created with:
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) ![Intellij ver](https://img.shields.io/badge/version-2021.3.3-ff69b4).
 
 ## Setup
-To run this project, [IntelliJ IDE](https://www.jetbrains.com/idea/download/#section=windows) is required. Install the game from [here](https://github.com/PlayerNguyen/ZombieLand). 
+ - To run this project, [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) is required. 
+ - Install the game by 
+   - Go to our [GitHub repository](https://github.com/PlayerNguyen/ZombieLand), click ``Code``, copy the ``HTTPS link``, or you can copy this URL link: https://github.com/PlayerNguyen/ZombieLand.git
+   - Go back to your opened Intellij IDEA, click ``Git`` on menu bar, choose ``Clone...``.
+   - Paste the URL link you've just copied and start to clone.
 
 ### 🔑 Launch
 After opening project, find and open package `desktop`. Access package `src`, open and run file `DesktopLauncher`.
