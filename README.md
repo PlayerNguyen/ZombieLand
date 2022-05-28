@@ -75,14 +75,14 @@ Project is created with:
 ## Setup
 To run this project, [IntelliJ IDE](https://www.jetbrains.com/idea/download/#section=windows) is required. Install the game from [here](https://github.com/PlayerNguyen/ZombieLand). 
 
-### 🔑Launch
+### 🔑 Launch
 After opening project, find and open package `desktop`. Access package `src`, open and run file `DesktopLauncher`.
 
-### ⚖️License
+### ⚖ License
 This project is licensed under the ```GNU GPL ver.3```.
 We would recommend that you read our [license](https://github.com/PlayerNguyen/ZombieLand/blob/master/LICENSE) to avoid copyrighted issues.
 
-### ⚙Architecture
+### ⚙ Architecture
 ![UML image]()
 
 ---
