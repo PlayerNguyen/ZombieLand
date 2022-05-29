@@ -25,6 +25,9 @@ Casual 2D-action game developed by Phour Team only available on PC.💻💻💻�
 
 ## About
 
+### 📽 Game Trailer:
+
+[![Watch video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/yWlJtO_M3vU)
 
 ### 📌 General Information
 
