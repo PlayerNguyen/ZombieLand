@@ -1,4 +1,7 @@
-![zombiecatgif](https://user-images.githubusercontent.com/99407775/170820470-d7093d3d-0d8d-41ac-b5d0-fecaa6f793df.gif)
+<p align="center">
+<img src ="https://user-images.githubusercontent.com/99407775/170820470-d7093d3d-0d8d-41ac-b5d0-fecaa6f793df.gif" width="300" height="250" />
+</p>
+
 # 📅Timelines📅
 
 ---
@@ -80,20 +83,31 @@
         - **Deadline:** 22/05/2022.
         - **Date finished:** 21/05/2022.
 - Adding weapons, adding background:
-  - [x] Classes, interface of different types of weapon.
-  - [x] Adding background to the game.
+  - [x] Add ``debug`` tools by pressing ``F3``.
+  - [x] Add rays cast entities for guns.
+  - [x] Add guns class to handle many weapons.
+  - [x] Apply background to the game.
     - **Responsible:** `Nguyen`.
     - **Date finished:** 24/05/2022.
 - Adding audio:
-    - [ ] Background audio.
-    - [ ] Effects audio.
-        - **Responsible:** `Duong`.
-        - **Deadline:** 01/06/2022.
+  - [x] Background audio.
+  - [x] Effects audio.
+    - **Responsible:** `Duong`.
+    - **Deadline:** 01/06/2022.
+- Adding trailer:
+  - [x] Make game ``trailer`` and embed it into readme.
+    - **Responsible:** `Duong`.
+    - **Date finished:**.
+- Drawing game icon, game logo:
+  - [ ] Draw ``icon`` for game.
+  - [ ] Draw ``logo`` which will appear in game menu.
+    - **Responsible:** `Nghiep`.
+    - **Deadline:** 03/06/2022.
 - Updating readme:
-    - [ ] Fix timeline.
-    - [ ] Add Screenshots to readme.
+    - [x] Fix timeline.
+    - [ ] Add screenshots to readme.
         - **Responsible:** `Duong`.
-        - **Deadline:** 03/06/2022
+        - **Deadline:** 05/06/2022.
 - Drawing UML, writing presentation script:
     - [ ] Draw `UML` image using `Lucidchart`.
         - **Deadline:** 07/06/2022
@@ -103,3 +117,11 @@
 - Presenting project:
     - **Responsible:** All member.
     - **Date:** 11/6/2022.
+
+---
+
+This TIMELINE is based on our [Task Table](https://github.com/users/PlayerNguyen/projects/4/views/1?fbclid=IwAR3A6Q1ztovuoBTyxv7-P2RTmIs9roIPNqN_b8DAG33_HrjPAMb9eiZGIaQ) and Git Log.
+
+<p align="center">
+<img src ="https://user-images.githubusercontent.com/99407775/170933879-8d26d82f-e30f-46b0-9fe8-52d25cdad401.gif" />
+</p>
