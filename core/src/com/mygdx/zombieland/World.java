@@ -13,6 +13,8 @@ import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
 import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.hud.HUD;
+import com.mygdx.zombieland.inventory.Inventory;
+import com.mygdx.zombieland.inventory.InventoryPistol;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.Spawner;
@@ -41,6 +43,7 @@ public class World implements Renderable {
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
     private final Set<Spawner> spawners = new CopyOnWriteArraySet<>();
+    private final Inventory inventory;
     private final Scheduler scheduler;
     private final TextIndicator textIndicator;
     private final HUD hud;
@@ -57,12 +60,16 @@ public class World implements Renderable {
         this.gameState = GameState.PLAYING;
         this.hud = new HUD(this);
         this.debug = true;
+        this.inventory = new Inventory(this);
     }
 
     @Override
     public void create() {
         // Load assets and materials
         this.loadBackground();
+
+        // Load inventory
+        this.inventory.getItems().add(new InventoryPistol());
 
         // Load player and inject world into player
         this.player = new Player(this);
@@ -91,6 +98,7 @@ public class World implements Renderable {
         for (Spawner spawner : this.spawners) {
             spawner.create();
         }
+
     }
 
     @Override
@@ -252,5 +260,9 @@ public class World implements Renderable {
 
     public void setDebug(boolean debug) {
         this.debug = debug;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }

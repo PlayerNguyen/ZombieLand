@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.projectile.ProjectileSource;
+import com.mygdx.zombieland.inventory.Inventory;
+import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
@@ -16,7 +18,8 @@ import com.mygdx.zombieland.weapon.Pistol;
 import com.mygdx.zombieland.weapon.PistolType;
 import com.mygdx.zombieland.weapon.Weapon;
 
-public class Player extends DamageableAbstract implements ProjectileSource, LivingEntity {
+public class Player extends DamageableAbstract
+        implements ProjectileSource, LivingEntity, InventoryHolder {
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
@@ -28,12 +31,12 @@ public class Player extends DamageableAbstract implements ProjectileSource, Livi
     private final Vector2D direction;
     private final Texture texture;
     private final World world;
+
     private Sprite sprite;
     private boolean canShoot;
-
     private float health = 100;
     private float rotation = 0;
-    private Weapon weapon;
+    private InventoryItem currentHandItem;
 
     public Player(World world) {
         this.world = world;
@@ -41,7 +44,8 @@ public class Player extends DamageableAbstract implements ProjectileSource, Livi
         this.direction = new Vector2D(0, 0);
         this.texture = TEXTURE_IDLING;
         this.canShoot = true;
-        this.weapon = new Pistol(PistolType.PISTOL);
+//        this.weapon = new Pistol(PistolType.PISTOL);
+        this.currentHandItem = world.getInventory().getItems().get(0);
     }
 
     @Override
@@ -66,6 +70,9 @@ public class Player extends DamageableAbstract implements ProjectileSource, Livi
                 || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
             this.shoot();
         }
+
+        // Switch item
+        this.handleSwitch();
 
         // Draw/Render the player
         this.sprite.setX(this.getCenterLocation().x);
@@ -233,11 +240,34 @@ public class Player extends DamageableAbstract implements ProjectileSource, Livi
 
     @Override
     public Weapon getWeapon() {
-        return weapon;
+        return this.getCurrentHandItem().getWeapon();
     }
 
     @Override
     public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+//        this.weapon = weapon;
+    }
+
+    @Override
+    public InventoryItem getCurrentHandItem() {
+        return this.currentHandItem;
+    }
+
+    @Override
+    public void setCurrentHandItem(InventoryItem currentHandItem) {
+        this.currentHandItem = currentHandItem;
+    }
+
+    private void handleSwitch () {
+        for (InventoryItem item : this.getWorld().getInventory().getItems()) {
+            if (Gdx.input.isKeyPressed(item.getSlotKey())) {
+                Gdx.app.log("WeaponSwitcher", "Swap into item " + item.getName());
+                this.setCurrentHandItem(item);
+            }
+        }
+    }
+
+    public void reload() {
+        throw new UnsupportedOperationException("");
     }
 }
