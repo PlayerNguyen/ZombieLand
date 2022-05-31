@@ -116,6 +116,8 @@ We would recommend that you read our [license](https://github.com/PlayerNguyen/Z
 - Playable, short rule = long fun game to play in your free time.
 - Relaxing background music to chill. 
 
+https://user-images.githubusercontent.com/99407775/171133526-ce379963-b629-4db3-bbdb-60cffd1d0b5b.mov
+
 - Funny characters, nice pixel art that suits every age.
 
  <img src = "https://user-images.githubusercontent.com/99407775/170941400-afa08aaf-6251-4f9b-9b5b-4ed1187dd430.png" width="200" height="200" /> <img src = "https://user-images.githubusercontent.com/99407775/170941690-a4545a61-936b-4770-afa4-53169bfe14bd.png" width="140" height="140"/>
