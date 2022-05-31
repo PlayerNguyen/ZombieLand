@@ -1,17 +1,23 @@
 package com.mygdx.zombieland.weapon;
 
+import com.badlogic.gdx.audio.Sound;
+
 public abstract class AbstractPistol implements Gun {
 
     private final PistolType type;
     private float damage;
     private float knockbackPower;
     private float recoil;
+    private int maxAmmo;
+    private int currentAmmo;
 
     public AbstractPistol(PistolType type) {
         this.type = type;
         this.damage = this.type.getDamage();
         this.knockbackPower = this.type.getKnockbackPower();
         this.recoil = this.type.getRecoil();
+        this.maxAmmo = this.type.getMaxAmmo();
+        this.currentAmmo = this.type.getMaxAmmo();
     }
 
     public PistolType getType() {
@@ -50,4 +56,18 @@ public abstract class AbstractPistol implements Gun {
         this.recoil = recoil;
     }
 
+    @Override
+    public void setCurrentAmmo(int currentAmmo) {
+        this.currentAmmo = currentAmmo;
+    }
+
+    @Override
+    public int getCurrentAmmo() {
+        return currentAmmo;
+    }
+
+    @Override
+    public Sound getShootingSound() {
+        return this.type.getShootingSound();
+    }
 }
