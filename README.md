@@ -1,8 +1,17 @@
 # 🧟‍♂ ️Zombieland 🧟‍♂️
 
+<p align="center"> 
+   <img src ="https://user-images.githubusercontent.com/99407775/171654918-fd8e0b41-6241-4eb3-a25e-f7c803d1729f.png" width="150" height="150"/>
+</p>
+
+
+
 ---
 
 <p align="center"> 
+ <img src ="https://user-images.githubusercontent.com/99407775/171653002-d47fd9ff-e0d4-4bc9-ab03-ce539587e035.png" />
+ <br>
+ <br>
  <b> "IT HAD TO BE A F***NG CLOWN!" </b>
 </p>
 
