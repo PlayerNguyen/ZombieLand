@@ -122,13 +122,13 @@ https://user-images.githubusercontent.com/99407775/171133526-ce379963-b629-4db3-
 
  <img src = "https://user-images.githubusercontent.com/99407775/170941400-afa08aaf-6251-4f9b-9b5b-4ed1187dd430.png" width="200" height="200" /> <img src = "https://user-images.githubusercontent.com/99407775/170941690-a4545a61-936b-4770-afa4-53169bfe14bd.png" width="140" height="140"/>
 
-Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/FEATURES.md) for details. 
+Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/master/FEATURES.md) for details. 
 
 ---
 
 ## Project Status
 
-Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/TIMELINE.md).
+Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/master/TIMELINE.md).
 🤔
 
 ### Challenging
