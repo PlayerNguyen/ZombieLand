@@ -13,10 +13,14 @@ public interface Gun extends Weapon {
 
     Projectile launchProjectile(World world, ProjectileSource source);
 
-    int getCurrentAmmo();
-
-    void setCurrentAmmo(int currentAmmo);
+    int getMaxAmmo();
 
     Sound getShootingSound();
+
+    Sound getEmptySound();
+
+    Sound getReloadReleaseSound();
+
+    long getReloadDuration();
 
 }

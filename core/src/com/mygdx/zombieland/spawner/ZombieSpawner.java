@@ -1,4 +1,4 @@
-package com.mygdx.zombieland.runnable;
+package com.mygdx.zombieland.spawner;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.zombieland.World;
@@ -8,19 +8,15 @@ import com.mygdx.zombieland.entity.enemy.ZombieType;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.utils.MathHelper;
 
-/**
- * Spawner is a delay-task to spawn(create) a new zombie
- */
-public class Spawner {
-
+public class ZombieSpawner implements Spawner {
     private final World world;
     private final Location location;
     private final double offset;
     private long duration;
     private long lastSpawn;
-    private long currentSpawn;
+//    private long currentSpawn;
 
-    public Spawner(World world, Location location, double offset, long duration) {
+    public ZombieSpawner(World world, Location location, double offset, long duration) {
         this.world = world;
         this.location = location;
         this.offset = offset;
@@ -71,5 +67,4 @@ public class Spawner {
     public Location getLocation() {
         return location;
     }
-
 }

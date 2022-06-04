@@ -17,8 +17,10 @@ import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryPistol;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
-import com.mygdx.zombieland.runnable.Spawner;
+import com.mygdx.zombieland.spawner.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
+import com.mygdx.zombieland.setting.GameSetting;
+import com.mygdx.zombieland.spawner.ZombieSpawner;
 import com.mygdx.zombieland.state.GameState;
 
 import java.util.Set;
@@ -40,6 +42,7 @@ public class World implements Renderable {
     private boolean debug;
     private long lastDebugSet;
 
+    private final GameSetting gameSetting;
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
     private final Set<Entity> entities = new CopyOnWriteArraySet<>();
     private final Set<Spawner> spawners = new CopyOnWriteArraySet<>();
@@ -49,6 +52,7 @@ public class World implements Renderable {
     private final HUD hud;
 
     public World(SpriteBatch batch) {
+        this.gameSetting = new GameSetting();
         this.batch = batch;
         this.scheduler = new Scheduler();
 
@@ -80,20 +84,19 @@ public class World implements Renderable {
             entity.create();
         }
 
-
         // Load projectiles
         for (Entity projectile : this.projectiles) {
             projectile.create();
         }
 
         // Load spawners
-        this.spawners.add(new Spawner(this,
+        this.spawners.add(new ZombieSpawner(this,
                 new Location(-30, 300), 50f, 5000));
-        this.spawners.add(new Spawner(this,
+        this.spawners.add(new ZombieSpawner(this,
                 new Location(400, 630), 50f, 5000));
-        this.spawners.add(new Spawner(this,
+        this.spawners.add(new ZombieSpawner(this,
                 new Location(830, 300), 50f, 5000));
-        this.spawners.add(new Spawner(this,
+        this.spawners.add(new ZombieSpawner(this,
                 new Location(400, -30), 50f, 5000));
         for (Spawner spawner : this.spawners) {
             spawner.create();
@@ -264,5 +267,13 @@ public class World implements Renderable {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public GameSetting getGameSetting() {
+        return gameSetting;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }

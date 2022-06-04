@@ -7,8 +7,6 @@ import com.mygdx.zombieland.entity.projectile.ProjectileSource;
 
 public class Pistol extends AbstractPistol {
 
-
-
     public Pistol(PistolType type) {
         super(type);
     }

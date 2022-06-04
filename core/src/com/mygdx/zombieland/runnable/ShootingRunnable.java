@@ -1,6 +1,5 @@
 package com.mygdx.zombieland.runnable;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.Player;
@@ -11,7 +10,6 @@ import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.weapon.Gun;
-import com.mygdx.zombieland.weapon.Weapon;
 
 public class ShootingRunnable implements Runnable {
 
@@ -61,6 +59,15 @@ public class ShootingRunnable implements Runnable {
                 // If no more ammo in a mag
                 if (currentHandGun.getAmmo() == 0) {
 
+                    // Play no ammo sound
+                    ((Gun)currentHandGun.getWeapon()).getEmptySound().play(
+                            this.world.getGameSetting().getVfxSoundLevel(),
+                            1,
+                            0
+                    );
+                    this.source.setCanShoot(false);
+                    this.world.getScheduler().runTaskAfter(this.onPostRunnable(), shootDelay);
+
                     // Reload
                     if (currentHandGun.getTotalAmmo() > 0) {
                         player.reload();
@@ -86,19 +93,21 @@ public class ShootingRunnable implements Runnable {
                 // Create a projectile
                 this.source.getSprite().setTexture(this.source.getShootingTexture());
                 this.world.createProjectile(projectile);
-
+                ((Gun)currentHandGun.getWeapon()).getShootingSound()
+                        .play(
+                                this.world.getGameSetting().getVfxSoundLevel(),
+                            1,
+                            0
+                        );
                 // Decrease an ammo
                 currentHandGun.setAmmo(currentHandGun.getAmmo() - 1);
             }
         }
 
 
-        long current = System.currentTimeMillis();
-        this.source.setCanShoot(false);
 
-        while (System.currentTimeMillis() < current + shootDelay) {
-        }
-        Gdx.app.postRunnable(this.onPostRunnable());
+        this.source.setCanShoot(false);
+        this.world.getScheduler().runTaskAfter(this.onPostRunnable(), shootDelay);
     }
 
     private Runnable onPostRunnable() {

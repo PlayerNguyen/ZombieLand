@@ -11,6 +11,7 @@ import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.runnable.ReloadRunnable;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.utils.VisualizeHelper;
 import com.mygdx.zombieland.weapon.Gun;
@@ -268,6 +269,7 @@ public class Player extends DamageableAbstract
     }
 
     public void reload() {
-        throw new UnsupportedOperationException("");
+        new Thread(new ReloadRunnable(this.getWorld())).start();
+//        throw new UnsupportedOperationException("");
     }
 }

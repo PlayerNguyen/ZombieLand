@@ -8,8 +8,8 @@ public abstract class AbstractPistol implements Gun {
     private float damage;
     private float knockbackPower;
     private float recoil;
-    private int maxAmmo;
-    private int currentAmmo;
+    private final int maxAmmo;
+    private final long reloadDuration;
 
     public AbstractPistol(PistolType type) {
         this.type = type;
@@ -17,7 +17,7 @@ public abstract class AbstractPistol implements Gun {
         this.knockbackPower = this.type.getKnockbackPower();
         this.recoil = this.type.getRecoil();
         this.maxAmmo = this.type.getMaxAmmo();
-        this.currentAmmo = this.type.getMaxAmmo();
+        this.reloadDuration = this.type.getReloadDuration();
     }
 
     public PistolType getType() {
@@ -40,7 +40,6 @@ public abstract class AbstractPistol implements Gun {
     }
 
 
-
     @Override
     public void setDamage(float damage) {
         this.damage = damage;
@@ -57,17 +56,27 @@ public abstract class AbstractPistol implements Gun {
     }
 
     @Override
-    public void setCurrentAmmo(int currentAmmo) {
-        this.currentAmmo = currentAmmo;
-    }
-
-    @Override
-    public int getCurrentAmmo() {
-        return currentAmmo;
-    }
-
-    @Override
     public Sound getShootingSound() {
         return this.type.getShootingSound();
+    }
+
+    @Override
+    public Sound getEmptySound() {
+        return this.type.getEmptySound();
+    }
+
+    @Override
+    public int getMaxAmmo() {
+        return maxAmmo;
+    }
+
+    @Override
+    public long getReloadDuration() {
+        return reloadDuration;
+    }
+
+    @Override
+    public Sound getReloadReleaseSound() {
+        return this.type.getReloadReleaseSound();
     }
 }
