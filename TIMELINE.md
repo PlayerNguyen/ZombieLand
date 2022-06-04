@@ -2,7 +2,7 @@
 <img src ="https://user-images.githubusercontent.com/99407775/170820470-d7093d3d-0d8d-41ac-b5d0-fecaa6f793df.gif" width="300" height="250" />
 </p>
 
-# 📅Timelines📅
+# 📅 Timelines 📅
 
 ---
 ## 📑Description:
@@ -99,8 +99,8 @@
     - **Responsible:** `Duong`.
     - **Date finished:**.
 - Drawing game icon, game logo:
-  - [ ] Draw ``icon`` for game.
-  - [ ] Draw ``logo`` which will appear in game menu.
+  - [x] Draw ``icon`` for game.
+  - [x] Draw ``logo`` which will appear in game menu.
     - **Responsible:** `Nghiep`.
     - **Deadline:** 03/06/2022.
 - Updating readme:

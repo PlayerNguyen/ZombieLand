@@ -1,8 +1,17 @@
 # 🧟‍♂ ️Zombieland 🧟‍♂️
 
+<p align="center"> 
+   <img src ="https://user-images.githubusercontent.com/99407775/171654918-fd8e0b41-6241-4eb3-a25e-f7c803d1729f.png" width="150" height="150"/>
+</p>
+
+
+
 ---
 
 <p align="center"> 
+ <img src ="https://user-images.githubusercontent.com/99407775/171653002-d47fd9ff-e0d4-4bc9-ab03-ce539587e035.png" />
+ <br>
+ <br>
  <b> "IT HAD TO BE A F***NG CLOWN!" </b>
 </p>
 
@@ -116,17 +125,19 @@ We would recommend that you read our [license](https://github.com/PlayerNguyen/Z
 - Playable, short rule = long fun game to play in your free time.
 - Relaxing background music to chill. 
 
+https://user-images.githubusercontent.com/99407775/171133526-ce379963-b629-4db3-bbdb-60cffd1d0b5b.mov
+
 - Funny characters, nice pixel art that suits every age.
 
  <img src = "https://user-images.githubusercontent.com/99407775/170941400-afa08aaf-6251-4f9b-9b5b-4ed1187dd430.png" width="200" height="200" /> <img src = "https://user-images.githubusercontent.com/99407775/170941690-a4545a61-936b-4770-afa4-53169bfe14bd.png" width="140" height="140"/>
 
-Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/FEATURES.md) for details. 
+Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/master/FEATURES.md) for details. 
 
 ---
 
 ## Project Status
 
-Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/update/readme/TIMELINE.md).
+Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/master/TIMELINE.md).
 🤔
 
 ### Challenging
