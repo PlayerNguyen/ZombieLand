@@ -70,13 +70,15 @@ public class ShootingRunnable implements Runnable {
 
                     // Reload
                     if (currentHandGun.getTotalAmmo() > 0) {
-                        player.reload();
-                        this.world.getTextIndicator().createText(new Location(this.source.getLocation())
-                                        .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),
-                                new Vector2D(0, 12),
-                                "Reloading", 300, 1.5f,
-                                Color.GREEN
-                        );
+                        if (!((Player) this.source).isReloading()) {
+                            player.reload();
+                            this.world.getTextIndicator().createText(new Location(this.source.getLocation())
+                                            .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),
+                                    new Vector2D(0, 12),
+                                    "Reloading", 300, 1.5f,
+                                    Color.GREEN
+                            );
+                        }
                     } else {
                         this.world.getTextIndicator().createText(new Location(this.source.getLocation())
                                         .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),

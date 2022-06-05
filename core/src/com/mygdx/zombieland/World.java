@@ -2,6 +2,7 @@ package com.mygdx.zombieland;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.*;
 import com.mygdx.zombieland.entity.projectile.Projectile;
@@ -61,9 +63,9 @@ public class World implements Renderable {
         this.textIndicator = new TextIndicator(this);
         this.camera = new OrthographicCamera(800, 600);
         this.shapeRenderer = new ShapeRenderer();
-        this.gameState = GameState.PLAYING;
+        this.gameState = GameState.STARTING;
         this.hud = new HUD(this);
-        this.debug = true;
+        this.debug = false;
         this.inventory = new Inventory(this);
     }
 
@@ -102,6 +104,8 @@ public class World implements Renderable {
             spawner.create();
         }
 
+        // HUD initialization
+        this.hud.create();
     }
 
     @Override
@@ -134,14 +138,66 @@ public class World implements Renderable {
             case STARTING: {
                 Gdx.app.log("Game status", "Starting status");
 //                font.getData().setScale(0.6f);
-//                this.font.draw(this.batch, "Press any key to start", 350, 400, 200, Align.center, true);
-                break;
-            }
-            case PAUSING: {
-                break;
-            }
-            case PLAYING: {
+                this.font.draw(this.batch,
+                        "Press LEFT MOUSE key to start",
+                        300,
+                        320,
+                        200,
+                        Align.center,
+                        true);
+                Gdx.input.setInputProcessor(new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        if (keycode == Input.Buttons.LEFT) {
+                            setGameState(GameState.PLAYING);
+                            return true;
+                        }
+                        return false;
+                    }
 
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        if (button == Input.Buttons.LEFT) {
+                            setGameState(GameState.PLAYING);
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(float amountX, float amountY) {
+                        return false;
+                    }
+                });
+                break;
+            }
+            case PAUSING:
+            case PLAYING: {
                 // Render player
                 this.player.render();
 
@@ -164,6 +220,55 @@ public class World implements Renderable {
                 }
 
                 this.hud.render();
+
+                // Esc to pause
+                Gdx.input.setInputProcessor(new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        if (keycode == Input.Keys.ESCAPE) {
+                            Gdx.app.log("GameState", "Set game state to "
+                                    + (gameState == GameState.PLAYING ? GameState.PAUSING : GameState.PLAYING));
+                            setGameState((gameState == GameState.PLAYING ? GameState.PAUSING : GameState.PLAYING));
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(float amountX, float amountY) {
+                        return false;
+                    }
+                });
+
                 break;
             }
             case ENDING: {
@@ -275,5 +380,9 @@ public class World implements Renderable {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 }

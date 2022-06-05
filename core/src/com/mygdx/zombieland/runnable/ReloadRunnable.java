@@ -42,6 +42,7 @@ public class ReloadRunnable implements Runnable {
 
                     // Unlock trigger
                     world.getPlayer().setCanShoot(true);
+                    world.getPlayer().setReloading(false);
                 }
             }
         };

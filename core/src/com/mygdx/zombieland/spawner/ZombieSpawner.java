@@ -6,6 +6,7 @@ import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.entity.enemy.Zombie;
 import com.mygdx.zombieland.entity.enemy.ZombieType;
 import com.mygdx.zombieland.location.Location;
+import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.MathHelper;
 
 public class ZombieSpawner implements Spawner {
@@ -33,18 +34,20 @@ public class ZombieSpawner implements Spawner {
             Location spawnLocation = new Location(this.location.x + (float) MathHelper.nextDouble(-offset, offset),
                     this.location.y + (float) MathHelper.nextDouble(-offset, offset));
             ZombieType type = ZombieType.values()[(int) (Math.random() * (ZombieType.values().length))];
-            // Spawn here
-            Entity zombie = this.world.createEntity(
-                    new Zombie(
-                            this.world,
-                            spawnLocation,
-                            this.world.getPlayer(),
-                            type
-                    )
-            );
+            if (this.world.getGameState().equals(GameState.PLAYING)) {
+                // Spawn here
+                Entity zombie = this.world.createEntity(
+                        new Zombie(
+                                this.world,
+                                spawnLocation,
+                                this.world.getPlayer(),
+                                type
+                        )
+                );
 
-            Gdx.app.log("Spawner", "Spawning a zombie " + zombie + " at " + spawnLocation);
-            this.lastSpawn = System.currentTimeMillis();
+                Gdx.app.log("Spawner", "Spawning a zombie " + zombie + " at " + spawnLocation);
+                this.lastSpawn = System.currentTimeMillis();
+            }
         }
     }
 
