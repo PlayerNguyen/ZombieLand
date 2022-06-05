@@ -81,12 +81,14 @@ public class Player extends DamageableAbstract
             this.rotateFollowsCursor();
             // Set rotation
             sprite.setRotation(this.rotation);
+
             // Shoot function
             if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)
                     || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
                 this.shoot();
             }
         }
+
         sprite.draw(this.world.getBatch());
 
         if (this.world.isDebug()) {
