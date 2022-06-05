@@ -62,16 +62,17 @@ public class Zombie extends EnemyAbstract {
     @Override
     public void render() {
 
-        this.updateMove();
-
-        // Update lerp
-        if (fraction < 1) {
-            fraction += Gdx.graphics.getDeltaTime() * speed;
-            this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
-            this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
-        }
 
         if (this.world.getGameState().equals(GameState.PLAYING)) {
+            this.updateMove();
+
+            // Update lerp
+            if (fraction < 1) {
+                fraction += Gdx.graphics.getDeltaTime() * speed;
+                this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
+                this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
+            }
+
             this.getLocation().add(
                     this.getDirection().x * Gdx.graphics.getDeltaTime() * speed,
                     this.getDirection().y * Gdx.graphics.getDeltaTime() * speed
