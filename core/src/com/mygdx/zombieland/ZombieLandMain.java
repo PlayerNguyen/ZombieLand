@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ZombieLandMain extends ApplicationAdapter {
     public static final String gameVersion = "1.0.0 beta 1";
+    private static final long STARTUP_BANNER_DURATION = 3000;
 
     private SpriteBatch batch;
     private World world;
@@ -33,7 +34,7 @@ public class ZombieLandMain extends ApplicationAdapter {
         ScreenUtils.clear(0.96078431372f, 0.96078431372f, 0.96078431372f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (startMillis + 3000 > System.currentTimeMillis()) {
+        if (startMillis + STARTUP_BANNER_DURATION > System.currentTimeMillis()) {
             this.batch.begin();
             this.getBatch().draw(this.phourTeamBannerTexture, 0, 0);
             this.batch.end();
