@@ -31,6 +31,9 @@ import com.mygdx.zombieland.state.GameState;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import static com.mygdx.zombieland.state.GameState.PAUSING;
+import static com.mygdx.zombieland.state.GameState.PLAYING;
+
 public class World implements Renderable {
 
     private static final int WINDOW_WIDTH = 800;
@@ -158,7 +161,7 @@ public class World implements Renderable {
                         if (keycode == Input.Buttons.LEFT) {
                             // The game still running
                             if (getGameState() == GameState.STARTING) {
-                                setGameState(GameState.PLAYING);
+                                setGameState(PLAYING);
                             }
 
                             return true;
@@ -181,7 +184,7 @@ public class World implements Renderable {
                         if (button == Input.Buttons.LEFT) {
                             // The game still running
                             if (getGameState() == GameState.STARTING) {
-                                setGameState(GameState.PLAYING);
+                                setGameState(PLAYING);
                             }
                             return true;
                         }
@@ -237,6 +240,15 @@ public class World implements Renderable {
 
                 this.hud.render();
 
+                // Music pause
+                if (this.getGameState() == PAUSING && BGM_SOUND.isPlaying()) {
+                    BGM_SOUND.pause();
+                }
+
+                if (this.getGameState() == PLAYING && !BGM_SOUND.isPlaying()) {
+                    BGM_SOUND.play();
+                }
+
                 // Esc to pause
                 Gdx.input.setInputProcessor(new InputProcessor() {
                     @Override
@@ -245,9 +257,9 @@ public class World implements Renderable {
                         if (keycode == Input.Keys.ESCAPE) {
                             if (getGameState() != GameState.STARTING
                                     || getGameState() != GameState.ENDING) {
-                                setGameState((getGameState() == GameState.PAUSING
-                                        ? GameState.PLAYING
-                                        : GameState.PAUSING)
+                                setGameState((getGameState() == PAUSING
+                                        ? PLAYING
+                                        : PAUSING)
                                 );
                             }
                             return true;
@@ -446,6 +458,6 @@ public class World implements Renderable {
 
         this.create();
 
-        this.setGameState(GameState.PLAYING);
+        this.setGameState(PLAYING);
     }
 }

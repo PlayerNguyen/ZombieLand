@@ -2,6 +2,7 @@ package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -30,6 +31,9 @@ public class Player extends DamageableAbstract
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
     private static final Sound PLAYER_HURT_SOUND = Gdx.audio
             .newSound(Gdx.files.internal("audio/hurt/hurt.mp3"));
+    private static final Music PLAYER_LOW_HEATH_SOUND = Gdx.audio
+            .newMusic(Gdx.files.internal("audio/low_health.mp3"));
+
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
 
     public static final int PLAYER_SIZE = 96;
@@ -45,6 +49,7 @@ public class Player extends DamageableAbstract
     private float health = 100;
     private float rotation = 0;
     private InventoryItem currentHandItem;
+    private long isLowHealthPlaying = -1;
 
     public Player(World world) {
         this.world = world;
@@ -92,7 +97,13 @@ public class Player extends DamageableAbstract
             }
         }
 
+        // Draw a player
         sprite.draw(this.world.getBatch());
+
+        // Play sound if player is out of health
+        if (this.getHealth() <= 40 && !PLAYER_LOW_HEATH_SOUND.isPlaying()) {
+            PLAYER_LOW_HEATH_SOUND.play();
+        }
 
         if (this.world.isDebug()) {
             VisualizeHelper.simulateBox(this.getWorld(), this);
