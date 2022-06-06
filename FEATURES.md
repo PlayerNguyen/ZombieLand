@@ -23,16 +23,22 @@ We tried our best to serve you the best features you could get from Zombieland.
 
 ![knockbackgif]()
 
+ - Well-designed ammo counting system, refill ammo by hitting box:
+
+![refillammogif]()
+
  - Easy to recognize health counting system, has low heath alert sounds:
  
 ![healthgif]()
 
  - Different types of zombie, more challenges and ways to kill zombies:
- 
- ![zombies]()
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/99407775/172084436-33691872-12aa-433e-819c-45fe547f6189.png" width="240" height="360" />
+</p>
+ 
 ## Upcoming Features
-(or features that will/never happen in the future)
+_or features that will (never) happen in the future_
  - Variety of weapon types, fun sounds effect:
 
 ![weapon img]()
@@ -41,17 +47,22 @@ We tried our best to serve you the best features you could get from Zombieland.
 
  - More designs of zombies, bosses and new character:
  
-![zombie]()
+<p align="center">
+<img src="https://user-images.githubusercontent.com/99407775/172086521-3d277390-647e-4cb0-8c6e-f02293c64bb9.png" width="240" height="240" />
+ 
+<img src="https://user-images.githubusercontent.com/99407775/172085406-666e0ed4-c4e8-4fce-b893-cf2b8271bf93.png" width="240" height="240" />
 
-![boss]()
-
-![character]()
-
+<img src="https://user-images.githubusercontent.com/99407775/172086447-7a7dcde6-d46c-4f4a-a901-94b02aaffce1.png" width="240" height="240" />
+ 
+<img src="https://user-images.githubusercontent.com/99407775/172085397-9ebcc776-4b04-403e-b5f6-687c3e22e587.png" width="240" height="240" />
+</p>
+ 
  - New map, new theme song:
-
-![map1]()
-
-![map2]()
+<p align="center">
+<img src="https://user-images.githubusercontent.com/99407775/172087078-5896aea0-bdd2-45ca-adf1-46449a753c54.png" width="500" height="300" />
+ 
+<img src="https://user-images.githubusercontent.com/99407775/172087091-e3475cb6-f350-45d7-8cf1-7205de16c675.png" width="500" height="300" />
+</p>
 
 ---
 ## Todo:
