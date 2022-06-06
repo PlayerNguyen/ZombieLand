@@ -1,7 +1,6 @@
 package com.mygdx.zombieland.entity.projectile;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.zombieland.World;
@@ -16,9 +15,8 @@ import com.mygdx.zombieland.weapon.Gun;
 import java.util.Set;
 
 public class PistolProjectile extends AbstractProjectile {
+
     public static final Texture PISTOL_TEXTURE = new Texture(Gdx.files.internal("pistol_bullet.png"));
-
-
 
     public PistolProjectile(World world, ProjectileSource source) {
         super(world, source, PISTOL_TEXTURE, 20);

@@ -438,5 +438,7 @@ public class World implements Renderable {
         this.getInventory().clearItems();
 
         this.create();
+
+        this.setGameState(GameState.PLAYING);
     }
 }

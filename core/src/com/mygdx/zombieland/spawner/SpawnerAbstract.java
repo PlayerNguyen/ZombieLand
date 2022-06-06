@@ -26,6 +26,10 @@ public abstract class SpawnerAbstract implements Spawner {
     }
 
     public void update() {
+        if (!this.world.getGameState().equals(GameState.PLAYING)) {
+            this.lastSpawn = System.currentTimeMillis();
+            return;
+        }
         if (System.currentTimeMillis() - this.duration >= this.lastSpawn) {
             Location spawnLocation = new Location(
                     this.location.x + (float) MathHelper.nextDouble(-offset, offset),

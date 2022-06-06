@@ -8,16 +8,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ZombieLandMain extends ApplicationAdapter {
+    public static final String gameVersion = "1.0.0 beta 1";
 
     private SpriteBatch batch;
     private World world;
-    public static final String gameVersion = "1.0.0 beta 1";
+    private final long startMillis;
+    private Texture phourTeamBannerTexture;
+
+    public ZombieLandMain() {
+        this.startMillis = System.currentTimeMillis();
+    }
 
     @Override
     public void create() {
         this.batch = new SpriteBatch();
         this.world = new World(batch);
         this.world.create();
+
+        this.phourTeamBannerTexture = new Texture(Gdx.files.internal("phour_team.PNG"));
     }
 
     @Override
@@ -25,9 +33,20 @@ public class ZombieLandMain extends ApplicationAdapter {
         ScreenUtils.clear(0.96078431372f, 0.96078431372f, 0.96078431372f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        this.batch.begin();
-        this.world.render(); // Render a whole world
-        this.batch.end();
+        if (startMillis + 3000 > System.currentTimeMillis()) {
+            this.batch.begin();
+            this.getBatch().draw(this.phourTeamBannerTexture, 0, 0);
+            this.batch.end();
+        } else {
+
+            this.batch.begin();
+            this.world.render(); // Render a whole world
+            this.batch.end();
+        }
+    }
+
+    public SpriteBatch getBatch() {
+        return batch;
     }
 
     @Override

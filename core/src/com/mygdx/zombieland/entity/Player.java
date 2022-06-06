@@ -2,6 +2,7 @@ package com.mygdx.zombieland.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -27,6 +28,8 @@ public class Player extends DamageableAbstract
 
     private static final Texture TEXTURE_SHOOTING = new Texture(Gdx.files.internal("shooting.png"));
     private static final Texture TEXTURE_IDLING = new Texture(Gdx.files.internal("idle.png"));
+    private static final Sound PLAYER_HURT_SOUND = Gdx.audio
+            .newSound(Gdx.files.internal("audio/hurt/hurt.mp3"));
     private static final long SHOOT_DELAY_IN_MILLIS = 320;
 
     public static final int PLAYER_SIZE = 96;
@@ -184,6 +187,9 @@ public class Player extends DamageableAbstract
     @Override
     public void damage(DamageSource source, float amount) {
         this.setHealth(this.getHealth() - amount);
+
+        // Play sound
+        PLAYER_HURT_SOUND.play(this.getWorld().getGameSetting().getVfxSoundLevel(), .899f, 1);
 
         this.getSprite().setColor(Color.RED);
         this.getWorld().getScheduler().runTaskAfter(new Runnable() {

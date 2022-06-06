@@ -119,14 +119,25 @@ public class Zombie extends EnemyAbstract {
         // Update rotation to target
         this.rotateToTarget();
 
+//        if (this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2) {
+//
+//        } else {
+//            this.getDirection().x = 0;
+//            this.getDirection().y = 0;
+//
+//
+//        }
+
         // Set direction to the target
         this.getDirection().x = Math.sin(this.getRotation());
         this.getDirection().y = -Math.cos(this.getRotation());
 
+
         // Update speed
-        this.speed = this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2
-                ? 0
-                : this.getType().getSpeed();
+        this.setSpeed(this.getType().getSpeed());
+//        this.speed = this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2
+//                ? 0
+//                : this.getType().getSpeed();
 
         // Hit player when get close
         if (this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2) {
@@ -161,5 +172,13 @@ public class Zombie extends EnemyAbstract {
 
     public ZombieType getType() {
         return type;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public float getSpeed() {
+        return speed;
     }
 }
