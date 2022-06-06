@@ -3,6 +3,8 @@ package com.mygdx.zombieland;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,6 +37,7 @@ public class World implements Renderable {
     private static final int WINDOW_HEIGHT = 600;
     private static final Texture BACKGROUND_TEXTURE = new Texture(Gdx.files.internal("background.png"));
     private static final Texture LOGO_TEXTURE = new Texture(Gdx.files.internal("logo.png"));
+    private static final Music BGM_SOUND = Gdx.audio.newMusic(Gdx.files.internal("audio/BGM.mp3"));
 
     public SpriteBatch batch;
     public BitmapFont font;
@@ -113,6 +116,10 @@ public class World implements Renderable {
 
         // HUD initialization
         this.hud.create();
+
+        BGM_SOUND.setLooping(true);
+        BGM_SOUND.setVolume(this.getGameSetting().getMusicSoundLevel());
+        BGM_SOUND.play();
     }
 
     @Override
