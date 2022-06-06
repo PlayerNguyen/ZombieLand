@@ -23,14 +23,20 @@ We tried our best to serve you the best features you could get from Zombieland.
 
 ![knockbackgif]()
 
+ - Well-designed ammo counting system, refill ammo by hitting box:
+
+![refillammogif]()
+
  - Easy to recognize health counting system, has low heath alert sounds:
  
 ![healthgif]()
 
  - Different types of zombie, more challenges and ways to kill zombies:
- 
- ![zombies]()
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/99407775/172084436-33691872-12aa-433e-819c-45fe547f6189.png" width="240" height="360" />
+</p>
+ 
 ## Upcoming Features
 (or features that will/never happen in the future)
  - Variety of weapon types, fun sounds effect:
