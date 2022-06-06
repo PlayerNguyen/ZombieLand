@@ -19,6 +19,7 @@ import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryPistol;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.spawner.BoxSpawner;
 import com.mygdx.zombieland.spawner.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
 import com.mygdx.zombieland.setting.GameSetting;
@@ -32,7 +33,8 @@ public class World implements Renderable {
 
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
-    private static final String BACKGROUND_TEXTURE = "background.png";
+    private static final Texture BACKGROUND_TEXTURE = new Texture(Gdx.files.internal("background.png"));
+    private static final Texture LOGO_TEXTURE = new Texture(Gdx.files.internal("logo.png"));
 
     public SpriteBatch batch;
     public BitmapFont font;
@@ -42,7 +44,6 @@ public class World implements Renderable {
     private Texture background;
     private GameState gameState;
     private boolean debug;
-    private long lastDebugSet;
 
     private final GameSetting gameSetting;
     private final Set<Entity> projectiles = new CopyOnWriteArraySet<>();
@@ -52,6 +53,7 @@ public class World implements Renderable {
     private final Scheduler scheduler;
     private final TextIndicator textIndicator;
     private final HUD hud;
+
 
     public World(SpriteBatch batch) {
         this.gameSetting = new GameSetting();
@@ -92,6 +94,8 @@ public class World implements Renderable {
         }
 
         // Load spawners
+        // Zombie spawner
+        this.spawners.clear();
         this.spawners.add(new ZombieSpawner(this,
                 new Location(-30, 300), 50f, 5000));
         this.spawners.add(new ZombieSpawner(this,
@@ -100,6 +104,9 @@ public class World implements Renderable {
                 new Location(830, 300), 50f, 5000));
         this.spawners.add(new ZombieSpawner(this,
                 new Location(400, -30), 50f, 5000));
+        // Box spawner
+        this.spawners.add(new BoxSpawner(this, new Location(this.getPlayer().getLocation()),
+                120f, 12000));
         for (Spawner spawner : this.spawners) {
             spawner.create();
         }
@@ -120,24 +127,15 @@ public class World implements Renderable {
         // Update background
         this.updateBackground();
 
-        // Debug shortcut
-        if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
-            if (System.currentTimeMillis() - 300 >= lastDebugSet) {
-                this.getTextIndicator().createText(new Location(this.getPlayer().getLocation()).add(-64, 64),
-                        new Vector2D(0, 3F),
-                        String.format("Debug is %s", (!isDebug() ? "on" : "off")),
-                        1000,
-                        .003F, (!isDebug() ? Color.GREEN : Color.RED));
-                this.setDebug(!this.isDebug());
-                lastDebugSet = System.currentTimeMillis();
-            }
-        }
-
         // Render HUD
         switch (this.gameState) {
             case STARTING: {
                 Gdx.app.log("Game status", "Starting status");
-//                font.getData().setScale(0.6f);
+
+                // Render logo
+                this.batch.draw(LOGO_TEXTURE, 29, (386));
+
+                // Register press to start
                 this.font.draw(this.batch,
                         "Press LEFT MOUSE key to start",
                         300,
@@ -145,11 +143,17 @@ public class World implements Renderable {
                         200,
                         Align.center,
                         true);
+
+                // Register keyboard for starting
                 Gdx.input.setInputProcessor(new InputProcessor() {
                     @Override
                     public boolean keyDown(int keycode) {
                         if (keycode == Input.Buttons.LEFT) {
-                            setGameState(GameState.PLAYING);
+                            // The game still running
+                            if (getGameState() == GameState.STARTING) {
+                                setGameState(GameState.PLAYING);
+                            }
+
                             return true;
                         }
                         return false;
@@ -168,7 +172,10 @@ public class World implements Renderable {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         if (button == Input.Buttons.LEFT) {
-                            setGameState(GameState.PLAYING);
+                            // The game still running
+                            if (getGameState() == GameState.STARTING) {
+                                setGameState(GameState.PLAYING);
+                            }
                             return true;
                         }
                         return false;
@@ -194,9 +201,11 @@ public class World implements Renderable {
                         return false;
                     }
                 });
+
                 break;
             }
             case PAUSING:
+            case ENDING:
             case PLAYING: {
                 // Render player
                 this.player.render();
@@ -225,10 +234,28 @@ public class World implements Renderable {
                 Gdx.input.setInputProcessor(new InputProcessor() {
                     @Override
                     public boolean keyDown(int keycode) {
+                        // Pause the game if the game is starting
                         if (keycode == Input.Keys.ESCAPE) {
-                            Gdx.app.log("GameState", "Set game state to "
-                                    + (gameState == GameState.PLAYING ? GameState.PAUSING : GameState.PLAYING));
-                            setGameState((gameState == GameState.PLAYING ? GameState.PAUSING : GameState.PLAYING));
+                            if (getGameState() != GameState.STARTING
+                                    || getGameState() != GameState.ENDING) {
+                                setGameState((getGameState() == GameState.PAUSING
+                                        ? GameState.PLAYING
+                                        : GameState.PAUSING)
+                                );
+                            }
+                            return true;
+                        }
+
+                        // Debug shortcut
+                        if (keycode == Input.Keys.F3) {
+                            getTextIndicator().createText(new Location(getPlayer().getLocation()).add(-64, 64),
+                                    new Vector2D(0, 3F),
+                                    String.format("Debug is %s", (!isDebug() ? "on" : "off")),
+                                    1200,
+                                    .3F, (!isDebug() ? Color.GREEN : Color.RED));
+
+                            setDebug(!isDebug());
+                            return true;
                         }
                         return false;
                     }
@@ -245,6 +272,13 @@ public class World implements Renderable {
 
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        // The game is end, click to restart
+                        if (getGameState() == GameState.ENDING
+                                && button == Input.Buttons.LEFT) {
+//                            System.out.println("Hiii");
+                            restart();
+                            return true;
+                        }
                         return false;
                     }
 
@@ -271,9 +305,7 @@ public class World implements Renderable {
 
                 break;
             }
-            case ENDING: {
-                break;
-            }
+
             default: {
                 throw new UnsupportedOperationException();
             }
@@ -343,7 +375,7 @@ public class World implements Renderable {
     }
 
     public void loadBackground() {
-        this.background = new Texture(Gdx.files.internal(BACKGROUND_TEXTURE));
+        this.background = BACKGROUND_TEXTURE;
     }
 
     public void updateBackground() {
@@ -384,5 +416,27 @@ public class World implements Renderable {
 
     public GameState getGameState() {
         return gameState;
+    }
+
+    public void restart() {
+        // Clear entities
+        for (Entity entity : entities) {
+            removeEntity(entity);
+        }
+
+        // Clear projectile
+        for (Entity projectile : projectiles) {
+            removeProjectile((Projectile) projectile);
+        }
+
+        // Reset spawner counter
+        for (Spawner spawner : spawners) {
+            spawner.setLastSpawn(0);
+        }
+
+        // Inventory reset
+        this.getInventory().clearItems();
+
+        this.create();
     }
 }

@@ -30,24 +30,7 @@ public class ShootingRunnable implements Runnable {
         // Cannot shoot (locked)
         if (!source.isCanShoot()) return;
 
-
-        // Otherwise, create bullet and runnable
-//        if ((this.source.getWeapon()) instanceof Gun) {
-//            this.source.getItem
-//
-//            // Abort the firing action because of the ammo
-//            if (gunWeapon.getCurrentAmmo() == 0) {
-//                this.world.getTextIndicator().createText(new Location(this.source.getLocation())
-//                                .add((float) -this.source.getSize() / 2,(float) this.source.getSize() / 2),
-//                        new Vector2D(0, 12),
-//                        "Out of ammo", 300, 1.5f
-//                );
-//                return;
-//            }
-//
-
-//        }
-        // Shooter is player
+        // Shooter is a player
         if (this.source instanceof Player) {
             Player player = (Player) this.source;
             InventoryItem currentHandItem = player.getCurrentHandItem();
@@ -60,13 +43,13 @@ public class ShootingRunnable implements Runnable {
                 if (currentHandGun.getAmmo() == 0) {
 
                     // Play no ammo sound
-                    ((Gun)currentHandGun.getWeapon()).getEmptySound().play(
+                    ((Gun) currentHandGun.getWeapon()).getEmptySound().play(
                             this.world.getGameSetting().getVfxSoundLevel(),
                             1,
                             0
                     );
                     this.source.setCanShoot(false);
-                    this.world.getScheduler().runTaskAfter(this.onPostRunnable(), shootDelay);
+//                    this.world.getScheduler().runTaskAfter(this.onPostRunnable(), shootDelay);
 
                     // Reload
                     if (currentHandGun.getTotalAmmo() > 0) {
@@ -75,7 +58,7 @@ public class ShootingRunnable implements Runnable {
                             this.world.getTextIndicator().createText(new Location(this.source.getLocation())
                                             .add((float) -this.source.getSize() / 2, (float) this.source.getSize() / 2),
                                     new Vector2D(0, 12),
-                                    "Reloading", 300, 1.5f,
+                                    "Reloading", (((Gun) currentHandGun.getWeapon()).getReloadDuration()), 1.5f,
                                     Color.GREEN
                             );
                         }
@@ -95,18 +78,16 @@ public class ShootingRunnable implements Runnable {
                 // Create a projectile
                 this.source.getSprite().setTexture(this.source.getShootingTexture());
                 this.world.createProjectile(projectile);
-                ((Gun)currentHandGun.getWeapon()).getShootingSound()
+                ((Gun) currentHandGun.getWeapon()).getShootingSound()
                         .play(
                                 this.world.getGameSetting().getVfxSoundLevel(),
-                            1,
-                            0
+                                1,
+                                0
                         );
                 // Decrease an ammo
                 currentHandGun.setAmmo(currentHandGun.getAmmo() - 1);
             }
         }
-
-
 
         this.source.setCanShoot(false);
         this.world.getScheduler().runTaskAfter(this.onPostRunnable(), shootDelay);

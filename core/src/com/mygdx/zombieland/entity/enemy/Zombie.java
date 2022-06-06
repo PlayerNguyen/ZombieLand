@@ -68,14 +68,14 @@ public class Zombie extends EnemyAbstract {
 
             // Update lerp
             if (fraction < 1) {
-                fraction += Gdx.graphics.getDeltaTime() * speed;
+                fraction += Gdx.graphics.getDeltaTime() * speed ;
                 this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
                 this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
             }
 
             this.getLocation().add(
-                    this.getDirection().x * Gdx.graphics.getDeltaTime() * speed,
-                    this.getDirection().y * Gdx.graphics.getDeltaTime() * speed
+                    this.getDirection().x * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 50 : 1),
+                    this.getDirection().y * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 50 : 1)
             );
         }
 
@@ -132,7 +132,7 @@ public class Zombie extends EnemyAbstract {
         if (this.target.getLocation().distance(this.getLocation()) <= (float) this.target.getSize() / 2) {
             if (System.currentTimeMillis() - ZOMBIE_HIT_DURATION >= lastHit || lastHit == 0) {
                 this.attack();
-                ((Damageable) this.target).damage(this, 10F);
+                ((Damageable) this.target).damage(this, this.getType().getDamage());
                 this.lastHit = System.currentTimeMillis();
             }
         }

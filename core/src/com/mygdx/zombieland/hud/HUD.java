@@ -2,14 +2,23 @@ package com.mygdx.zombieland.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.Renderable;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.projectile.PistolProjectile;
 import com.mygdx.zombieland.inventory.InventoryGun;
 import com.mygdx.zombieland.inventory.InventoryItem;
+import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.weapon.Gun;
 import com.mygdx.zombieland.weapon.Weapon;
 
@@ -26,12 +35,34 @@ public class HUD implements Renderable {
     public List<Sprite> bulletSprites = new ArrayList<>();
     public List<Sprite> healthSprites = new ArrayList<>();
 
+    private Stage stage;
+    private Table table;
+
     public HUD(World world) {
         this.world = world;
     }
 
     @Override
     public void create() {
+        stage = new Stage();
+        Gdx.input.setInputProcessor(stage);
+
+        table = new Table();
+        table.setFillParent(true);
+        table.setColor(1, 1, 1, .2f);
+        stage.addActor(table);
+
+
+        table.setDebug(true); // This is optional, but enables debug lines for tables.
+
+        TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
+//        style.up = new TextureRegionDrawable(upRegion);
+//        style.down = new TextureRegionDrawable(downRegion);
+        style.font = this.getWorld().font;
+        style.fontColor = Color.RED;
+
+        stage.addActor(new TextButton("hi", style));
+        // Add widgets to the table here.
     }
 
     @Override
@@ -42,6 +73,48 @@ public class HUD implements Renderable {
 
         // Render player health information
         this.indicateHealthInfo();
+
+        // Render pausing menu
+        this.renderPausingMenu();
+
+        // Render death menu
+        this.renderDeathUI();
+    }
+
+    private void renderDeathUI() {
+        if (this.getWorld().getGameState().equals(GameState.ENDING)) {
+            this.getWorld().getFont().setColor(Color.RED);
+//            this.getWorld().getFont().getData().setScale(1.25f);
+            this.getWorld().getFont().draw(this.getWorld().getBatch(),
+                    "Game Over",
+                    this.getWorld().getPlayer().getLocation().x - 48,
+                    this.getWorld().getPlayer().getLocation().y + 120
+            );
+        }
+    }
+
+    private void renderPausingMenu() {
+//        new Actor()
+        if (this.getWorld().getGameState().equals(GameState.PAUSING)) {
+//            this.world.batch.end();
+//
+//            // TODO Draw a transparent black wrapper to wrap all menu things
+//
+//            // TODO Draw a pause panel which contains vfx sound, transparent UI, ...
+//
+//            this.world.batch.begin();
+//
+//            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//            stage.act(Gdx.graphics.getDeltaTime());
+//            stage.draw();
+            this.getWorld().getFont().setColor(Color.WHITE);
+            this.getWorld().getFont().draw(this.getWorld().getBatch(),
+                    "Paused",
+                    this.getWorld().getPlayer().getLocation().x - 30,
+                    this.getWorld().getPlayer().getLocation().y + 60
+            );
+        }
+
 
     }
 
@@ -58,7 +131,6 @@ public class HUD implements Renderable {
                 this.healthSprites.add(sprite);
             }
         }
-
 
 
         // Draw healths sprite
@@ -80,7 +152,7 @@ public class HUD implements Renderable {
 
     private void indicateGunInfo() {
 
-        this.world.font.setColor(201F/255, 198F/255, 38F/255, this.world.getGameSetting()
+        this.world.font.setColor(201F / 255, 198F / 255, 38F / 255, this.world.getGameSetting()
                 .getHudVisibleLevel());
 
         for (Sprite bulletSprite : bulletSprites) {

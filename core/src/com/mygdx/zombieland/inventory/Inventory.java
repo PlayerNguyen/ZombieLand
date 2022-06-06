@@ -21,4 +21,8 @@ public class Inventory {
     public List<InventoryItem> getItems() {
         return items;
     }
+
+    public void clearItems() {
+        this.items.clear();
+    }
 }

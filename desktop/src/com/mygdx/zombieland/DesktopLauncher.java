@@ -8,12 +8,14 @@ import com.mygdx.zombieland.ZombieLandMain;
 public class DesktopLauncher {
     public static void main(String[] arg) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        ZombieLandMain zombieLandMain = new ZombieLandMain();
+
         config.useVsync(true);
         config.setResizable(false);
         config.setForegroundFPS(60);
-        config.setTitle("ZombieLand");
+        config.setTitle(String.format("ZombieLand [ %s ]", ZombieLandMain.gameVersion));
         config.setWindowedMode(800, 600);
 
-        new Lwjgl3Application(new ZombieLandMain(), config);
+        new Lwjgl3Application(zombieLandMain, config);
     }
 }

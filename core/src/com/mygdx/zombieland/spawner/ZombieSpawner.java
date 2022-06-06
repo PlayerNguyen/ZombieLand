@@ -6,68 +6,27 @@ import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.entity.enemy.Zombie;
 import com.mygdx.zombieland.entity.enemy.ZombieType;
 import com.mygdx.zombieland.location.Location;
-import com.mygdx.zombieland.state.GameState;
-import com.mygdx.zombieland.utils.MathHelper;
 
-public class ZombieSpawner implements Spawner {
-    private final World world;
-    private final Location location;
-    private final double offset;
-    private long duration;
-    private long lastSpawn;
-//    private long currentSpawn;
-
+public class ZombieSpawner extends SpawnerAbstract {
     public ZombieSpawner(World world, Location location, double offset, long duration) {
-        this.world = world;
-        this.location = location;
-        this.offset = offset;
-        this.duration = duration;
-        Gdx.app.log("Spawner", "Creating a spawner " + this);
+        super(world, location, offset, duration);
     }
 
-    public void create() {
-        this.lastSpawn = System.currentTimeMillis() + duration;
+    @Override
+    public void onTick(Location spawnLocation) {
+        ZombieType type = ZombieType.values()[(int) (Math.random() * (ZombieType.values().length))];
+        // Spawn here
+        Entity zombie = this.getWorld().createEntity(
+                new Zombie(
+                        this.getWorld(),
+                        spawnLocation,
+                        this.getWorld().getPlayer(),
+                        type
+                )
+        );
+
+        Gdx.app.log("Spawner", "Spawning a zombie " + zombie + " at " + spawnLocation);
     }
 
-    public void update() {
-        if (System.currentTimeMillis() - this.duration >= this.lastSpawn) {
-            Location spawnLocation = new Location(this.location.x + (float) MathHelper.nextDouble(-offset, offset),
-                    this.location.y + (float) MathHelper.nextDouble(-offset, offset));
-            ZombieType type = ZombieType.values()[(int) (Math.random() * (ZombieType.values().length))];
-            if (this.world.getGameState().equals(GameState.PLAYING)) {
-                // Spawn here
-                Entity zombie = this.world.createEntity(
-                        new Zombie(
-                                this.world,
-                                spawnLocation,
-                                this.world.getPlayer(),
-                                type
-                        )
-                );
 
-                Gdx.app.log("Spawner", "Spawning a zombie " + zombie + " at " + spawnLocation);
-                this.lastSpawn = System.currentTimeMillis();
-            }
-        }
-    }
-
-    public void setLastSpawn(long lastSpawn) {
-        this.lastSpawn = lastSpawn;
-    }
-
-    public long getLastSpawn() {
-        return lastSpawn;
-    }
-
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
-    public long getDuration() {
-        return duration;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
 }

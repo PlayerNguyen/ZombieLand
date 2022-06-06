@@ -218,9 +218,8 @@ public class Player extends DamageableAbstract
 
     @Override
     public void kill() {
-        Gdx.app.log("Player", "Killing the player and trigger end the game");
-        this.getWorld().setGameState(GameState.PAUSING);
-
+        Gdx.app.log("Player", "Killing the player and trigger set game state to ENDING");
+        this.getWorld().setGameState(GameState.ENDING);
     }
 
     @Override

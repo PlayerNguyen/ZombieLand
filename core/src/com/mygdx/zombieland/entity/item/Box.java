@@ -6,8 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.utils.VisualizeHelper;
 
-public class Box extends ItemAbstract {
+public abstract class Box extends ItemAbstract {
 
     private static final Texture BOX_TEXTURE = new Texture(Gdx.files.internal("box.png"));
     public static final int BOX_SIZE = 32;
@@ -47,8 +48,12 @@ public class Box extends ItemAbstract {
                 this.getDirection().y
         );
 
-        this.getSprite().setPosition(this.getLocation().x - 16, this.getLocation().y - 16);
-//        this.getSprite().draw(this.getWorld().getBatch());
+        this.getSprite().setPosition(this.getCenterLocation().x, this.getCenterLocation().y);
+
+        if (this.getWorld().isDebug()) {
+            VisualizeHelper.simulateBox(this.getWorld(), this);
+
+        }
 
     }
 
@@ -72,7 +77,5 @@ public class Box extends ItemAbstract {
     @Override
     public void kill() {
         super.kill();
-
-
     }
 }

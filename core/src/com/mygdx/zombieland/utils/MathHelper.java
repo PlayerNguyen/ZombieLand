@@ -9,4 +9,8 @@ public class MathHelper {
         return min + (max - min) * r.nextDouble();
     }
 
+    public static int nextInt(int min, int max) {
+        return (int) MathHelper.nextDouble(min, max);
+    }
+
 }

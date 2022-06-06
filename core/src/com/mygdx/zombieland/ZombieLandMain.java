@@ -11,6 +11,7 @@ public class ZombieLandMain extends ApplicationAdapter {
 
     private SpriteBatch batch;
     private World world;
+    public static final String gameVersion = "1.0.0 beta 1";
 
     @Override
     public void create() {
