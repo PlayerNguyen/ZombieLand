@@ -41,9 +41,9 @@ We tried our best to serve you the best features you could get from Zombieland.
 _or features that will (never) happen in the future_
  - Variety of weapon types, fun sounds effect:
 
-![weapon img]()
-
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/99407775/172117180-a7038f86-cf8d-45c0-9db8-7fcd3fde3ee2.png" width="300" height="300" />
+</p>
 
  - More designs of zombies, bosses and new character:
  
