@@ -69,4 +69,10 @@ public class Box extends ItemAbstract {
         return BOX_SIZE;
     }
 
+    @Override
+    public void kill() {
+        super.kill();
+
+
+    }
 }

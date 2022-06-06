@@ -8,6 +8,7 @@ import com.mygdx.zombieland.entity.Damageable;
 import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.VisualizeHelper;
 
 public class Zombie extends EnemyAbstract {
@@ -61,19 +62,22 @@ public class Zombie extends EnemyAbstract {
     @Override
     public void render() {
 
-        this.updateMove();
 
-        // Update lerp
-        if (fraction < 1) {
-            fraction += Gdx.graphics.getDeltaTime() * speed;
-            this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
-            this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
+        if (this.world.getGameState().equals(GameState.PLAYING)) {
+            this.updateMove();
+
+            // Update lerp
+            if (fraction < 1) {
+                fraction += Gdx.graphics.getDeltaTime() * speed;
+                this.getLocation().x += (this.destination.x - this.getLocation().x) * fraction;
+                this.getLocation().y += (this.destination.y - this.getLocation().y) * fraction;
+            }
+
+            this.getLocation().add(
+                    this.getDirection().x * Gdx.graphics.getDeltaTime() * speed,
+                    this.getDirection().y * Gdx.graphics.getDeltaTime() * speed
+            );
         }
-
-        this.getLocation().add(
-                this.getDirection().x * Gdx.graphics.getDeltaTime() * speed,
-                this.getDirection().y * Gdx.graphics.getDeltaTime() * speed
-        );
 
         // Export (render) image
         this.getSprite().setRotation(this.getRotation());

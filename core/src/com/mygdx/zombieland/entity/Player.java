@@ -11,12 +11,16 @@ import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
+import com.mygdx.zombieland.runnable.ReloadRunnable;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
+import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.VisualizeHelper;
 import com.mygdx.zombieland.weapon.Gun;
 import com.mygdx.zombieland.weapon.Pistol;
 import com.mygdx.zombieland.weapon.PistolType;
 import com.mygdx.zombieland.weapon.Weapon;
+
+import javax.swing.*;
 
 public class Player extends DamageableAbstract
         implements ProjectileSource, LivingEntity, InventoryHolder {
@@ -34,6 +38,7 @@ public class Player extends DamageableAbstract
 
     private Sprite sprite;
     private boolean canShoot;
+    private boolean reloading;
     private float health = 100;
     private float rotation = 0;
     private InventoryItem currentHandItem;
@@ -46,6 +51,7 @@ public class Player extends DamageableAbstract
         this.canShoot = true;
 //        this.weapon = new Pistol(PistolType.PISTOL);
         this.currentHandItem = world.getInventory().getItems().get(0);
+        this.reloading = false;
     }
 
     @Override
@@ -62,14 +68,6 @@ public class Player extends DamageableAbstract
 
     @Override
     public void render() {
-        // Make the player rotate follows cursor
-        this.rotateFollowsCursor();
-
-        // Shoot function
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)
-                || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
-            this.shoot();
-        }
 
         // Switch item
         this.handleSwitch();
@@ -78,7 +76,19 @@ public class Player extends DamageableAbstract
         this.sprite.setX(this.getCenterLocation().x);
         this.sprite.setY(this.getCenterLocation().y);
 
-        sprite.setRotation(this.rotation);
+        if (this.world.getGameState().equals(GameState.PLAYING)) {
+            // Make the player rotate follows cursor
+            this.rotateFollowsCursor();
+            // Set rotation
+            sprite.setRotation(this.rotation);
+
+            // Shoot function
+            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)
+                    || Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+                this.shoot();
+            }
+        }
+
         sprite.draw(this.world.getBatch());
 
         if (this.world.isDebug()) {
@@ -208,8 +218,9 @@ public class Player extends DamageableAbstract
 
     @Override
     public void kill() {
-        // TODO: end game
         Gdx.app.log("Player", "Killing the player and trigger end the game");
+        this.getWorld().setGameState(GameState.PAUSING);
+
     }
 
     @Override
@@ -268,6 +279,16 @@ public class Player extends DamageableAbstract
     }
 
     public void reload() {
-        throw new UnsupportedOperationException("");
+        this.setReloading(true);
+        new Thread(new ReloadRunnable(this.getWorld())).start();
+//        throw new UnsupportedOperationException("");
+    }
+
+    public boolean isReloading() {
+        return reloading;
+    }
+
+    public void setReloading(boolean reloading) {
+        this.reloading = reloading;
     }
 }

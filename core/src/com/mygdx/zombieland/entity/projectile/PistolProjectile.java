@@ -82,7 +82,7 @@ public class PistolProjectile extends AbstractProjectile {
             }
 
             // Hit the entity
-            if (entityLocation.distance(this.getLocation()) <= (float) entity.getSize() / 3) {
+            if (entityLocation.distance(this.getLocation()) <= (float) entity.getSize() / 2F) {
 
                 Gdx.app.log("Triggered", "Hit to entity ...");
                 // Set triggered
