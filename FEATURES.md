@@ -20,10 +20,11 @@
  
  - Realistic movement, knock-back physics applied when zombie is shot:
  
-<img src="https://user-images.githubusercontent.com/99407775/172314905-78d5c7b4-6861-4d10-8cd1-fde8b808cc5b.gif" width="300" />
-
-![knockbackgif]()
-
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/99407775/172314905-78d5c7b4-6861-4d10-8cd1-fde8b808cc5b.gif" width="300" />
+ <img src="https://user-images.githubusercontent.com/99407775/172318405-3ac4c6d6-09de-414c-9b38-e2f5ce494b36.gif" width="300" />
+</p>
+ 
  - Well-designed ammo counting system, refill ammo by hitting box:
 
 <p align="center">
@@ -80,11 +81,13 @@ _or features that will (never) happen in the future_
 ## Screenshots & Gameplay
 - **Gameplay:**
   
-<img src="https://user-images.githubusercontent.com/99407775/172314480-047eb156-4cb4-4a84-be60-5a1361142676.gif" width="300" />
 
-![playing]()
+<p align="center">  
+ <img src="https://user-images.githubusercontent.com/99407775/172314480-047eb156-4cb4-4a84-be60-5a1361142676.gif" width="300" />
+ <img src="https://user-images.githubusercontent.com/99407775/172318377-6d8c12b0-c600-4848-bb27-1c6fcf3ff21a.gif" width="300" />
+ <img src="https://user-images.githubusercontent.com/99407775/172318442-408ca83e-9fd7-4135-ac06-6d073f6cb923.gif" width="300" />
+</p>
 
-![end]()
 
 - __Some screenshots:__
 
