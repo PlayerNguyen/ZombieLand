@@ -2,7 +2,7 @@ package com.mygdx.zombieland.setting;
 
 public class GameSetting {
 
-    private float musicSoundLevel = 0.2f;
+    private float musicSoundLevel = 1f;
     private float vfxSoundLevel = 0.4f;
     private float hudVisibleLevel = 0.6f;
 
