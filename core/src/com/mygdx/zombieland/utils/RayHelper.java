@@ -3,9 +3,7 @@ package com.mygdx.zombieland.utils;
 import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.location.Location;
-import com.mygdx.zombieland.location.Vector2D;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

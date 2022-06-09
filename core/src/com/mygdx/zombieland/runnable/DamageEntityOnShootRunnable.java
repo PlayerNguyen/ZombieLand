@@ -3,9 +3,9 @@ package com.mygdx.zombieland.runnable;
 import com.mygdx.zombieland.entity.DamageSource;
 import com.mygdx.zombieland.entity.Damageable;
 import com.mygdx.zombieland.entity.Entity;
-import com.mygdx.zombieland.entity.enemy.Zombie;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Set;
 
 public class DamageEntityOnShootRunnable implements Runnable {
 

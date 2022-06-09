@@ -1,15 +1,16 @@
 package com.mygdx.zombieland.spawner;
 
+import com.mygdx.zombieland.Renderable;
 import com.mygdx.zombieland.location.Location;
 
 /**
  * Spawner is a delay-task to spawn(create) a new entities
  */
-public interface Spawner {
+public interface Spawner extends Renderable {
 
     void create();
 
-    void update();
+    void render();
 
     long getLastSpawn();
 

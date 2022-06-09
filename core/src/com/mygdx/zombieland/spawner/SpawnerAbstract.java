@@ -25,7 +25,7 @@ public abstract class SpawnerAbstract implements Spawner {
         this.lastSpawn = System.currentTimeMillis() + duration;
     }
 
-    public void update() {
+    public void render() {
         if (!this.world.getGameState().equals(GameState.PLAYING)) {
             this.lastSpawn = System.currentTimeMillis();
             return;
@@ -42,6 +42,11 @@ public abstract class SpawnerAbstract implements Spawner {
                 this.lastSpawn = System.currentTimeMillis();
             }
         }
+    }
+
+    @Override
+    public void dispose() {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     public abstract void onTick(Location spawnLocation);

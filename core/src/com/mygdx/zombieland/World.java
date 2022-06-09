@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,17 +13,18 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.effects.TextIndicator;
-import com.mygdx.zombieland.entity.*;
+import com.mygdx.zombieland.entity.Entity;
+import com.mygdx.zombieland.entity.Player;
 import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.hud.HUD;
 import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryPistol;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
-import com.mygdx.zombieland.spawner.BoxSpawner;
-import com.mygdx.zombieland.spawner.Spawner;
 import com.mygdx.zombieland.scheduler.Scheduler;
 import com.mygdx.zombieland.setting.GameSetting;
+import com.mygdx.zombieland.spawner.BoxSpawner;
+import com.mygdx.zombieland.spawner.Spawner;
 import com.mygdx.zombieland.spawner.ZombieSpawner;
 import com.mygdx.zombieland.state.GameState;
 
@@ -235,7 +235,7 @@ public class World implements Renderable {
 
                 // Spawner
                 for (Spawner spawner : spawners) {
-                    spawner.update();
+                    spawner.render();
                 }
 
                 this.hud.render();

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.projectile.ProjectileSource;
-import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryItem;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
@@ -17,12 +16,7 @@ import com.mygdx.zombieland.runnable.ReloadRunnable;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.VisualizeHelper;
-import com.mygdx.zombieland.weapon.Gun;
-import com.mygdx.zombieland.weapon.Pistol;
-import com.mygdx.zombieland.weapon.PistolType;
 import com.mygdx.zombieland.weapon.Weapon;
-
-import javax.swing.*;
 
 public class Player extends DamageableAbstract
         implements ProjectileSource, LivingEntity, InventoryHolder {

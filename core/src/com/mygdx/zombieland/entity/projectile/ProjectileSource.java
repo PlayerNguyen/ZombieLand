@@ -1,7 +1,6 @@
 package com.mygdx.zombieland.entity.projectile;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.zombieland.entity.DamageSource;
 import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.weapon.Weapon;
 

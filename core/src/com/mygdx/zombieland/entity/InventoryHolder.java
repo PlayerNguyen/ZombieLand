@@ -1,6 +1,5 @@
 package com.mygdx.zombieland.entity;
 
-import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryItem;
 
 public interface InventoryHolder {
