@@ -105,13 +105,13 @@
     - **Deadline:** 03/06/2022.
 - Updating readme:
     - [x] Fix timeline.
-    - [ ] Add screenshots to readme.
+    - [x] Add screenshots to readme.
         - **Responsible:** `Duong`.
         - **Deadline:** 05/06/2022.
 - Drawing UML, writing presentation script:
-    - [ ] Draw `UML` image using `Lucidchart`.
+    - [x] Draw `UML` image using `Intellij `.
         - **Deadline:** 07/06/2022
-    - [ ] Script for presentation.
+    - [x] Script for presentation.
         - **Deadline:** 09/06/2022
     - **Responsible:** `Duong`.
 - Presenting project:
