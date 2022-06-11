@@ -119,7 +119,7 @@ We would recommend that you read our [license](https://github.com/PlayerNguyen/Z
 ### ⚙ Architecture
 
 <p align="center">
-<img src= "https://user-images.githubusercontent.com/99407775/172320266-777e7ad0-0a61-4bc8-bed9-a14d348659d6.png" width="1700" height="1300"/> 
+<img src= "https://raw.githubusercontent.com/PlayerNguyen/ZombieLand/master/diagrams/MainUMLDiagram.png"/> 
 </p>
 
 ---
