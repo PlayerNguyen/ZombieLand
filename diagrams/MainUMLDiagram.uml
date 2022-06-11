@@ -3,209 +3,209 @@
   <ID>JAVA</ID>
   <OriginalElement>com.mygdx.zombieland.spawner</OriginalElement>
   <nodes>
-    <node x="763.6392553744554" y="1057.550020620512">com.mygdx.zombieland.entity.enemy.EnemyAbstract</node>
-    <node x="1388.4269457147711" y="4542.938299511465">com.mygdx.zombieland.utils.VisualizeHelper</node>
-    <node x="4071.330537044968" y="317.01655168076536">com.mygdx.zombieland.weapon.AbstractPistol</node>
-    <node x="4316.426945714771" y="4542.938299511465">com.mygdx.zombieland.utils.RayHelper</node>
-    <node x="5064.432258064516" y="829.1489554748932">com.mygdx.zombieland.inventory.InventoryGun</node>
-    <node x="3988.9800196868487" y="0.0">com.mygdx.zombieland.weapon.Pistol</node>
-    <node x="812.4269457147711" y="4542.938299511465">com.mygdx.zombieland.ZombieLandMain</node>
-    <node x="2882.4794302724113" y="4008.398954166228">com.mygdx.zombieland.spawner.SpawnerAbstract</node>
-    <node x="4782.110833995056" y="0.0">com.mygdx.zombieland.location.Location</node>
-    <node x="1799.4269457147711" y="4542.938299511465">com.mygdx.zombieland.runnable.ShootingRunnable</node>
-    <node x="859.2158671709058" y="3994.9988330754027">com.mygdx.zombieland.entity.item.BoxAmmunition</node>
-    <node x="2330.7308509155946" y="976.1616223693678">com.mygdx.zombieland.entity.projectile.AbstractProjectile</node>
-    <node x="1130.4269457147711" y="4542.938299511465">com.mygdx.zombieland.location.Vector2D</node>
-    <node x="1541.9749032027278" y="1550.3110828049662">com.mygdx.zombieland.entity.projectile.Projectile</node>
-    <node x="451.24830388386073" y="1264.5368975280983">com.mygdx.zombieland.entity.LivingEntity</node>
-    <node x="749.139255374455" y="2658.696708644687">com.mygdx.zombieland.entity.item.ItemAbstract</node>
-    <node x="3211.517162240182" y="4393.325754142434">com.mygdx.zombieland.spawner.BoxSpawner</node>
-    <node x="2293.2150040330644" y="3381.9337326575537">com.mygdx.zombieland.effects.TextIndicator</node>
-    <node x="2831.218259269064" y="870.3926776252749">com.mygdx.zombieland.entity.projectile.PistolProjectile</node>
-    <node x="3456.8997074526396" y="382.51655168076536">com.mygdx.zombieland.inventory.Inventory</node>
-    <node x="3757.426945714771" y="4542.938299511465">com.mygdx.zombieland.runnable.ReloadRunnable</node>
-    <node x="0.0" y="1473.2820223303602">com.mygdx.zombieland.entity.Player</node>
-    <node x="2974.5782234863764" y="3254.2108171047335">com.mygdx.zombieland.Renderable</node>
-    <node x="2979.426945714771" y="4542.938299511465">com.mygdx.zombieland.utils.Pair</node>
-    <node x="1656.4917892101907" y="1939.4171195422389">com.mygdx.zombieland.entity.projectile.ProjectileSource</node>
-    <node x="1337.241944185429" y="1296.9293843859489">com.mygdx.zombieland.entity.DamageSource</node>
-    <node x="5289.504758768171" y="1174.9005699809259">com.mygdx.zombieland.inventory.InventoryItem</node>
-    <node x="0.0" y="4542.938299511465">com.mygdx.zombieland.weapon.PistolType</node>
-    <node x="4719.426945714771" y="4542.938299511465">com.mygdx.zombieland.scheduler.Scheduler</node>
-    <node x="2463.426945714771" y="4542.938299511465">com.mygdx.zombieland.runnable.DamageEntityOnShootRunnable</node>
-    <node x="2847.8337012107922" y="2547.7199702733446">com.mygdx.zombieland.hud.HUD</node>
-    <node x="4419.110833995056" y="278.1423233453913">com.mygdx.zombieland.inventory.AbstractInventoryGun</node>
-    <node x="1355.4543567832363" y="2631.964185814042">com.mygdx.zombieland.entity.item.Item</node>
-    <node x="4008.1108339950565" y="773.6489554748932">com.mygdx.zombieland.weapon.Gun</node>
-    <node x="3666.9800196868487" y="2913.8434676019824">com.mygdx.zombieland.World</node>
-    <node x="3249.426945714771" y="4542.938299511465">com.mygdx.zombieland.setting.GameSetting</node>
-    <node x="4782.110833995057" y="1185.4005699809259">com.mygdx.zombieland.inventory.InventoryPistol</node>
-    <node x="4105.8470706380585" y="1185.9005699809259">com.mygdx.zombieland.weapon.Weapon</node>
-    <node x="2581.541315140973" y="4419.938299511465">com.mygdx.zombieland.spawner.ZombieSpawner</node>
-    <node x="278.0500590423019" y="2527.2428008127727">com.mygdx.zombieland.entity.DamageableAbstract</node>
-    <node x="829.4300439061735" y="0.0">com.mygdx.zombieland.entity.enemy.Zombie</node>
-    <node x="1826.2643808602584" y="3536.935613500417">com.mygdx.zombieland.effects.TextIndicator.TextItem</node>
-    <node x="2961.008037577716" y="3681.5836756834105">com.mygdx.zombieland.spawner.Spawner</node>
-    <node x="869.4356336821851" y="3502.5728746347604">com.mygdx.zombieland.entity.item.Box</node>
-    <node x="1515.6319287115932" y="2292.494723777186">com.mygdx.zombieland.entity.Entity</node>
-    <node x="4002.426945714771" y="4542.938299511465">com.mygdx.zombieland.utils.MathHelper</node>
-    <node x="2199.426945714771" y="4542.938299511465">com.mygdx.zombieland.state.GameState</node>
+    <node x="1710.4269457147711" y="4900.830665439213">com.mygdx.zombieland.utils.VisualizeHelper</node>
+    <node x="2522.1628116340435" y="827.460894712131">com.mygdx.zombieland.entity.enemy.EnemyAbstract</node>
+    <node x="4643.964872773294" y="317.01655168076536">com.mygdx.zombieland.weapon.AbstractPistol</node>
+    <node x="5028.1176662584185" y="240.2448539771829">com.mygdx.zombieland.inventory.InventoryGun</node>
+    <node x="4638.426945714771" y="4900.830665439213">com.mygdx.zombieland.utils.RayHelper</node>
+    <node x="789.0" y="4900.830665439213">com.mygdx.zombieland.ZombieLandMain</node>
+    <node x="4561.614355415175" y="0.0">com.mygdx.zombieland.weapon.Pistol</node>
+    <node x="0.0" y="4900.830665439213">com.mygdx.zombieland.location.Location</node>
+    <node x="331.98591953381947" y="3611.81115525511">com.mygdx.zombieland.spawner.SpawnerAbstract</node>
+    <node x="2121.426945714771" y="4900.830665439213">com.mygdx.zombieland.runnable.ShootingRunnable</node>
+    <node x="4225.614355415175" y="1952.4655196415729">com.mygdx.zombieland.entity.item.BoxAmmunition</node>
+    <node x="2399.5919642232884" y="3073.9918707617735">com.mygdx.zombieland.entity.projectile.AbstractProjectile</node>
+    <node x="1452.4269457147711" y="4900.830665439213">com.mygdx.zombieland.location.Vector2D</node>
+    <node x="2405.0563356053335" y="2456.903171958881">com.mygdx.zombieland.entity.projectile.Projectile</node>
+    <node x="2194.701356784592" y="908.5452261285961">com.mygdx.zombieland.entity.LivingEntity</node>
+    <node x="3062.3776967220756" y="1723.2223952136178">com.mygdx.zombieland.entity.item.ItemAbstract</node>
+    <node x="64.47135596608223" y="4026.9673899276204">com.mygdx.zombieland.spawner.BoxSpawner</node>
+    <node x="2484.3827762449673" y="3700.195930292085">com.mygdx.zombieland.entity.projectile.PistolProjectile</node>
+    <node x="919.7521245813386" y="3054.8721869464553">com.mygdx.zombieland.effects.TextIndicator</node>
+    <node x="4079.426945714771" y="4900.830665439213">com.mygdx.zombieland.runnable.ReloadRunnable</node>
+    <node x="3823.426945714771" y="4900.830665439213">com.mygdx.zombieland.inventory.Inventory</node>
+    <node x="1600.8166870447305" y="990.6514316338034">com.mygdx.zombieland.entity.Player</node>
+    <node x="1267.4449724222488" y="3643.5456156369">com.mygdx.zombieland.Renderable</node>
+    <node x="3301.426945714771" y="4900.830665439213">com.mygdx.zombieland.utils.Pair</node>
+    <node x="1679.6177847894755" y="2054.0760108739637">com.mygdx.zombieland.entity.projectile.ProjectileSource</node>
+    <node x="2796.499224317519" y="2381.0975651762615">com.mygdx.zombieland.entity.DamageSource</node>
+    <node x="4991.745169723383" y="0.0">com.mygdx.zombieland.inventory.InventoryItem</node>
+    <node x="322.0" y="4900.830665439213">com.mygdx.zombieland.weapon.PistolType</node>
+    <node x="5041.426945714771" y="4900.830665439213">com.mygdx.zombieland.scheduler.Scheduler</node>
+    <node x="2785.426945714771" y="4900.830665439213">com.mygdx.zombieland.runnable.DamageEntityOnShootRunnable</node>
+    <node x="1769.0216535548539" y="3405.824901176031">com.mygdx.zombieland.hud.HUD</node>
+    <node x="4996.530979597738" y="509.00565782746054">com.mygdx.zombieland.inventory.AbstractInventoryGun</node>
+    <node x="3035.0081746176984" y="2242.045755683838">com.mygdx.zombieland.entity.item.Item</node>
+    <node x="4580.745169723382" y="773.6489554748932">com.mygdx.zombieland.weapon.Gun</node>
+    <node x="1218.6501715573484" y="4049.8306654392127">com.mygdx.zombieland.World</node>
+    <node x="3571.426945714771" y="4900.830665439213">com.mygdx.zombieland.setting.GameSetting</node>
+    <node x="5120.234800694835" y="872.389646447009">com.mygdx.zombieland.inventory.InventoryPistol</node>
+    <node x="4678.481406366384" y="1185.9005699809259">com.mygdx.zombieland.weapon.Weapon</node>
+    <node x="0.0" y="3410.648371908474">com.mygdx.zombieland.spawner.ZombieSpawner</node>
+    <node x="3033.049498060046" y="1211.4447390230025">com.mygdx.zombieland.entity.DamageableAbstract</node>
+    <node x="752.5637428087127" y="2566.27909457212">com.mygdx.zombieland.effects.TextIndicator.TextItem</node>
+    <node x="2786.9588924396357" y="0.0">com.mygdx.zombieland.entity.enemy.Zombie</node>
+    <node x="798.23614589322" y="3646.3114337200805">com.mygdx.zombieland.spawner.Spawner</node>
+    <node x="3828.74493860624" y="1810.513425877049">com.mygdx.zombieland.entity.item.Box</node>
+    <node x="4324.426945714771" y="4900.830665439213">com.mygdx.zombieland.utils.MathHelper</node>
+    <node x="1968.3374948997969" y="2298.7444990385084">com.mygdx.zombieland.entity.Entity</node>
+    <node x="2521.426945714771" y="4900.830665439213">com.mygdx.zombieland.state.GameState</node>
   </nodes>
   <notes>
-    <note x="467.0" y="4656.938299511465">
+    <note x="1163.4269457147711" y="5014.830665439213">
       <node>com.mygdx.zombieland.ZombieLandMain</node>
       <value>Main class that generete everything</value>
       <edge>
-        <point x="0.0" y="0.0" />
-        <point x="0.0" y="0.0" />
+        <point x="0.0" y="-0.0" />
+        <point x="0.0" y="-0.0" />
       </edge>
     </note>
   </notes>
   <edges>
     <edge source="com.mygdx.zombieland.entity.enemy.EnemyAbstract" target="com.mygdx.zombieland.entity.DamageableAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.Player" target="com.mygdx.zombieland.entity.projectile.ProjectileSource" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.spawner.BoxSpawner" target="com.mygdx.zombieland.spawner.SpawnerAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.hud.HUD" target="com.mygdx.zombieland.Renderable" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.item.Item" target="com.mygdx.zombieland.entity.Entity" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.spawner.Spawner" target="com.mygdx.zombieland.Renderable" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.weapon.AbstractPistol" target="com.mygdx.zombieland.weapon.Gun" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.LivingEntity" target="com.mygdx.zombieland.entity.Entity" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.inventory.AbstractInventoryGun" target="com.mygdx.zombieland.inventory.InventoryGun" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.Player" target="com.mygdx.zombieland.entity.LivingEntity" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.item.ItemAbstract" target="com.mygdx.zombieland.entity.DamageableAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.mygdx.zombieland.entity.item.BoxAmmunition" target="com.mygdx.zombieland.entity.item.Box" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.projectile.ProjectileSource" target="com.mygdx.zombieland.entity.Entity" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="com.mygdx.zombieland.entity.item.BoxAmmunition" target="com.mygdx.zombieland.entity.item.Box" relationship="GENERALIZATION">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.enemy.EnemyAbstract" target="com.mygdx.zombieland.entity.DamageSource" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.weapon.Gun" target="com.mygdx.zombieland.weapon.Weapon" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.effects.TextIndicator" target="com.mygdx.zombieland.Renderable" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.DamageableAbstract" target="com.mygdx.zombieland.entity.Entity" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.enemy.Zombie" target="com.mygdx.zombieland.entity.enemy.EnemyAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.projectile.PistolProjectile" target="com.mygdx.zombieland.entity.projectile.AbstractProjectile" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.mygdx.zombieland.entity.Player" target="com.mygdx.zombieland.entity.DamageableAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.mygdx.zombieland.entity.Entity" target="com.mygdx.zombieland.Renderable" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.projectile.Projectile" target="com.mygdx.zombieland.entity.Entity" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="com.mygdx.zombieland.entity.Player" target="com.mygdx.zombieland.entity.DamageableAbstract" relationship="GENERALIZATION">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="com.mygdx.zombieland.entity.Entity" target="com.mygdx.zombieland.Renderable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.inventory.InventoryGun" target="com.mygdx.zombieland.inventory.InventoryItem" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.item.Box" target="com.mygdx.zombieland.entity.item.ItemAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.inventory.InventoryPistol" target="com.mygdx.zombieland.inventory.AbstractInventoryGun" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.weapon.Pistol" target="com.mygdx.zombieland.weapon.AbstractPistol" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.DamageSource" target="com.mygdx.zombieland.entity.Entity" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.mygdx.zombieland.World" target="com.mygdx.zombieland.Renderable" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.item.ItemAbstract" target="com.mygdx.zombieland.entity.item.Item" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="com.mygdx.zombieland.World" target="com.mygdx.zombieland.Renderable" relationship="REALIZATION">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.enemy.EnemyAbstract" target="com.mygdx.zombieland.entity.LivingEntity" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.spawner.SpawnerAbstract" target="com.mygdx.zombieland.spawner.Spawner" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.projectile.AbstractProjectile" target="com.mygdx.zombieland.entity.projectile.Projectile" relationship="REALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.entity.projectile.Projectile" target="com.mygdx.zombieland.entity.DamageSource" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.spawner.ZombieSpawner" target="com.mygdx.zombieland.spawner.SpawnerAbstract" relationship="GENERALIZATION">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
     <edge source="com.mygdx.zombieland.effects.TextIndicator.TextItem" target="com.mygdx.zombieland.effects.TextIndicator" relationship="INNER_CLASS">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
     </edge>
   </edges>
-  <settings layout="Circular" zoom="0.1586489252814739" showDependencies="false" x="2530.0" y="2432.5" />
+  <settings layout="Circular" zoom="1.102327219431871" showDependencies="false" x="2190.0" y="2521.0" />
   <SelectedNodes>
-    <node>com.mygdx.zombieland.inventory.InventoryItem</node>
+    <node>com.mygdx.zombieland.entity.Entity</node>
   </SelectedNodes>
   <Categories>
     <Category>Constructors</Category>
