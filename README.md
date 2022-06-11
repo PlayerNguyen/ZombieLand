@@ -140,7 +140,7 @@ Please [read more](https://github.com/PlayerNguyen/ZombieLand/blob/master/FEATUR
 
 ## Project Status
 
-Project is [**in progress**](https://github.com/PlayerNguyen/ZombieLand/blob/master/TIMELINE.md).
+Project is [**finished**](https://github.com/PlayerNguyen/ZombieLand/blob/master/TIMELINE.md).
 🤔
 
 ### Challenging
