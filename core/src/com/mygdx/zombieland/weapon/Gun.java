@@ -23,4 +23,6 @@ public interface Gun extends Weapon {
 
     long getReloadDuration();
 
+    long getShootDelay();
+
 }

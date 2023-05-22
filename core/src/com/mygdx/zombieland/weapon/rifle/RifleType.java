@@ -1,19 +1,19 @@
-package com.mygdx.zombieland.weapon;
+package com.mygdx.zombieland.weapon.rifle;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-public enum PistolType {
-
-    PISTOL(7F,
-            6F,
-            12,
-            0.05F,
+public enum RifleType {
+    RIFLE(
+            15F,
+                    6F,
+                    30,
+                    0.2F,
             Gdx.audio.newSound(Gdx.files.internal("audio/weapon/pistol_1.wav")),
             Gdx.audio.newSound(Gdx.files.internal("audio/weapon/pistol_no_ammo.mp3")),
             Gdx.audio.newSound(Gdx.files.internal("audio/weapon/pistol_release.wav")),
-            1200
-    );
+            1500
+            );
 
     private final float damage;
     private final float knockbackPower;
@@ -25,7 +25,7 @@ public enum PistolType {
     private final long reloadDuration;
 
 
-    PistolType(float damage,
+    RifleType(float damage,
                float knockbackPower,
                int maxAmmo,
                float recoil,
@@ -42,7 +42,7 @@ public enum PistolType {
         this.reloadDuration = 0;
     }
 
-    PistolType(float damage,
+    RifleType(float damage,
                float knockbackPower,
                int maxAmmo,
                float recoil,

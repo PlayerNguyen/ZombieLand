@@ -1,8 +1,8 @@
 package com.mygdx.zombieland.inventory;
 
 import com.badlogic.gdx.Input;
-import com.mygdx.zombieland.weapon.Pistol;
-import com.mygdx.zombieland.weapon.PistolType;
+import com.mygdx.zombieland.weapon.pistol.Pistol;
+import com.mygdx.zombieland.weapon.pistol.PistolType;
 
 public class InventoryPistol extends AbstractInventoryGun {
 

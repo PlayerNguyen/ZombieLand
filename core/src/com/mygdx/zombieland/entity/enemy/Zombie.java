@@ -62,7 +62,6 @@ public class Zombie extends EnemyAbstract {
     @Override
     public void render() {
 
-
         if (this.world.getGameState().equals(GameState.PLAYING)) {
             this.updateMove();
 
@@ -74,8 +73,8 @@ public class Zombie extends EnemyAbstract {
             }
 
             this.getLocation().add(
-                    this.getDirection().x * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 50 : 1),
-                    this.getDirection().y * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 50 : 1)
+                    this.getDirection().x * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 5 : 1),
+                    this.getDirection().y * Gdx.graphics.getDeltaTime() * speed * (this.getWorld().isDebug() ? 5 : 1)
             );
         }
 

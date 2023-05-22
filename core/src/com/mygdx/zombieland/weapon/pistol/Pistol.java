@@ -1,4 +1,4 @@
-package com.mygdx.zombieland.weapon;
+package com.mygdx.zombieland.weapon.pistol;
 
 import com.mygdx.zombieland.World;
 import com.mygdx.zombieland.entity.projectile.PistolProjectile;
@@ -14,5 +14,10 @@ public class Pistol extends AbstractPistol {
     @Override
     public synchronized Projectile launchProjectile(World world, ProjectileSource source) {
         return new PistolProjectile(world, source);
+    }
+
+    @Override
+    public long getShootDelay() {
+        return 320;
     }
 }

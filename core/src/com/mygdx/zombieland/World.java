@@ -15,10 +15,13 @@ import com.badlogic.gdx.utils.Align;
 import com.mygdx.zombieland.effects.TextIndicator;
 import com.mygdx.zombieland.entity.Entity;
 import com.mygdx.zombieland.entity.Player;
+import com.mygdx.zombieland.entity.enemy.Zombie;
+import com.mygdx.zombieland.entity.enemy.ZombieType;
 import com.mygdx.zombieland.entity.projectile.Projectile;
 import com.mygdx.zombieland.hud.HUD;
 import com.mygdx.zombieland.inventory.Inventory;
 import com.mygdx.zombieland.inventory.InventoryPistol;
+import com.mygdx.zombieland.inventory.InventoryRifle;
 import com.mygdx.zombieland.location.Location;
 import com.mygdx.zombieland.location.Vector2D;
 import com.mygdx.zombieland.scheduler.Scheduler;
@@ -84,6 +87,7 @@ public class World implements Renderable {
 
         // Load inventory
         this.inventory.getItems().add(new InventoryPistol());
+        this.inventory.getItems().add(new InventoryRifle());
 
         // Load player and inject world into player
         this.player = new Player(this);

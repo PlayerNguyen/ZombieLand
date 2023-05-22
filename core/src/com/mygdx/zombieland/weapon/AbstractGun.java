@@ -2,26 +2,33 @@ package com.mygdx.zombieland.weapon;
 
 import com.badlogic.gdx.audio.Sound;
 
-public abstract class AbstractPistol implements Gun {
-
-    private final PistolType type;
+public abstract class AbstractGun implements Gun{
     private float damage;
     private float knockbackPower;
     private float recoil;
     private final int maxAmmo;
     private final long reloadDuration;
 
-    public AbstractPistol(PistolType type) {
-        this.type = type;
-        this.damage = this.type.getDamage();
-        this.knockbackPower = this.type.getKnockbackPower();
-        this.recoil = this.type.getRecoil();
-        this.maxAmmo = this.type.getMaxAmmo();
-        this.reloadDuration = this.type.getReloadDuration();
-    }
+    private final Sound shootingSound;
+    private final Sound emptySound;
+    private final Sound releaseReloadSound;
 
-    public PistolType getType() {
-        return type;
+    public AbstractGun(float damage,
+                       float knockbackPower,
+                       float recoil,
+                       int maxAmmo,
+                       long reloadDuration,
+                       Sound shootingSound,
+                       Sound emptySound,
+                       Sound releaseReloadSound) {
+        this.damage = damage;
+        this.knockbackPower = knockbackPower;
+        this.recoil = recoil;
+        this.maxAmmo = maxAmmo;
+        this.reloadDuration = reloadDuration;
+        this.shootingSound = shootingSound;
+        this.emptySound = emptySound;
+        this.releaseReloadSound = releaseReloadSound;
     }
 
     @Override
@@ -57,12 +64,12 @@ public abstract class AbstractPistol implements Gun {
 
     @Override
     public Sound getShootingSound() {
-        return this.type.getShootingSound();
+        return this.shootingSound;
     }
 
     @Override
     public Sound getEmptySound() {
-        return this.type.getEmptySound();
+        return this.emptySound;
     }
 
     @Override
@@ -77,6 +84,6 @@ public abstract class AbstractPistol implements Gun {
 
     @Override
     public Sound getReloadReleaseSound() {
-        return this.type.getReloadReleaseSound();
+        return this.releaseReloadSound;
     }
 }

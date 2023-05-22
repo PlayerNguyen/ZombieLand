@@ -16,6 +16,7 @@ import com.mygdx.zombieland.runnable.ReloadRunnable;
 import com.mygdx.zombieland.runnable.ShootingRunnable;
 import com.mygdx.zombieland.state.GameState;
 import com.mygdx.zombieland.utils.VisualizeHelper;
+import com.mygdx.zombieland.weapon.Gun;
 import com.mygdx.zombieland.weapon.Weapon;
 
 public class Player extends DamageableAbstract
@@ -155,7 +156,7 @@ public class Player extends DamageableAbstract
     public void shoot() {
         new Thread(new ShootingRunnable(this,
                 this.world,
-                SHOOT_DELAY_IN_MILLIS)
+                ((Gun)currentHandItem.getWeapon()).getShootDelay())
         ).start();
     }
 
